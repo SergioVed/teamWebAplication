@@ -1,0 +1,25 @@
+.inputWrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 365px;
+    &__input{
+        height: 35px;
+        width: 285px;
+        border-radius: 74px;
+        border: 2.8px solid #fff;
+        background: transparent;
+        color: #fff;
+        font-size: 20px;
+        padding-left: 16px;
+    }
+    &__button{
+        background-image: url("../../img/input/inputIcon.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: transparent;
+        border: none;
+        height: 35px;
+        width: 35px;
+    }
+}
