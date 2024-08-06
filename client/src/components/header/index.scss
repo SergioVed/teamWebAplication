@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
 .header{
     background-color: #000;
     height: 120px;
-    width: 100vw;
+    width: 80vw;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     &__elements{
-        margin-left: 180px;
-        width: 800px;
+        width: 40vw;
+        max-width: 900px;
         height: 50px;
         display: flex;
         justify-content: space-between;
@@ -17,9 +17,10 @@
         &__a{
             color: #fff;
             text-decoration: none;
-            font-size: 26px;
+            font-size: 25px;
             font-family: "Inter";
             font-weight: 600;
+            cursor: pointer;
         }
         &__a:first-of-type{
             font-size: 34px;
@@ -27,7 +28,6 @@
         }
     }
     &__inputContainer{
-        margin-right: 180px;
         width: 420px;
         height: 100px;
         align-items: center;
