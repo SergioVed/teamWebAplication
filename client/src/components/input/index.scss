@@ -17,12 +17,9 @@
         outline: none;
     }
     &__button{
-        background-image: url("../../img/input/inputIcon.png");
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-color: transparent;
+        background: none;
         border: none;
-        height: 35px;
-        width: 35px;
+        font-size: 35px;
+        color: #fff;
     }
 }
