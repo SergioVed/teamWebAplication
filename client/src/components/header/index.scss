@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+:root {
+    --index: calc(1vw + 1vh)
+}
 .header{
-    height: 120px;
+    padding-top: calc(var(--index) * 1);
     width: 80vw;
     margin: 0 auto;
     display: flex;
@@ -8,34 +11,31 @@
     align-items: center;
     z-index: 1;
     &__elements{
-        width: 40vw;
-        max-width: 900px;
         height: 50px;
         display: flex;
-        justify-content: space-between;
+        gap: calc(var(--index) * 2);
         align-items: center;
         &__a{
             color: #fff;
             text-decoration: none;
-            font-size: 25px;
+            font-size: calc(var(--index) * 0.8);
             font-family: "Inter";
             font-weight: 600;
             cursor: pointer;
         }
         &__a:first-of-type{
-            font-size: 34px;
             font-weight: 700;
+            font-size: calc(var(--index) * 1);
         }
     }
     &__inputContainer{
-        width: 420px;
         height: 100px;
         align-items: center;
         display: flex;
-        justify-content: space-between;
+        gap: calc(var(--index)* 1);
         &__profileImg{
-            width: 40px;
-            height: 40px;
+            width: calc(var(--index) * 1.4);
+            height: calc(var(--index) * 1.4);
             color: #fff;
         }
     }
