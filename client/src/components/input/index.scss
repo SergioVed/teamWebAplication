@@ -1,0 +1,25 @@
+.inputWrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 365px;
+    &__input{
+        height: 35px;
+        width: 285px;
+        border-radius: 74px;
+        border: 2.8px solid #fff;
+        background: transparent;
+        color: #fff;
+        font-size: 20px;
+        padding-left: 16px;
+    }
+    &__input:focus{
+        outline: none;
+    }
+    &__button{
+        background: none;
+        border: none;
+        font-size: 35px;
+        color: #fff;
+    }
+}
