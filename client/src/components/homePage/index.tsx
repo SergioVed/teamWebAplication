@@ -13,8 +13,8 @@ export const HomePage = () => {
 
             <div className="homepage__container">
                 <Banners />
+                <TopWorkers/>
             </div>
-        <TopWorkers/>
         </div>
     )
 }

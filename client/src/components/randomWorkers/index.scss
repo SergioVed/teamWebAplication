@@ -3,12 +3,10 @@
 }
 // calc(var(--index) * 2)
 .workers{
-    width: 80vw;
     height: calc(var(--index) * 11);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 0 auto;
     margin-top: calc(var(--index) * 2);
     margin-bottom: calc(var(--index)* 2);
     z-index: 1;
