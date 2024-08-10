@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Banners } from "./banners";
 import './style.scss'
 import { Header } from "../header";
+import { TopWorkers } from "../randomWorkers/randomWorkersComponent";
 
 
 export const HomePage = () => {
@@ -13,6 +14,7 @@ export const HomePage = () => {
             <div className="homepage__container">
                 <Banners />
             </div>
+        <TopWorkers/>
         </div>
     )
 }
