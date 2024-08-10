@@ -3,7 +3,7 @@ export interface Element {
 }
 
 export const elements: Element[] = [
-    {value: "LogoName"},
+    {value: "TeamWeb"},
     {value: "проєкти"},
     {value: "анкети"},
     {value: "твоя команда"}

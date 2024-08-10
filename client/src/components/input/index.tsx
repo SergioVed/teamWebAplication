@@ -6,7 +6,7 @@ export const Input = () => {
 
     return(
         <form className="inputWrapper">
-            <input type="text" className="inputWrapper__input"/>
+            <input type="text" placeholder="пошук напрямків" className="inputWrapper__input"/>
             <button className="inputWrapper__button" type="submit"><FontAwesomeIcon icon={faMagnifyingGlass}/></button>
         </form>
     )
