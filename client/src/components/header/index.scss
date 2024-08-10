@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "../../styleSettings/defines.scss";
+
 :root {
     --index: calc(1vw + 1vh)
 }
+
 .header{
     padding-top: calc(var(--index) * 1.5);
     width: 80vw;
@@ -16,7 +18,7 @@
         gap: calc(var(--index) * 2);
         align-items: center;
         &__a{
-            color: #fff;
+            color: $defaultWhite;
             text-decoration: none;
             font-size: calc(var(--index) * 0.8);
             font-family: "Inter";
@@ -34,9 +36,10 @@
         display: flex;
         gap: calc(var(--index)* 1);
         &__profileImg{
-            width: calc(var(--index) * 1.4);
-            height: calc(var(--index) * 1.4);
-            color: #fff;
+            // width: calc(var(--index) * 1.4);
+            // height: calc(var(--index) * 1.4);
+            font-size: calc(var(--index) * 1.5);
+            color: $defaultWhite;
         }
     }
 }

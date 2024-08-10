@@ -1,6 +1,9 @@
+@import  "../../styleSettings/defines.scss";
+
 :root {
     --index: calc(1vw + 1vh)
 }
+
 .inputWrapper{
     display: flex;
     // justify-content: space-around;
@@ -11,12 +14,12 @@
         // height: calc(var(--index) * 1.3);
         width: calc(var(--index) * 11);
         // border-radius: 74px;
-        border: 2.4px solid #ffffff;
+        border: 2.4px solid $defaultWhite;
         background: transparent;
-        color: #fff;
+        color: $defaultWhite;
         font-size: calc(var(--index) * .7);
         font-weight: 500;
-        padding: calc(var(--index) * .3) calc(var(--index) * .8) calc(var(--index) * .35);
+        padding: calc(var(--index) * .3) calc(var(--index) * 1) calc(var(--index) * .35);
         border-radius: calc(var(--index) * 1);
         // padding-left: 16px;
 
@@ -33,7 +36,7 @@
         background: none;
         border: none;
         font-size: calc(var(--index) * 1.1);
-        color: #fff;
+        color: $defaultWhite;
         cursor: pointer;
     }
 }
