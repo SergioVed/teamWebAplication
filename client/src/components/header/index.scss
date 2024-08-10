@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "../../styleSettings/defines.scss";
+
 :root {
     --index: calc(1vw + 1vh)
 }
+
 .header{
-    padding-top: calc(var(--index) * 1);
+    padding-top: calc(var(--index) * 1.5);
     width: 80vw;
     margin: 0 auto;
     display: flex;
@@ -11,12 +13,12 @@
     align-items: center;
     z-index: 1;
     &__elements{
-        height: 50px;
+        // height: 50px;
         display: flex;
         gap: calc(var(--index) * 2);
         align-items: center;
         &__a{
-            color: #fff;
+            color: $defaultWhite;
             text-decoration: none;
             font-size: calc(var(--index) * 0.8);
             font-family: "Inter";
@@ -25,18 +27,19 @@
         }
         &__a:first-of-type{
             font-weight: 700;
-            font-size: calc(var(--index) * 1);
+            font-size: calc(var(--index) * 1.2);
         }
     }
     &__inputContainer{
-        height: 100px;
+        // height: 100px;
         align-items: center;
         display: flex;
         gap: calc(var(--index)* 1);
         &__profileImg{
-            width: calc(var(--index) * 1.4);
-            height: calc(var(--index) * 1.4);
-            color: #fff;
+            // width: calc(var(--index) * 1.4);
+            // height: calc(var(--index) * 1.4);
+            font-size: calc(var(--index) * 1.5);
+            color: $defaultWhite;
         }
     }
 }

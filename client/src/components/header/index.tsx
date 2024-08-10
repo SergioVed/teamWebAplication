@@ -10,8 +10,8 @@ export const Header = () => {
     return(
         <div className="header">
             <div className="header__elements">
-                {elements.map((e: Element) => (
-                    <Link to={""} className="header__elements__a">{e.value}</Link>
+                {elements.map((e: Element, index: number) => (
+                    <Link to={""} key={index} className="header__elements__a">{e.value}</Link>
                 ))}
             </div>
             <div className="header__inputContainer">
