@@ -31,6 +31,8 @@
     }
     &__input:focus{
         outline: none;
+        border-color: #FF696C;
+        transition: 0.5s;
     }
     &__button{
         background: none;
