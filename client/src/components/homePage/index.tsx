@@ -3,6 +3,7 @@ import { Banners } from "./banners";
 import './style.scss'
 import { Header } from "../header";
 import { TopWorkers } from "../randomWorkers/randomWorkersComponent";
+import { Footer } from "../footer";
 
 
 export const HomePage = () => {
@@ -15,6 +16,7 @@ export const HomePage = () => {
                 <Banners />
                 <TopWorkers/>
             </div>
+        <Footer/>
         </div>
     )
 }
