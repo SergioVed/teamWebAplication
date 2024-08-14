@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { UserCard } from "./workerCard";
 
 // import userImg from "../img/randomWorkers/user.png";
 
@@ -45,11 +46,7 @@ export const TopWorkers = () => {
             <div className="workers__container">
                 <button className="workers__container__btn" onClick={handleNext}><FontAwesomeIcon icon={faChevronLeft} /></button>
                 {array[currentIndex].map((e: Worker) => (
-                    <div className="workers__container__user">
-                        <img src={e.img} alt="userImg" className="workers__container__user-img"/>
-                        <p className="workers__container__user-name">{e.name}</p>
-                        <p className="workers__container__user-work">{e.work}</p>
-                    </div>
+                    <UserCard name={e.name} img={e.img} work={e.work}/>
                 ))}
                 <button className="workers__container__btn" onClick={handlePrevious}><FontAwesomeIcon icon={faChevronRight} /></button>
             </div>

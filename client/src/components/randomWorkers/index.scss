@@ -32,6 +32,10 @@
         }
         &__user-name{
             font-size: calc(var(--index) * 0.8);
+            width: calc(var(--index) * 4.9);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         &__user-work{
             font-size: calc(var(--index) * 0.5);

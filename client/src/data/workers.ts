@@ -10,7 +10,7 @@ interface Worker {
 
 const workers: Worker[] = [
     {
-        name: "test 1",
+        name: "looooong test 1",
         work: "Frontend developer",
         img: userImg,
         rating: 1,
