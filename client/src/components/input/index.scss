@@ -15,7 +15,7 @@
         color: $defaultWhite;
         font-size: calc(var(--index) * .7);
         font-weight: 500;
-        padding: calc(var(--index) * .3) calc(var(--index) * 1) calc(var(--index) * .35);
+        padding: calc(var(--index) * .25) calc(var(--index) * 1) calc(var(--index) * .3);
         border-radius: calc(var(--index) * 1);
 
         &::placeholder{
