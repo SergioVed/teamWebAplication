@@ -29,12 +29,11 @@
             font-size: calc(var(--index) * 0.8);
             font-family: "Inter";
             font-weight: 600;
-            transition: 0.3s ease;
+            transition: 0.3s;
             cursor: pointer;
         }
         &__a:hover{
             transform: translateY(calc(var(--index) * -0.2));
-            text-shadow: calc(var(--index) * 0.1) calc(var(--index) * 0.1) calc(var(--index) * 0.3) #FF696C;
         }
         &__a:first-of-type{
             font-weight: 700;
@@ -48,6 +47,11 @@
         &__profileImg{
             font-size: calc(var(--index) * 1.4);
             color: $defaultWhite;
+            transition: 0.3s;
+        }
+        &__profileImg:hover{
+            transform: translateY(calc(var(--index) * -0.2));
+            transition: 0.3s;
         }
     }
 }

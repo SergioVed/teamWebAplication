@@ -25,7 +25,8 @@ export const HomePage = () => {
     function changeColor() {
         banners.forEach((element: IBanner, index: number) => {
             if (currentBanner === index) {
-                console.log(element)
+                setCurrentColor(element.color)
+                console.log(currentColor)
             }
         })
     }
@@ -36,7 +37,7 @@ export const HomePage = () => {
     return (
         <div className="homepage">
             <Header />
-            <div className="homepage__gradient" style={{}}></div>
+            <div className="homepage__gradient" style={{background: `linear-gradient(180deg, #111111 50%, ${currentColor} 100%)` }}></div>
 
             <div className="homepage__container">
                 <Banners banners={banners} currentBanner={currentBanner} setCurrentBanner={setCurrentBanner} />

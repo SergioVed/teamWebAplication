@@ -34,6 +34,11 @@
         border: none;
         font-size: calc(var(--index) * 1.2);
         color: $defaultWhite;
+        transition: 0.3s;
         cursor: pointer;
+    }
+    &__button:hover{
+        transform: translateY(calc(var(--index) * -0.2));
+        transition: 0.3s;
     }
 }
