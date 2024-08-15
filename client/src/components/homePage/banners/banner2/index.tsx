@@ -1,5 +1,5 @@
-export const Banner2 = () => {
+export const Banner2 = ({ color }: any) => {
     return (
-        <div className="banner__2"></div>
+        <div className="banner__2" style={{backgroundColor: color}}></div>
     )
 }

@@ -9,13 +9,34 @@ import { Link } from "react-router-dom";
 
 
 export const HomePage = () => {
+
+    const [currentBanner, setCurrentBanner] = useState(0)
+
+    const [currentColor, setCurrentColor] = useState("")
+
+    const banners = [
+        {name: "banner 1", color: "red"},
+        {name: "banner 2", color: "purple"},
+        {name: "banner 3", color: "yellow"}
+    ]
+
+    function changeColor() {
+        banners.forEach((element, index) => {
+            if (currentBanner === index) {
+                console.log(element)
+            } 
+        })
+    }
+
+    changeColor()
+
     return (
         <div className="homepage">
             <Header />
-            <div className="homepage__gradient"></div>
+            <div className="homepage__gradient" style={{}}></div>
 
             <div className="homepage__container">
-                <Banners />
+                <Banners banners={banners} currentBanner={currentBanner} setCurrentBanner={setCurrentBanner}/>
 
                 <TopWorkers />
 
