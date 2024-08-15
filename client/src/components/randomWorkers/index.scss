@@ -1,45 +1,67 @@
+@import "../../styleSettings/defines.scss";
+
 :root {
     --index: calc(1vw + 1vh)
 }
-// calc(var(--index) * 2)
+
 .workers{
-    height: calc(var(--index) * 11);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    width: 100%;
     margin-top: calc(var(--index) * 2);
     margin-bottom: calc(var(--index)* 2);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--index) * 2.1);
     z-index: 1;
+    color: $defaultWhite;
+    
     &__text{
         h1{
-            font-size: calc(var(--index) * 1.5);
+            font-size: calc(var(--index) * 1.6);
+            margin-bottom: calc(var(--index) * .2);
         }
         p{
-            font-size: calc(var(--index) * 0.9);
+            font-size: calc(var(--index) * 0.8);
+            font-weight: 500;
+            opacity: .7;
         }
     }
     &__container{
         display: flex;
         justify-content: space-between;
+        overflow-x: hidden;
         &__user{
-            height: calc(var(--index)* 7);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            margin-right: calc(var(--index) * .6);
+
+            &:last-of-type{
+                margin-right: calc(var(--index) * -.6);
+            }
         }
         &__user-img{
-            height: calc(var(--index) * 4.9);
+            height: calc(var(--index) * 6.5);
+            margin-bottom: calc(var(--index) * .4);
         }
         &__user-name{
             font-size: calc(var(--index) * 0.8);
+            width: calc(var(--index) * 4.9);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 600;
         }
         &__user-work{
-            font-size: calc(var(--index) * 0.5);
+            font-size: calc(var(--index) * 0.6);
+            font-weight: 500;
+            opacity: .7;
         }
         &__btn{
             background: none;
             border: none;
-            font-size: calc(var(--index) * 1.7);
+            font-size: calc(var(--index) * 1.5);
+            cursor: pointer;
+            color: $defaultWhite;
         }
     }
 }

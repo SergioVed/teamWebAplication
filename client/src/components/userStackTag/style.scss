@@ -1,0 +1,18 @@
+@import "../../styleSettings/defines.scss";
+
+.userStackTag{
+    background-color: $defaultGray;
+    width: max-content;
+    color: $defaultBlack;
+    font-weight: 600;
+    font-size: calc(var(--index) * .7);
+    padding: calc(var(--index) * .5) calc(var(--index) * 1);
+    border-radius: calc(var(--index) * 1);
+    text-decoration: none;
+    transition: .4s;
+
+    &:hover {
+        opacity: .8;
+        transition: .4s;
+    }
+}

@@ -5,15 +5,16 @@
 }
 
 .header{
-    padding-top: calc(var(--index) * 1.5);
-    width: 80vw;
+    padding: calc(var(--index) * 1.2) 0 calc(var(--index) * 1);
+    width: 85vw;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1;
+    z-index: 999;
+    position: fixed;
+    background-color: #111111f5;
     &__elements{
-        // height: 50px;
         display: flex;
         gap: calc(var(--index) * 2);
         align-items: center;
@@ -23,7 +24,12 @@
             font-size: calc(var(--index) * 0.8);
             font-family: "Inter";
             font-weight: 600;
+            transition: 0.3s ease;
             cursor: pointer;
+        }
+        &__a:hover{
+            transform: translateY(calc(var(--index) * -0.2));
+            text-shadow: calc(var(--index) * 0.1) calc(var(--index) * 0.1) calc(var(--index) * 0.3) #FF696C;
         }
         &__a:first-of-type{
             font-weight: 700;
@@ -31,14 +37,11 @@
         }
     }
     &__inputContainer{
-        // height: 100px;
         align-items: center;
         display: flex;
         gap: calc(var(--index)* 1);
         &__profileImg{
-            // width: calc(var(--index) * 1.4);
-            // height: calc(var(--index) * 1.4);
-            font-size: calc(var(--index) * 1.5);
+            font-size: calc(var(--index) * 1.4);
             color: $defaultWhite;
         }
     }
