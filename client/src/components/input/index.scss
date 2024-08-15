@@ -6,22 +6,17 @@
 
 .inputWrapper{
     display: flex;
-    // justify-content: space-around;
     align-items: center;
-    gap: calc(var(--index) * .3);
-    // width: calc(var(--index) * 11.3);
+    gap: calc(var(--index) * .4);
     &__input{
-        // height: calc(var(--index) * 1.3);
         width: calc(var(--index) * 11);
-        // border-radius: 74px;
         border: 2.4px solid $defaultWhite;
         background: transparent;
         color: $defaultWhite;
         font-size: calc(var(--index) * .7);
         font-weight: 500;
-        padding: calc(var(--index) * .3) calc(var(--index) * 1) calc(var(--index) * .35);
+        padding: calc(var(--index) * .25) calc(var(--index) * 1) calc(var(--index) * .3);
         border-radius: calc(var(--index) * 1);
-        // padding-left: 16px;
 
         &::placeholder{
             font-weight: 600;
@@ -37,7 +32,7 @@
     &__button{
         background: none;
         border: none;
-        font-size: calc(var(--index) * 1.1);
+        font-size: calc(var(--index) * 1.2);
         color: $defaultWhite;
         cursor: pointer;
     }
