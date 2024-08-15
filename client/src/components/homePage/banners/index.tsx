@@ -4,11 +4,10 @@ import { Banner2 } from "./banner2"
 import { Banner3 } from "./banner3"
 
 export const Banners = ({ banners, currentBanner, setCurrentBanner }: any) => {
-
     useEffect(() => {
         let counter = 1;
         const interval = setInterval(() => {
-            setCurrentBanner( counter - 1 )
+            setCurrentBanner(counter - 1)
 
             const radioButton = document.getElementById('radio' + counter) as HTMLInputElement | null;
             if (radioButton) {
@@ -22,23 +21,40 @@ export const Banners = ({ banners, currentBanner, setCurrentBanner }: any) => {
             }
         }, 8000);
 
-        return () => clearInterval(interval); 
+        return () => clearInterval(interval);
     }, []);
 
-    function radioChecked(index: number) {
+    function updateCurrentBanner(index: number) {
         setCurrentBanner(index)
     }
-    
     return (
         <div className="banners">
             <div className="banners__container">
-                <input type="radio" name="radio-btn" id="radio1" onChange={() => radioChecked(0)} checked={currentBanner === 0}/>
-                <input type="radio" name="radio-btn" id="radio2" onChange={() => radioChecked(1)} checked={currentBanner === 1}/>
-                <input type="radio" name="radio-btn" id="radio3" onChange={() => radioChecked(2)} checked={currentBanner === 2}/>
+                <input
+                    type="radio"
+                    name="radio-btn"
+                    id="radio1"
+                    onChange={() => updateCurrentBanner(0)}
+                    checked={currentBanner === 0}
+                />
+                <input
+                    type="radio"
+                    name="radio-btn"
+                    id="radio2"
+                    onChange={() => updateCurrentBanner(1)}
+                    checked={currentBanner === 1}
+                />
+                <input
+                    type="radio"
+                    name="radio-btn"
+                    id="radio3"
+                    onChange={() => updateCurrentBanner(2)}
+                    checked={currentBanner === 2}
+                />
 
-                <Banner1 color={banners[0].color}/>
-                <Banner2 color={banners[1].color}/>
-                <Banner3 color={banners[2].color}/>
+                <Banner1 color={banners[0].color} />
+                <Banner2 color={banners[1].color} />
+                <Banner3 color={banners[2].color} />
 
                 <div className="navigation__auto">
                     <div className={`auto__btn1 ${currentBanner === 0 ? 'active' : ''}`}></div>
