@@ -30,7 +30,6 @@ export const HomePage = () => {
 
                     <Link to={'/'} className="projects__btn">переглянути більше</Link>
                 </div>
-                <TopWorkers/>
             </div>
         </div>
     )
