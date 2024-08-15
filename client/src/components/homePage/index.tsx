@@ -3,6 +3,7 @@ import { Banners } from "./banners";
 import './style.scss'
 import { Header } from "../header";
 import { TopWorkers } from "../randomWorkers/randomWorkersComponent";
+import { Footer } from "../footer";
 import { ProjectBlock } from "../projectBlock";
 import { Link } from "react-router-dom";
 
@@ -32,6 +33,7 @@ export const HomePage = () => {
                 </div>
                 <TopWorkers/>
             </div>
+        <Footer/>
         </div>
     )
 }
