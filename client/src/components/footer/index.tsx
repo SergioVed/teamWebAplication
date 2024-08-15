@@ -25,9 +25,9 @@ export const Footer = () => {
                 <div className="footer__contacts__links">
                     <p>contact us</p>
                     <div className="footer__contacts__links__imgs">
-                        <img src={Discord} alt="" />
-                        <img src={Telegram} alt="" />
-                        <img src={Mail} alt="" />
+                        <a href=""><img src={Discord} alt="" /></a>
+                        <a href=""><img src={Telegram} alt="" /></a>
+                        <a href=""><img src={Mail} alt="" /></a>
                     </div>
                 </div>
             </div>

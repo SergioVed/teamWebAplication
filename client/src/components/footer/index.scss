@@ -11,6 +11,7 @@
     align-items: center;
     margin-top: calc(var(--index) * 2);
     margin-bottom: calc(var(--index) * 1);
+    color: #fff;
     &__logoImg{
         height: calc(var(--index) * 2.3);
         width: calc(var(--index) * 2.3);
@@ -24,6 +25,7 @@
             flex-direction: column;
             gap: calc(var(--index) * 1);
             &__link{
+                color: #fff;
                 font-size: calc(var(--index) * 0.8);
                 text-decoration: none;
                 font-weight: 700;
@@ -40,6 +42,11 @@
             display: flex;
             gap: calc(var(--index) * 0.8);
             &__imgs{
+                a{
+                    align-items: center;
+                    display: flex;
+                    text-align: center;
+                }
                 display: flex;
                 gap: calc(var(--index) * 0.3);
             }
