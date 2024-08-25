@@ -43,11 +43,11 @@ export const InformationPage2 = ({onNext} : {onNext: () => void}) => {
                     </div>
                     <div className="selected-options">
                         {selectedOptions.map((option, key) => (
-                            <LanguageComponent item={option} key={key} deleteFunction={DeleteComponentFunc(option, setSelectedOptions)}/>
+                            <LanguageComponent item={option} key={key} deleteFunction={(DeleteComponentFunc(key, selectedOptions, setSelectedOptions))}/>
                         ))}
                     </div>
                 </div>
-                <NextBtn handleInformation={handleInformation}/>
+                <NextBtn classname={""} value="далі" disabled={false} onClick={handleInformation}/>
             </form>
         </div>
     )

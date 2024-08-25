@@ -1,10 +1,7 @@
-import React from "react"
-
-export function DeleteComponentFunc(optionToDelete: string, setSelectedOptions:any) {
-    return(e: React.MouseEvent) => {
-        e.preventDefault()
-        setSelectedOptions((prevOptions: []) =>
-            prevOptions.filter((option) => option !== optionToDelete
-        ))
-    }
+export function DeleteComponentFunc(optionIndex: number, selectedOptions: string[], setSelectedOptions: React.Dispatch<React.SetStateAction<string[]>>) {
+    return (e: React.MouseEvent) => {
+        e.preventDefault();
+        const newOptions = selectedOptions.filter((_, index) => index !== optionIndex);
+        setSelectedOptions(newOptions);
+    };
 }

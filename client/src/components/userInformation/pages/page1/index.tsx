@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { userInfo } from "../..";
 import page1Img from "../../../../img/informationPage/InformationPage1.webp"
 import { NextBtn } from "../../components/nextBtn";
+import { Input } from "../../../input";
 
 export const InformationPage1 = ({onNext} : {onNext: () => void}) => {
     const pageRef = useRef<HTMLDivElement>(null);
@@ -18,7 +19,6 @@ export const InformationPage1 = ({onNext} : {onNext: () => void}) => {
         e.preventDefault()
         userInfo.name = name;
         userInfo.surname = surName
-        console.log(userInfo)
 
         onNext()
     }
@@ -51,7 +51,7 @@ export const InformationPage1 = ({onNext} : {onNext: () => void}) => {
                     </div>
                     <img src={page1Img} alt="" />
                 </div>
-                <NextBtn handleInformation={handleInformation}/>
+                <NextBtn classname={""} value="далі" disabled={false} onClick={handleInformation}/>
             </form>
         </div>
     );

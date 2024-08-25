@@ -30,7 +30,6 @@ export const InformationPage3 = ({onNext}: {onNext: () => void}) => {
     function handleInformation (e: React.MouseEvent) {
         e.preventDefault()
         userInfo.technologies = selectedOptions
-        console.log(userInfo)
 
         onNext()
     }
@@ -38,18 +37,17 @@ export const InformationPage3 = ({onNext}: {onNext: () => void}) => {
 
     return(
         <div className="wrapper" ref={pageRef}>
-            <form className="InformationPage2">
-                <div className="InformationPage2__title-div">
-                    <p className="InformationPage2__title-div__title">Обери технології якими володієш</p>
-                    <p className="InformationPage2__title-div__sub-title">(можна обрати декілька)</p>
+            <form className="InformationPage3">
+                <div className="InformationPage3__title-div">
+                    <p className="InformationPage3__title-div__title">Обери технології якими володієш</p>
+                    <p className="InformationPage3__title-div__sub-title">(можна обрати декілька)</p>
                 </div>
-                <div className="InformationPage2__container">
-                    <button className="InformationPage2__container__selectBtn" onClick={(event) => OptionVisibleFunc(optionsRef, event)}><FontAwesomeIcon icon={faChevronDown} className="InformationPage2__container__selectBtn__img"/></button>
+                <div className="InformationPage3__container">
+                    <button className="InformationPage3__container__selectBtn" onClick={(event) => OptionVisibleFunc(optionsRef, event)}><FontAwesomeIcon icon={faChevronDown} className="InformationPage2__container__selectBtn__img"/></button>
                     <div className="options" ref={optionsRef}>
                         <div className="options-scrollbar">
                             {technologies.map((workKey) => (
                                 <p onClick={() => {
-                                    console.log(`Clicked on: ${workKey}`);
                                     SelectOptionFunc(workKey, setSelectedOptions)
                                 }} key={workKey} className={selectedOptions.includes(workKey) ? 'darkned' : ''}>{workKey}</p>
                             ))}
@@ -57,11 +55,11 @@ export const InformationPage3 = ({onNext}: {onNext: () => void}) => {
                     </div>
                     <div className="selected-options">
                         {selectedOptions.map((option, key) => (
-                            <LanguageComponent item={option} key={key} deleteFunction={DeleteComponentFunc(option, setSelectedOptions)}/>
+                            <LanguageComponent item={option} key={key} deleteFunction={DeleteComponentFunc(key, selectedOptions, setSelectedOptions)}/>
                         ))}
                     </div>
                 </div>
-                <NextBtn handleInformation={handleInformation}/>
+                <NextBtn classname={""} value="далі" disabled={false} onClick={handleInformation}/>
             </form>
         </div>
     )

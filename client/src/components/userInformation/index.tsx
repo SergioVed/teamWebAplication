@@ -1,20 +1,23 @@
 import { useState } from "react";
-import { InformationPage1 } from "./pages/page1";
-import { InformationPage2 } from "./pages/page2";
-import { InformationPage3 } from "./pages/page3";
+import { InformationPage1, InformationPage2, InformationPage3, InformationPage4 } from "./pages";
+import { InformationPage5 } from "./pages/page5";
 
 export interface userInfoInt {
-    name: string;
-    surname: string;
-    development: string[];
-    technologies: string[]
+    name: string,
+    surname: string,
+    development: string[],
+    technologies: string[],
+    language: string,
+    graduation: string[]
 }
 
 export const userInfo: userInfoInt = {
     name: "",
     surname: "",
     development: [],
-    technologies: []
+    technologies: [],
+    language: "",
+    graduation: []
 }
 
 export const UserForm = () => {
@@ -27,9 +30,11 @@ export const UserForm = () => {
 
     return(
         <div>
-            {currentStep === 1 && <InformationPage1 onNext={nextPage}/>}
-            {currentStep === 2 && <InformationPage2 onNext={nextPage}/>}
-            {currentStep === 3 && <InformationPage3 onNext={nextPage}/>}
+            {/* {currentStep === 1 && <InformationPage1 onNext={nextPage}/>} */}
+            {currentStep === 1 && <InformationPage2 onNext={nextPage}/>}
+            {/* {currentStep === 3 && <InformationPage3 onNext={nextPage}/>} */}
+            {/* {currentStep === 4 && <InformationPage4 onNext={nextPage}/>} */}
+            {/* {currentStep === 2 && <InformationPage5 onNext={nextPage}/>} */}
         </div>
     )
 }

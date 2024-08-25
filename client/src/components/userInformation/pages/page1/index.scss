@@ -33,6 +33,9 @@
             display: flex;
             flex-direction: column;
             gap: calc(var(--index) * 0.7);
+            &__input-focus:focus{
+                border-color: #D999FF;
+            }
         }
         label{
             font-size: calc(var(--index) * 1);

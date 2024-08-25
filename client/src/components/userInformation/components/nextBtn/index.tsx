@@ -2,11 +2,14 @@ import React from "react"
 import "./index.scss"
 
 interface NextBtnProps {
-    handleInformation: (e: React.MouseEvent) => void
+    onClick: (e: React.MouseEvent) => void;
+    value: string;
+    disabled: boolean,
+    classname: string
 }
 
-export const NextBtn = ({ handleInformation }: NextBtnProps) => {
+export const NextBtn = ({ onClick, value, disabled, classname }: NextBtnProps) => {
     return(
-        <button onClick={handleInformation} type="submit" className="button">далі</button>
+        <button disabled={disabled} onClick={onClick} type="submit" className={`button ${classname}`}>{value}</button>
     )
 }
