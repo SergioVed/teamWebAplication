@@ -25,7 +25,7 @@ export const Header = () => {
                     ))}
                 </div>
                 <div className="header__inputContainer">
-                    <Input value={value} placeholder="пошук напрямів" classname={"header__inputContainer__input-focus"} icon={faMagnifyingGlass} onClick={click} onChange={(e) => setValue(e.target.value)}/>
+                    <Input multiline={false} needed={true} value={value} placeholder="пошук напрямів" classname={"header__inputContainer__input-focus"} icon={faMagnifyingGlass} onClick={click} onChange={(e) => setValue(e.target.value)}/>
                     <Link to={""}><FontAwesomeIcon icon={faCircleUser} className="header__inputContainer__profileImg"/></Link>
                 </div>
 
