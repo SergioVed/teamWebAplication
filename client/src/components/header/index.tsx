@@ -1,13 +1,29 @@
 import "./index.scss"
 import { Element, elements } from "../../data/header"
 import { Input } from "../input"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import { checkAccessTokenValidation } from "../../api/tokens";
 
 export const Header = () => {
+    const navigate = useNavigate();
 
-    return(
+    const openHomePage = async () => {
+        try {
+            const response = await checkAccessTokenValidation();
+    
+            if (response && response.valid) { 
+                navigate(`/home-page/${response.userId}`); 
+            } else {
+                navigate('/sign-up');
+            }
+        } catch (err) {
+            console.error('Token validation failed', err);
+        }
+    }
+
+    return (
         <div className="header">
             <div className="header__container">
 
@@ -17,8 +33,11 @@ export const Header = () => {
                     ))}
                 </div>
                 <div className="header__inputContainer">
-                    <Input/>
-                    <Link to={""}><FontAwesomeIcon icon={faCircleUser} className="header__inputContainer__profileImg"/></Link>
+                    <Input />
+
+                    <button onClick={openHomePage} className="header__inputContainer__profileImg">
+                        <FontAwesomeIcon icon={faCircleUser} />
+                    </button>
                 </div>
 
             </div>

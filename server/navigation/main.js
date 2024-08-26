@@ -1,7 +1,21 @@
-const express = require("express");
-const router = express.Router()
-const userRoutes = require("./routes/userRoutes")
+const Router = require('express').Router
+const router = new Router();
+const { body } = require('express-validator');
 
-router.get('/register', userRoutes.register)
+const userRoutes = require('./routes/userRoutes');
+const tokenRoutes = require('./routes/tokenRoutes');
 
-module.exports = router
+router.post('/sign-up',
+    body('nickname').isLength({ min: 2, max: 32}).withMessage('Нікнейм має бути від 2 до 32 символів'),
+    body('email').isEmail().withMessage('Вказана неіснуюча пошта'),
+    body('password').isLength({ min: 8 }).withMessage('Пароль має бути довжиною від 8 символів'),
+    userRoutes.register);
+
+router.post('/sign-in', userRoutes.login);
+router.post('/log-out', userRoutes.logout);
+router.get('/activate/:link', userRoutes.activate);
+router.get('/refresh', userRoutes.refresh);
+router.get('/users', userRoutes.getUsers);
+router.post('/validate-token', tokenRoutes.validateToken);
+
+module.exports = router;

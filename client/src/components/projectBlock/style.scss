@@ -41,7 +41,7 @@
 .projectBlock__terms{
     font-size: calc(var(--index) * .7);
     font-weight: 600;
-    color: #DF4245;
+    transition: 1s;
 }
 
 .projectBlock__description {
@@ -73,10 +73,11 @@
     cursor: pointer;
 
     .heart-icon{
-        color: #DF4245;
+        transition: 1s;
     }
 
     &:hover{
+        transform: translateY(calc(var(--index) * -0.2));
         opacity: .8;
         transition: .4s;
     }

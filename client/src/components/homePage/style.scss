@@ -1,16 +1,4 @@
-@import  "../../styleSettings/defines.scss";
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
-    // color: $defaultWhite;
-}
-
-:root {
-    --index: calc(1vw + 1vh)
-}
+@import "../../styleSettings/defines.scss";
 
 .homepage {
     background-color: $defaultBlack;
@@ -18,46 +6,6 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-}
-
-@keyframes opacity {
-    0%{
-        opacity: 0;
-    }
-    10%{
-        opacity: 0.03;
-    }
-    25%{
-        opacity: 0.05;
-    }
-    35%{
-        opacity: 0.07;
-    }
-    50%{
-        opacity: 0.1;
-    }
-    65%{
-        opacity: 0.07;
-    }
-    75%{
-        opacity: 0.05;
-    }
-    90%{
-        opacity: 0.03;
-    }
-    100%{
-        opacity: 0;
-    }
-}
-
-.homepage__gradient {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    opacity: 0.1;
-    animation-name: opacity;
-    animation-duration: 8s;
-    animation-iteration-count: infinite;
 }
 
 .homepage__container {
@@ -89,7 +37,8 @@
 
 .banner__1,
 .banner__2,
-.banner__3 {
+.banner__3,
+.banner__4 {
     width: 85vw;
     height: 100%;
     transition: 3s;
@@ -105,25 +54,36 @@
 
     .banner1__content {
         margin-top: calc(var(--index) * -1);
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--index) * 1.2);
 
-        >p {
-            color: #111111;
+        >h1 {
+            color: $defaultBlack;
             font-weight: 800;
             font-size: calc(var(--index) * 3);
-            line-height: 1.1;
-            text-shadow: 0px calc(var(--index)* 1.6) 0px rgba(255, 255, 255, 0.127);
+            line-height: .95;
+            margin-top: calc(var(--index) * .5);
+            // text-shadow: 0px calc(var(--index)* 1.6) 0px rgba(255, 255, 255, 0.127);
         }
 
-        >button {
+        >p {
+            font-weight: 700;
+            font-size: calc(var(--index) * .8);
+            color: $defaultBlack;
+            opacity: .8;
+        }
+
+        >a {
+            width: max-content;
             position: relative;
-            margin-top: calc(var(--index) * 3);
             padding: calc(var(--index) * .6) calc(var(--index) * 1.4);
             color: $defaultWhite;
             font-size: calc(var(--index) * .8);
             font-weight: 600;
-            background-color: #a10116;
-            border: calc(var(--index) * .13) solid #a10116;
-            cursor: pointer;
+            background-color: #a70319;
+            border: calc(var(--index) * .13) solid #a70319;
+            text-decoration: none;
             z-index: 1;
             border-radius: calc(var(--index) * .4);
             transition: .4s;
@@ -133,14 +93,13 @@
             -o-transition: .4s;
 
             &:hover {
-                // background: none;
                 transition: .4s;
                 -webkit-transition: .4s;
                 -moz-transition: .4s;
                 -ms-transition: .4s;
                 -o-transition: .4s;
                 background-color: #890002;
-            border: calc(var(--index) * .13) solid #890002;
+                border: calc(var(--index) * .13) solid #890002;
             }
         }
     }
@@ -157,6 +116,11 @@
 
 .banner__3 {
     background-color: #F4D454;
+    z-index: 2;
+}
+
+.banner__4 {
+    background-color: #f2792f;
     z-index: 2;
 }
 
@@ -192,6 +156,14 @@
 #radio1 {
     &:checked {
         ~.banner__1 {
+            margin-left: 0;
+        }
+    }
+}
+
+#radio1 {
+    &:checked {
+        ~.banner__4 {
             margin-left: 0;
         }
     }
@@ -273,23 +245,23 @@
     }
 }
 
-.homepage__projects{
+.homepage__projects {
     padding: calc(var(--index) * 1.2) 0;
 
-    .homepage-projects__projects{
+    .homepage-projects__projects {
         display: flex;
         flex-direction: column;
         gap: calc(var(--index) * 1.2);
     }
 
-    >h1{
+    >h1 {
         font-size: calc(var(--index) * 1.6);
         margin-bottom: calc(var(--index) * 1.2);
         margin-left: calc(var(--index) * 1);
         color: $defaultWhite;
     }
 
-    .projects__btn{
+    .projects__btn {
         color: $defaultBlack;
         font-weight: 600;
         font-size: calc(var(--index) * .8);

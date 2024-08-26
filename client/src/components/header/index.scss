@@ -46,8 +46,12 @@
         gap: calc(var(--index)* 1);
         &__profileImg{
             font-size: calc(var(--index) * 1.4);
+            background: none;
+            outline: none;
+            border: none;
             color: $defaultWhite;
             transition: 0.3s;
+            cursor: pointer;
         }
         &__profileImg:hover{
             transform: translateY(calc(var(--index) * -0.2));
