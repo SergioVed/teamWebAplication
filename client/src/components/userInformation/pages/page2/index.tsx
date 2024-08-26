@@ -18,7 +18,7 @@ export const InformationPage2 = ({onNext} : {onNext: () => void}) => {
     function handleInformation (e: React.MouseEvent) {
         e.preventDefault()
         userInfo.development = selectedOptions
-        console.log(userInfo)
+        // console.log(userInfo)
 
         onNext()
     }

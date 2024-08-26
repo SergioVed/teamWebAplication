@@ -4,6 +4,7 @@ import { ContainerHeightFunc } from "../../functions"
 import React, { useRef, useState } from "react"
 import { NextBtn } from "../../components/nextBtn"
 import { userInfo } from "../.."
+import { RadioBtn } from "../../components/radioBtn"
 
 export const InformationPage4 = ({onNext}: {onNext: () => void}) => {
     const [selectedLevel, setSelectedLevel] = useState<string>("")
@@ -25,11 +26,7 @@ export const InformationPage4 = ({onNext}: {onNext: () => void}) => {
                 <div className="InformationPage4__container">
                     {EnglishLvl.map((e, index) => (
                         <div className="InformationPage4__container__element" key={index}>
-                            <label htmlFor={`level-${index}`}>
-                                <input type="radio" checked={selectedLevel === e.title} value={e.title} name="englishLevel" id={`level-${index}`} onChange={(e) => setSelectedLevel(e.target.value)}/>
-                                <span className="InformationPage4__container__element__title">{e.title}</span>
-                                <p className="InformationPage4__container__element__description">{e.description}</p>
-                            </label>
+                            <RadioBtn index={index} selectedLevel={e.title} setSelectedLevel={setSelectedLevel} title={e.title} description={e.description}/>
                         </div>
                     ))}
                 </div>

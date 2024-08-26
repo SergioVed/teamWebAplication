@@ -1,0 +1,30 @@
+:root{
+    --index: calc(1vw + 1vh)
+}
+.wrapper{
+    width: 85vw;
+}
+.InformationPage6{
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--index) * 1);
+    padding-top: calc(var(--index) * 0.7);
+    &__title{
+        color: #D999FF;
+        font-size: calc(var(--index) * 2);
+        font-weight: 700;
+    }
+    &__container{
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--index) * 1);
+        &__textarea{
+            height: calc(var(--index) * 9);
+            width: calc(var(--index) * 19);
+            padding-top: calc(var(--index) * 0.5);
+            padding-left: calc(var(--index) * 0.7);
+            resize: none;
+        }
+    }
+}
