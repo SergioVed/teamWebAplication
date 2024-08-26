@@ -1,0 +1,52 @@
+:root{
+    --index: calc(1vw + 1vh)
+}
+.wrapper{
+    width: 85vw;
+}
+.InformationPage5{
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--index) * 1);
+    padding-top: calc(var(--index) * 2);
+    &__title-container{
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--index) * 0.7);
+        &__title{
+            color: #D999FF;
+            font-size: calc(var(--index) * 2);
+            font-weight: 700;
+        }
+        &__description{
+            font-size: calc(var(--index) * 1.1);
+            font-weight: 700;
+            color: #fff;
+        }
+    }
+    &__container{
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--index) * 0.9);
+        &__input-focus{
+            width: calc(var(--index) * 25);
+        }
+        &__input-focus:focus{
+            border-color: #D999FF;
+        }
+    }
+    &__container-addBtn{
+        height: calc(var(--index) * 2);
+        width: calc(var(--index) * 3.3);
+        font-size: calc(var(--index) * 1.5);
+        font-weight: 600;
+        background-color: #D999FF;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    &__button{
+        margin-left: 0 !important;
+    }
+}

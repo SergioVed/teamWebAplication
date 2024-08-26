@@ -1,0 +1,14 @@
+.button{
+    height: calc(var(--index) * 2);
+    width: calc(var(--index) * 5);
+    font-size: calc(var(--index) * 1.2);
+    font-weight: 600;
+    background-color: #D999FF;
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+// .button:disabled{
+
+// }
