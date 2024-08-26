@@ -6,6 +6,8 @@ import { TopWorkers } from "../randomWorkers/randomWorkersComponent";
 import { Footer } from "../footer";
 import { ProjectBlock } from "../projectBlock";
 import { Link } from "react-router-dom";
+import { Gradient } from "../gradient";
+import { banners } from "../../data/banners";
 import { UserForm } from "../userInformation";
 
 interface IBanner {
@@ -17,31 +19,26 @@ export const HomePage = () => {
     const [currentBanner, setCurrentBanner] = useState<number>(0);
     const [currentColor, setCurrentColor] = useState<string>("");
 
-    const banners = [
-        { name: "banner 1", color: "#DF4245" },
-        { name: "banner 2", color: "#CA99FF" },
-        { name: "banner 3", color: "#F4D454" }
-    ]
-
     function changeColor() {
         banners.forEach((element: IBanner, index: number) => {
             if (currentBanner === index) {
-                setCurrentColor(element.color)
-                console.log(currentColor)
+                setCurrentColor(element.color);
             }
         })
     }
 
     useEffect(() => {
         changeColor();
-    }, [currentBanner])
+    }, [currentBanner]);
+
     return (
         <div className="homepage">
             <Header />
-            <div className="homepage__gradient" style={{background: `linear-gradient(180deg, #111111 50%, ${currentColor} 100%)` }}></div>
+
+            <Gradient currentColor={currentColor} />
 
             <div className="homepage__container">
-                {/* <Banners banners={banners} currentBanner={currentBanner} setCurrentBanner={setCurrentBanner} />
+                <Banners banners={banners} currentBanner={currentBanner} setCurrentBanner={setCurrentBanner} />
 
                 <TopWorkers />
 
@@ -49,17 +46,16 @@ export const HomePage = () => {
                     <h1>Найновіші проєкти</h1>
 
                     <div className="homepage-projects__projects">
-                        <ProjectBlock />
-                        <ProjectBlock />
-                        <ProjectBlock />
-                        <ProjectBlock />
+                        <ProjectBlock currentColor={currentColor} />
+                        <ProjectBlock currentColor={currentColor} />
+                        <ProjectBlock currentColor={currentColor} />
+                        <ProjectBlock currentColor={currentColor} />
                     </div>
 
-                    <Link to={'/'} className="projects__btn">переглянути більше</Link>
-                </div> */}
-                <UserForm/>
+                    <Link to={'/'} className="projects__btn" style={{ backgroundColor: currentColor }}>переглянути більше</Link>
+                </div>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </div>
     )
 }

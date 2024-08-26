@@ -1,7 +1,7 @@
 import "./index.scss"
 import { Link } from "react-router-dom"
 import { foterData, FooterLink } from "../../data/footer"
-import Logo from "../../img/Logo.png"
+import Logo from "../../img/logos/Logo.png"
 import Discord from "../../img/footer/discord.png"
 import Telegram from "../../img/footer/telegram.png"
 import Mail from "../../img/footer/mail.png"

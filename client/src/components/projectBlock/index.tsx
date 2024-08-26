@@ -6,7 +6,11 @@ import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 
-export const ProjectBlock = () => {
+type TColor = {
+    currentColor: string,
+}
+
+export const ProjectBlock = ({ currentColor }: TColor) => {
     const [liked, setLiked] = useState<boolean>(false);
 
     const toggleLike = () => {
@@ -26,11 +30,12 @@ export const ProjectBlock = () => {
                             <FontAwesomeIcon
                                 icon={liked ? faHeartSolid : faHeartRegular}
                                 className='heart-icon'
+                                style={{color: currentColor}}
                             />
                         </button>
                     </div>
 
-                    <p className="projectBlock__terms">Безкоштовно, на довгий період</p>
+                    <p className="projectBlock__terms" style={{color: currentColor}}>Безкоштовно, на довгий період</p>
 
                     <p className="projectBlock__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Proin in interdum nunc. Fusce vulputate nisi urna, ut eleifend velit tincidunt vel.

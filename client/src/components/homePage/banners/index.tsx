@@ -2,8 +2,12 @@ import { useState, useRef, useEffect } from "react";
 import { Banner1 } from "./banner1"
 import { Banner2 } from "./banner2"
 import { Banner3 } from "./banner3"
+import { checkAccessTokenValidation } from "../../../api/tokens";
+import { Banner4 } from "./banner4";
 
 export const Banners = ({ banners, currentBanner, setCurrentBanner }: any) => {
+    const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
+
     useEffect(() => {
         let counter = 1;
         const interval = setInterval(() => {
@@ -22,6 +26,25 @@ export const Banners = ({ banners, currentBanner, setCurrentBanner }: any) => {
         }, 8000);
 
         return () => clearInterval(interval);
+    }, []);
+
+    const isUserAuthorized = async () => {
+        try {
+            const response = await checkAccessTokenValidation();
+
+            if (response && response.valid) {
+                setIsAuthorized(true);
+            } else {
+                setIsAuthorized(false);
+            }
+        } catch (err) {
+            console.error('Token validation failed', err);
+            setIsAuthorized(false);
+        }
+    }
+
+    useEffect(() => {
+        isUserAuthorized();
     }, []);
 
     function updateCurrentBanner(index: number) {
@@ -52,9 +75,14 @@ export const Banners = ({ banners, currentBanner, setCurrentBanner }: any) => {
                     checked={currentBanner === 2}
                 />
 
-                <Banner1 color={banners[0].color} />
+                {isAuthorized === true ? (
+                    <Banner4 color={banners[3].color} />
+                ) : (
+                    <Banner1 color={banners[0].color} />
+                )}
                 <Banner2 color={banners[1].color} />
                 <Banner3 color={banners[2].color} />
+
 
                 <div className="navigation__auto">
                     <div className={`auto__btn1 ${currentBanner === 0 ? 'active' : ''}`}></div>

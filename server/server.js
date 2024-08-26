@@ -1,24 +1,31 @@
-const expess = require("express")
-const cors = require('cors')
-const app = expess()
-const mongoose = require("mongoose")
-const router = require("./navigation/main")
+require('dotenv').config();
+const expess = require("express");
+const cors = require('cors');
+const app = expess();
+const mongoose = require("mongoose");
+const cookieParser = require('cookie-parser');
+const routes = require('./navigation/main');
+const errorMiddleware = require('./middlewares/errorMiddleware');
 
+const port = process.env.PORT || 5000;
+const database = process.env.DATABASE_URL;
 app.use(cors());
 app.use(expess.json());
-app.use(router)
+app.use(cookieParser());
+app.use('/api', routes);
+app.use(errorMiddleware);
 
-mongoose.connect("mongodb+srv://vedankinsergij:vedankinsergijteamweb@cluster0.v6j3y5a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect(database)
 .then(() => {
-    console.log("DB okay")
+    console.log("Connected to db");
 })
 .catch((err) => {
     console.log(err)
-})
+});
 
-app.listen(5000, (err) => {
+app.listen(port, (err) => {
     if (err) {
         return console.log(err)
     }
-    console.log("server Ok")
-})
+    console.log(`Server is running on port ${port}`);
+});
