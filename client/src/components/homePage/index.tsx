@@ -51,7 +51,7 @@ export const HomePage = () => {
                         <ProjectBlock currentColor={currentColor}/>
                     </div>
 
-                    <Link to={'/'} className="projects__btn">переглянути більше</Link>
+                    <Link to={'/'} className="projects__btn" style={{backgroundColor: currentColor}}>переглянути більше</Link>
                 </div>
             </div>
             <Footer />
