@@ -45,7 +45,6 @@ export const Header = () => {
                     <button onClick={openHomePage} className="header__inputContainer__profileImg">
                         <FontAwesomeIcon icon={faCircleUser} />
                     </button>
-
                 </div>
 
             </div>

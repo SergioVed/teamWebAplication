@@ -54,6 +54,8 @@ export const InformationPage5 = ({onNext}: {onNext: () => void}) => {
                            key={index}
                            onClick={DeleteComponentFunc(index, graduation, setGraduation)}
                            onChange={(e) => handleInputChange(index, e.target.value)}
+                           needed={true}
+                           multiline={false}
                        />
                     ))}
                 </div>

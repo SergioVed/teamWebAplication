@@ -1,0 +1,45 @@
+label{
+    display: flex;
+    align-items: center;
+    gap: calc(var(--index) * 0.5);
+    cursor: pointer;
+    input{
+        display: none;
+    }
+}
+.label-title{
+    position: relative;
+    font-size: calc(var(--index) *1);
+    font-weight: 600;
+    color: #fff;  
+    line-height: calc(var(--index) * 1);
+}
+label-description{
+    color: rgba(255, 255, 255, 0.55);
+    font-size: calc(var(--index) * 0.7);
+}
+.label-title:before,
+.label-title:after {
+content: '';
+}
+.label-title:before {
+    border: calc(var(--index) * 0.1) solid #CA99FF;
+    width: calc(var(--index) * 0.8);
+    height: calc(var(--index) * 0.8);
+    margin-right: calc(var(--index) * 0.3);
+    display: inline-block;
+    vertical-align: top;
+}
+.label-title:after {
+    background: #CA99FF;
+    width: calc(var(--index) * 0.5);
+    height: calc(var(--index) * 0.5);
+    position: absolute;
+    top: calc(var(--index) * 0.23);
+    left: calc(var(--index) * 0.21);
+    transition: 300ms;
+    opacity: 0;
+}
+label input:checked+span:after {
+    opacity: 1;
+  }
