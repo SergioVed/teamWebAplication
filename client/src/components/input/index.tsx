@@ -1,13 +1,22 @@
 import "./index.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-export const Input = () => {
+interface IconProps {
+    icon: IconProp,
+    onChange: React.ChangeEventHandler<HTMLInputElement>;
+    onClick: React.MouseEventHandler<HTMLButtonElement>;
+    classname: string;
+    placeholder: string,
+    value: any
+}
+
+export const Input: React.FC<IconProps> = ({ icon, onChange, onClick, classname, placeholder, value }) => {
 
     return(
         <form className="inputWrapper">
-            <input type="text" placeholder="пошук напрямків" className="inputWrapper__input"/>
-            <button className="inputWrapper__button" type="submit"><FontAwesomeIcon icon={faMagnifyingGlass}/></button>
+            <input value={value} type="text" placeholder={placeholder} className={`inputWrapper__input ${classname}`} onChange={onChange}/>
+            <button className="inputWrapper__button" type="button" onClick={onClick}><FontAwesomeIcon icon={icon}/></button>
         </form>
     )
 }

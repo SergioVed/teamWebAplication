@@ -6,6 +6,7 @@ import { TopWorkers } from "../randomWorkers/randomWorkersComponent";
 import { Footer } from "../footer";
 import { ProjectBlock } from "../projectBlock";
 import { Link } from "react-router-dom";
+import { UserForm } from "../userInformation";
 
 interface IBanner {
     name: string,
@@ -40,7 +41,7 @@ export const HomePage = () => {
             <div className="homepage__gradient" style={{background: `linear-gradient(180deg, #111111 50%, ${currentColor} 100%)` }}></div>
 
             <div className="homepage__container">
-                <Banners banners={banners} currentBanner={currentBanner} setCurrentBanner={setCurrentBanner} />
+                {/* <Banners banners={banners} currentBanner={currentBanner} setCurrentBanner={setCurrentBanner} />
 
                 <TopWorkers />
 
@@ -55,9 +56,10 @@ export const HomePage = () => {
                     </div>
 
                     <Link to={'/'} className="projects__btn">переглянути більше</Link>
-                </div>
+                </div> */}
+                <UserForm/>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }
