@@ -1,15 +1,14 @@
 :root{
     --index: calc(1vw + 1vh)
 }
-.wrapper{
-    width: 85vw;
-}
 .InformationPage5{
+    margin: 0 auto;
+    padding-top: calc(var(--index) * 5);
     height: max-content;
     display: flex;
+    width: 85vw;
     flex-direction: column;
     gap: calc(var(--index) * 1);
-    padding-top: calc(var(--index) * 2);
     &__title-container{
         display: flex;
         flex-direction: column;
@@ -48,5 +47,10 @@
     }
     &__button{
         margin-left: 0 !important;
+        transition: 0.3s;
+    }
+    &__button:disabled{
+        opacity: 0.5;
+        transition: 0.3s;
     }
 }

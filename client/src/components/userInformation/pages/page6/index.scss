@@ -1,15 +1,14 @@
 :root{
     --index: calc(1vw + 1vh)
 }
-.wrapper{
-    width: 85vw;
-}
 .InformationPage6{
+    margin: 0 auto;
+    padding-top: calc(var(--index) * 5);
     height: max-content;
     display: flex;
+    width: 85vw;
     flex-direction: column;
     gap: calc(var(--index) * 1);
-    padding-top: calc(var(--index) * 0.7);
     &__title{
         color: #D999FF;
         font-size: calc(var(--index) * 2);

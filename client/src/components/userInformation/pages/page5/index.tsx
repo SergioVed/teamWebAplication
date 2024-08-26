@@ -1,17 +1,14 @@
 import React, { useEffect, useRef, useState } from "react"
 import "./index.scss"
-import { ContainerHeightFunc, DeleteComponentFunc } from "../../functions"
+import { DeleteComponentFunc } from "../../functions"
 import { faSquareMinus } from "@fortawesome/free-solid-svg-icons";
 import { Input } from "../../../input"
 import { NextBtn } from "../../components/nextBtn";
 import { userInfo } from "../..";
 
 export const InformationPage5 = ({onNext}: {onNext: () => void}) => {
-    const pageRef = useRef<HTMLDivElement>(null)
     const [graduation, setGraduation] = useState<string[]>([])
     const [disabled, setDisabled] = useState<boolean>(false)
-
-    ContainerHeightFunc(pageRef)
 
     useEffect(( )=> {
         const isLastEmpty = graduation[graduation.length - 1] === ""
@@ -38,7 +35,6 @@ export const InformationPage5 = ({onNext}: {onNext: () => void}) => {
     }
 
     return(
-        <div className="wrapper" ref={pageRef}>
             <div className="InformationPage5">
                 <div className="InformationPage5__title-container">
                     <p className="InformationPage5__title-container__title">Вкажи свою освіту або курси, які проходив</p>
@@ -62,6 +58,5 @@ export const InformationPage5 = ({onNext}: {onNext: () => void}) => {
                 <NextBtn classname={"InformationPage5__button"} disabled={disabled} value="+" onClick={addInput}/>
                 <NextBtn classname={""} disabled={false} value="далі" onClick={(e) => handleInformation(e)}/>
             </div>
-        </div>
     )
 }

@@ -6,15 +6,13 @@ import { NextBtn } from "../../components/nextBtn"
 import { userInfo } from "../.."
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { OptionVisibleFunc, ContainerHeightFunc, DeleteComponentFunc, SelectOptionFunc} from "../../functions"
+import { OptionVisibleFunc, DeleteComponentFunc, SelectOptionFunc} from "../../functions"
 
 export const InformationPage3 = ({onNext}: {onNext: () => void}) => {
-    const pageRef = useRef<HTMLDivElement>(null);
     const optionsRef = useRef<HTMLDivElement>(null);
     const [selectedOptions, setSelectedOptions] = useState<string[]>([])
     const [technologies, setTechnologies] = useState<string[]>([])
     
-    ContainerHeightFunc(pageRef)
     useEffect(() => {
         const userDirections = userInfo.development
         const filtredDirections: string[] = [];
@@ -36,7 +34,6 @@ export const InformationPage3 = ({onNext}: {onNext: () => void}) => {
 
 
     return(
-        <div className="wrapper" ref={pageRef}>
             <form className="InformationPage3">
                 <div className="InformationPage3__title-div">
                     <p className="InformationPage3__title-div__title">Обери технології якими володієш</p>
@@ -55,12 +52,11 @@ export const InformationPage3 = ({onNext}: {onNext: () => void}) => {
                     </div>
                     <div className="selected-options">
                         {selectedOptions.map((option, key) => (
-                            <LanguageComponent item={option} key={key} deleteFunction={DeleteComponentFunc(key, selectedOptions, setSelectedOptions)}/>
+                            <LanguageComponent needed={true} item={option} key={key} deleteFunction={DeleteComponentFunc(key, selectedOptions, setSelectedOptions)}/>
                         ))}
                     </div>
                 </div>
                 <NextBtn classname={""} value="далі" disabled={false} onClick={handleInformation}/>
             </form>
-        </div>
     )
 }

@@ -6,14 +6,12 @@ import { NextBtn } from "../../components/nextBtn"
 import { userInfo } from "../.."
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { OptionVisibleFunc, ContainerHeightFunc, DeleteComponentFunc, SelectOptionFunc} from "../../functions"
+import { OptionVisibleFunc, DeleteComponentFunc, SelectOptionFunc} from "../../functions"
 
 export const InformationPage2 = ({onNext} : {onNext: () => void}) => {
-    const pageRef = useRef<HTMLDivElement>(null);
     const optionsRef = useRef<HTMLDivElement>(null);
 
     const [selectedOptions, setSelectedOptions] = useState<string[]>([])
-    ContainerHeightFunc(pageRef)
 
     function handleInformation (e: React.MouseEvent) {
         e.preventDefault()
@@ -24,7 +22,6 @@ export const InformationPage2 = ({onNext} : {onNext: () => void}) => {
     }
 
     return(
-        <div className="wrapper" ref={pageRef}>
             <form className="InformationPage2">
                 <div className="InformationPage2__title-div">
                     <p className="InformationPage2__title-div__title">Обери напрям в якому працюєш</p>
@@ -43,12 +40,11 @@ export const InformationPage2 = ({onNext} : {onNext: () => void}) => {
                     </div>
                     <div className="selected-options">
                         {selectedOptions.map((option, key) => (
-                            <LanguageComponent item={option} key={key} deleteFunction={(DeleteComponentFunc(key, selectedOptions, setSelectedOptions))}/>
+                            <LanguageComponent needed={true} item={option} key={key} deleteFunction={(DeleteComponentFunc(key, selectedOptions, setSelectedOptions))}/>
                         ))}
                     </div>
                 </div>
                 <NextBtn classname={""} value="далі" disabled={false} onClick={handleInformation}/>
             </form>
-        </div>
     )
 }

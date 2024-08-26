@@ -1,22 +1,13 @@
 export const works: any = {
     "Фронтенд розробка": [
-        "HTML", "CSS", "SCSS", "JS", "REACT"
+        "HTML", "CSS", "SCSS", "JS", "React", "Angular"
     ],
     "Бекенд розробка": [
         "Java", "node.js", "python"
     ],  
     "IOS розробка": [
-        "HTML", "CSS", "SCSS", "JS", "REACT"
+        "Objective-C", "Swift"
     ],    
-    Exapmle: [
-        "HTML", "CSS", "SCSS", "JS", "REACT"
-    ],    
-    Exapmle1: [
-        "HTML", "CSS", "SCSS", "JS", "REACT"
-    ],    
-    Exapmle2: [
-        "HTML", "CSS", "SCSS", "JS", "REACT"
-    ]
 }
 
 export const EnglishLvl = [

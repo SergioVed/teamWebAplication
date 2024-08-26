@@ -1,7 +1,6 @@
 import "./index.scss";
 import React, { useRef, useState } from "react";
 import { NextBtn } from "../../components/nextBtn";
-import { ContainerHeightFunc } from "../../functions";
 import { RadioBtn } from "../../components/radioBtn";
 import { Input } from "../../../input";
 import { faSquareMinus } from "@fortawesome/free-solid-svg-icons";
@@ -10,9 +9,7 @@ import { userInfo } from "../..";
 export const InformationPage6 = ({onNext}: {onNext: () => void}) => {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [inputValue, setInputValue] = useState<string>("");
-  const pageRef = useRef(null);
 
-  ContainerHeightFunc(pageRef);
   function handleInformation(e: React.MouseEvent) {
     e.preventDefault()
 
@@ -23,7 +20,6 @@ export const InformationPage6 = ({onNext}: {onNext: () => void}) => {
   // console.log(userInfo)
 
   return (
-    <div className="wrapper" ref={pageRef}>
       <div className="InformationPage6">
         <p className="InformationPage6__title">Чи є в тебе досвід роботи?</p>
         <div className="InformationPage6__container">
@@ -60,6 +56,5 @@ export const InformationPage6 = ({onNext}: {onNext: () => void}) => {
           onClick={(e) => handleInformation(e)}
         />
       </div>
-    </div>
   );
 };

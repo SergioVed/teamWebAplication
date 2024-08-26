@@ -3,6 +3,7 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { HomePage, SignIn, SignUp } from './components/index';
 import { UserHomePage } from './components/userHomePage';
+import { UserForm } from './components/userInformation';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,9 @@ const router = createBrowserRouter([
   {
     path: '/home-page/:id',
     element: <UserHomePage />,
+  },  {
+    path: '/user-information',
+    element: <UserForm/>,
   },
 ]);
 

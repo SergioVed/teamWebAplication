@@ -11,7 +11,7 @@ interface RadioBtnInt {
 export const RadioBtn = ({index, selectedLevel, setSelectedLevel, title, description}: RadioBtnInt) => {
   return (
     <>
-      <label htmlFor={`level-${index}`}>
+      <label htmlFor={`level-${index}`} className="label-component">
         <input
           type="radio"
           checked={selectedLevel === title}
@@ -19,6 +19,7 @@ export const RadioBtn = ({index, selectedLevel, setSelectedLevel, title, descrip
           name="englishLevel"
           id={`level-${index}`}
           onChange={(e) => setSelectedLevel(e.target.value)}
+          className="input-component"
         />
         <span className="label-title">
           {title}

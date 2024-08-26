@@ -11,6 +11,7 @@ import { banners } from "../../data/banners";
 import { UserForm } from "../userInformation";
 
 interface IBanner {
+    index: number;
     name: string,
     color: string,
 }
@@ -20,8 +21,8 @@ export const HomePage = () => {
     const [currentColor, setCurrentColor] = useState<string>("");
 
     function changeColor() {
-        banners.forEach((element: IBanner, index: number) => {
-            if (currentBanner === index) {
+        banners.forEach((element: IBanner) => {
+            if (currentBanner === element.index) {
                 setCurrentColor(element.color);
             }
         })

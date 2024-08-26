@@ -3,10 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { userInfo } from "../..";
 import page1Img from "../../../../img/informationPage/InformationPage1.webp"
 import { NextBtn } from "../../components/nextBtn";
-import { Input } from "../../../input";
 
 export const InformationPage1 = ({onNext} : {onNext: () => void}) => {
-    const pageRef = useRef<HTMLDivElement>(null);
 
     const [name, setName] = useState('')
     const [surName, setSurName] = useState('')
@@ -23,16 +21,8 @@ export const InformationPage1 = ({onNext} : {onNext: () => void}) => {
         onNext()
     }
 
-    useEffect(() => {
-        const container = document.querySelector('.homepage__container');
-        if (container && pageRef.current) {
-            const containerPaddingTop = parseFloat(window.getComputedStyle(container).paddingTop)
-            pageRef.current.style.height = `calc(100vh - ${containerPaddingTop}px)`;
-        }
-    }, [])
-
     return (
-        <div className="wrapper" ref={pageRef}>
+        
             <form className="InformationPage1">
                 <div className="InformationPage1__wrapper">
                     <div className="InformationPage1__container">
@@ -53,6 +43,5 @@ export const InformationPage1 = ({onNext} : {onNext: () => void}) => {
                 </div>
                 <NextBtn classname={""} value="далі" disabled={false} onClick={handleInformation}/>
             </form>
-        </div>
     );
 };
