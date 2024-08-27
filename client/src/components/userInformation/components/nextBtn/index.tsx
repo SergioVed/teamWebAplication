@@ -5,7 +5,7 @@ interface NextBtnProps {
     onClick: (e: React.MouseEvent) => void;
     value: string;
     disabled: boolean,
-    classname: string
+    classname?: string
 }
 
 export const NextBtn = ({ onClick, value, disabled, classname }: NextBtnProps) => {

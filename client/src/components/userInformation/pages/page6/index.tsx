@@ -1,5 +1,5 @@
 import "./index.scss";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NextBtn } from "../../components/nextBtn";
 import { RadioBtn } from "../../components/radioBtn";
 import { Input } from "../../../input";
@@ -9,6 +9,12 @@ import { userInfo } from "../..";
 export const InformationPage6 = ({onNext}: {onNext: () => void}) => {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [inputValue, setInputValue] = useState<string>("");
+  const [disabled, setDisabled] = useState<boolean>(true)
+
+  useEffect(() => {
+    const isSelectedAndValid = selectedOption === "Так, є" ? inputValue.length <= 50 : selectedOption.length === 0;
+      setDisabled(isSelectedAndValid)
+  }, [selectedOption, inputValue])
 
   function handleInformation(e: React.MouseEvent) {
     e.preventDefault()
@@ -46,13 +52,14 @@ export const InformationPage6 = ({onNext}: {onNext: () => void}) => {
               value={inputValue}
               needed={false}
               multiline={true}
+              maxLength={370}
             />
           )}
         </div>
         <NextBtn
           classname=""
           value="далі"
-          disabled={false}
+          disabled={disabled}
           onClick={(e) => handleInformation(e)}
         />
       </div>

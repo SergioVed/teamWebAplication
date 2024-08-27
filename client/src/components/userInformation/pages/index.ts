@@ -4,3 +4,4 @@ export { InformationPage3 } from "./page3";
 export { InformationPage4 } from "./page4";
 export { InformationPage5 } from "./page5"
 export { InformationPage6 } from "./page6"
+export { InformationPage7 } from "./page7"

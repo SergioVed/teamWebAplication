@@ -55,8 +55,8 @@ export const InformationPage5 = ({onNext}: {onNext: () => void}) => {
                        />
                     ))}
                 </div>
-                <NextBtn classname={"InformationPage5__button"} disabled={disabled} value="+" onClick={addInput}/>
-                <NextBtn classname={""} disabled={false} value="далі" onClick={(e) => handleInformation(e)}/>
+                <NextBtn disabled={disabled} value="+" classname="InformationPage5__addGraduation-btn" onClick={addInput}/>
+                <NextBtn disabled={disabled} value="далі" onClick={(e) => handleInformation(e)}/>
             </div>
     )
 }

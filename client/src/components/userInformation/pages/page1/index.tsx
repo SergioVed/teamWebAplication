@@ -8,16 +8,17 @@ export const InformationPage1 = ({onNext} : {onNext: () => void}) => {
 
     const [name, setName] = useState('')
     const [surName, setSurName] = useState('')
+    const [disabled, setDisabled] = useState<boolean>(true)
+
+    useEffect(() => {
+        const isValid = name.length === 0 || surName.length === 0
+        setDisabled(isValid)
+    }, [name, surName])
 
     function handleInformation(e: React.FormEvent) {
-        if (name === '' || surName === '') {
-            return
-        }
-
         e.preventDefault()
         userInfo.name = name;
         userInfo.surname = surName
-
         onNext()
     }
 
@@ -41,7 +42,7 @@ export const InformationPage1 = ({onNext} : {onNext: () => void}) => {
                     </div>
                     <img src={page1Img} alt="" />
                 </div>
-                <NextBtn classname={""} value="далі" disabled={false} onClick={handleInformation}/>
+                <NextBtn classname={""} value="далі" disabled={disabled} onClick={handleInformation}/>
             </form>
     );
 };

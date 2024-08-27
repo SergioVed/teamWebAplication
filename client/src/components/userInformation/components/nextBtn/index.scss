@@ -7,8 +7,10 @@
     margin: 0 auto;
     border: none;
     border-radius: 5px;
+    transition: 0.3s;
     cursor: pointer;
 }
-// .button:disabled{
-
-// }
+.button:disabled{
+    opacity: 0.5;
+    transition: 0.3s;
+}

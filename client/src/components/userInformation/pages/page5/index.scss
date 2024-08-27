@@ -35,22 +35,7 @@
             border-color: #D999FF;
         }
     }
-    &__container-addBtn{
-        height: calc(var(--index) * 2);
-        width: calc(var(--index) * 3.3);
-        font-size: calc(var(--index) * 1.5);
-        font-weight: 600;
-        background-color: #D999FF;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    &__button{
-        margin-left: 0 !important;
-        transition: 0.3s;
-    }
-    &__button:disabled{
-        opacity: 0.5;
-        transition: 0.3s;
+    &__addGraduation-btn{
+        margin-left: 0;
     }
 }

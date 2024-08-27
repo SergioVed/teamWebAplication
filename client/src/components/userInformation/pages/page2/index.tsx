@@ -12,12 +12,16 @@ export const InformationPage2 = ({onNext} : {onNext: () => void}) => {
     const optionsRef = useRef<HTMLDivElement>(null);
 
     const [selectedOptions, setSelectedOptions] = useState<string[]>([])
+    const [disabled, setDisabled] = useState<boolean>(false)
+
+    useEffect(() => {
+        const isEmpty = selectedOptions.length === 0
+        setDisabled(isEmpty)
+    }, [selectedOptions])
 
     function handleInformation (e: React.MouseEvent) {
         e.preventDefault()
         userInfo.development = selectedOptions
-        // console.log(userInfo)
-
         onNext()
     }
 
@@ -44,7 +48,7 @@ export const InformationPage2 = ({onNext} : {onNext: () => void}) => {
                         ))}
                     </div>
                 </div>
-                <NextBtn classname={""} value="далі" disabled={false} onClick={handleInformation}/>
+                <NextBtn classname={""} value="далі" disabled={disabled} onClick={handleInformation}/>
             </form>
     )
 }

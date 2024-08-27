@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 interface IconProps {
-    icon: IconProp,
+    icon?: IconProp,
     onChange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     classname: string;
@@ -11,9 +11,10 @@ interface IconProps {
     value: any,
     needed: boolean,
     multiline: boolean;
+    maxLength?: number
 }
 
-export const Input: React.FC<IconProps> = ({ icon, onChange, onClick, classname, placeholder, value, needed, multiline }) => {
+export const Input: React.FC<IconProps> = ({ icon, onChange, onClick, classname, placeholder, value, needed, multiline, maxLength }) => {
     return (
         <form className="inputWrapper">
             {multiline ? (
@@ -22,7 +23,7 @@ export const Input: React.FC<IconProps> = ({ icon, onChange, onClick, classname,
                     placeholder={placeholder}
                     className={`inputWrapper__input ${classname}`}
                     onChange={onChange}
-                    maxLength={370}
+                    maxLength={maxLength}
                 />
             ) : (
                 <input
@@ -32,7 +33,7 @@ export const Input: React.FC<IconProps> = ({ icon, onChange, onClick, classname,
                     onChange={onChange}
                 />
             )}
-            {needed && (
+            {needed && icon &&(
                 <button
                     className="inputWrapper__button"
                     type="button"

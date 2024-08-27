@@ -12,7 +12,13 @@ export const InformationPage3 = ({onNext}: {onNext: () => void}) => {
     const optionsRef = useRef<HTMLDivElement>(null);
     const [selectedOptions, setSelectedOptions] = useState<string[]>([])
     const [technologies, setTechnologies] = useState<string[]>([])
+    const [disabled, setDisabled] = useState<boolean>(false)
     
+    useEffect(() => {
+        const isEmpty = selectedOptions.length === 0
+        setDisabled(isEmpty)
+    }, [selectedOptions])
+
     useEffect(() => {
         const userDirections = userInfo.development
         const filtredDirections: string[] = [];
@@ -56,7 +62,7 @@ export const InformationPage3 = ({onNext}: {onNext: () => void}) => {
                         ))}
                     </div>
                 </div>
-                <NextBtn classname={""} value="далі" disabled={false} onClick={handleInformation}/>
+                <NextBtn classname={""} value="далі" disabled={disabled} onClick={handleInformation}/>
             </form>
     )
 }
