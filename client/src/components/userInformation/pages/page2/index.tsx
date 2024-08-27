@@ -48,7 +48,9 @@ export const InformationPage2 = ({onNext} : {onNext: () => void}) => {
                         ))}
                     </div>
                 </div>
-                <NextBtn classname={""} value="далі" disabled={disabled} onClick={handleInformation}/>
+                <div className="InformationPage2__button-wrapper">
+                    <NextBtn classname={"InformationPage2__button-wrapper__button"} value="далі" disabled={disabled} onClick={handleInformation}/>
+                </div>
             </form>
     )
 }
