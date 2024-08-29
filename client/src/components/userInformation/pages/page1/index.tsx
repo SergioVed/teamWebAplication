@@ -5,11 +5,13 @@ import { NextBtn } from "../../components/nextBtn";
 import { Input } from "../../../input";
 import Cookies from "js-cookie";
 import { UpdateCookie } from "../../functions/updateCookie";
+import { useNavigate } from "react-router-dom";
 
-export const InformationPage1 = ({ onNext }: { onNext: () => void }) => {
+export const InformationPage1 = () => {
   const [name, setName] = useState("");
   const [surName, setSurName] = useState("");
   const [disabled, setDisabled] = useState<boolean>(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const isValid = name.length === 0 || surName.length === 0;
@@ -22,8 +24,8 @@ export const InformationPage1 = ({ onNext }: { onNext: () => void }) => {
         name, surName
     }
     UpdateCookie(info)
-    onNext();
     console.log(Cookies.get("userInfo"))
+    navigate("/sign-up/information-page2")
   }
 
   return (

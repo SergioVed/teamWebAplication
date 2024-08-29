@@ -2,29 +2,29 @@ import "./index.scss";
 
 interface RadioBtnInt {
   index: number;
-  selectedLevel: string;
-  setSelectedLevel: any;
+  onchange: any;
   title: string;
   description: string | undefined;
+  selectedLevel: string;
 }
 
 export const RadioBtn = ({
   index,
-  selectedLevel,
-  setSelectedLevel,
+  onchange,
   title,
   description,
+  selectedLevel
 }: RadioBtnInt) => {
   return (
     <>
       <label htmlFor={`level-${index}`} className="label-component">
         <input
           type="radio"
-          checked={selectedLevel === title}
           value={title}
+          checked={selectedLevel === title}
           name="englishLevel"
           id={`level-${index}`}
-          onChange={(e) => setSelectedLevel(e.target.value)}
+          onChange={onchange}
           className="input-component"
         />
         <span className="label-title">{title}</span>
