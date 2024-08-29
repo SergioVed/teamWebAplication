@@ -3,10 +3,11 @@ import { works } from "../../../../data/works"
 import { LanguageComponent } from "../../components/languageComponent"
 import React, { useEffect, useRef, useState } from "react"
 import { NextBtn } from "../../components/nextBtn"
-import { userInfo } from "../.."
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { OptionVisibleFunc, DeleteComponentFunc, SelectOptionFunc} from "../../functions"
+import Cookies from "js-cookie"
+import { UpdateCookie } from "../../functions/updateCookie"
 
 export const InformationPage2 = ({onNext} : {onNext: () => void}) => {
     const optionsRef = useRef<HTMLDivElement>(null);
@@ -21,8 +22,12 @@ export const InformationPage2 = ({onNext} : {onNext: () => void}) => {
 
     function handleInformation (e: React.MouseEvent) {
         e.preventDefault()
-        userInfo.development = selectedOptions
+        const info = {
+            development: selectedOptions
+        }
+        UpdateCookie(info)
         onNext()
+        console.log(Cookies.get("userInfo"))
     }
 
     return(

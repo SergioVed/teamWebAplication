@@ -2,18 +2,21 @@ import "./index.scss"
 import { EnglishLvl } from "../../../../data/works"
 import React, { useRef, useState } from "react"
 import { NextBtn } from "../../components/nextBtn"
-import { userInfo } from "../.."
 import { RadioBtn } from "../../components/radioBtn"
+import { UpdateCookie } from "../../functions/updateCookie"
+import Cookies from "js-cookie"
 
 export const InformationPage4 = ({onNext}: {onNext: () => void}) => {
     const [selectedLevel, setSelectedLevel] = useState<string>("")
 
     function handleInformation(e: React.MouseEvent) {
         e.preventDefault()
-        userInfo.language = selectedLevel
-
+        UpdateCookie(selectedLevel)
         onNext()
+        console.log(Cookies.get("userInfo"))
     }
+
+    console.log(selectedLevel)
 
     return(
             <form className="InformationPage4">

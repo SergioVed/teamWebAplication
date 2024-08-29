@@ -3,10 +3,11 @@ import { works } from "../../../../data/works"
 import { LanguageComponent } from "../../components/languageComponent"
 import React, { useEffect, useRef, useState } from "react"
 import { NextBtn } from "../../components/nextBtn"
-import { userInfo } from "../.."
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { OptionVisibleFunc, DeleteComponentFunc, SelectOptionFunc} from "../../functions"
+import { UpdateCookie } from "../../functions/updateCookie"
+import Cookies from "js-cookie"
 
 export const InformationPage3 = ({onNext}: {onNext: () => void}) => {
     const optionsRef = useRef<HTMLDivElement>(null);
@@ -20,24 +21,30 @@ export const InformationPage3 = ({onNext}: {onNext: () => void}) => {
     }, [selectedOptions])
 
     useEffect(() => {
-        const userDirections = userInfo.development
-        const filtredDirections: string[] = [];
-
-        userDirections.forEach((direction) => {
-            if (works[direction]) {
-                filtredDirections.push(...works[direction])
-            }
+        const cookie = Cookies.get("userInfo")
+        if (cookie) {
+            const cookieobj = JSON.parse(cookie)
+            const userDirections = cookieobj.development || []
+            const filtredDirections: string[] = [];
+            
+            userDirections.forEach((direction: any) => {
+                if (works[direction]) {
+                    filtredDirections.push(...works[direction])
+                }
+            })
             setTechnologies(filtredDirections)
-        })
+        }
+    }, [])
 
-    }, [userInfo])
     function handleInformation (e: React.MouseEvent) {
         e.preventDefault()
-        userInfo.technologies = selectedOptions
-
+        const info = {
+            devDirections: selectedOptions
+        }
+        UpdateCookie(info)
+        console.log(Cookies.get("userInfo"))
         onNext()
     }
-
 
     return(
             <form className="InformationPage3">
