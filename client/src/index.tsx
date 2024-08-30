@@ -2,8 +2,9 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { HomePage, SignIn, SignUp } from './components/index';
-import { UserHomePage } from './components/userHomePage';
 import { InformationPage1, InformationPage2, InformationPage3, InformationPage4, InformationPage5, InformationPage6, InformationPage7 } from './components/userInformation/pages';
+import { FinalPage } from './components/userInformation/pages/finalPage';
+import { Profile } from './components/profile';
 
 const infomationpageRoutes = [
   {
@@ -33,6 +34,10 @@ const infomationpageRoutes = [
   {
     path: '/sign-up/information-page7',
     element: <InformationPage7 />,
+  },
+  {
+    path: '/sign-up/final-page',
+    element: <FinalPage />,
   }
 ]
 
@@ -51,7 +56,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/home-page/:id',
-    element: <UserHomePage />,
+    element: <Profile />,
   },
   ...infomationpageRoutes.map((way) => (
     {

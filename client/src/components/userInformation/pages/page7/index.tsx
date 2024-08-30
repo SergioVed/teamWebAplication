@@ -5,10 +5,12 @@ import womanPhoto from "../../../../img/informationPage/weekday-woman-drawing-on
 import { NextBtn } from "../../components/nextBtn";
 import { UpdateCookie } from "../../functions/updateCookie";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 export const InformationPage7 = () => {
   const [value, setValue] = useState("");
   const [disabled, setDisabled] = useState<boolean>(true);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const isValid = value.length <= 50
@@ -19,7 +21,9 @@ export const InformationPage7 = () => {
     e.preventDefault()
     UpdateCookie({aboutUser: value})
     console.log(Cookies.get("userInfo"))
+    navigate("/sign-up/final-page")
     
+    Cookies.remove("userInfo")
   }
 
   return (
