@@ -12,6 +12,7 @@ router.post('/sign-up',
     userRoutes.register);
 
 router.post('/sign-in', userRoutes.login);
+router.get('/get-user', userRoutes.getUser)
 router.post('/log-out', userRoutes.logout);
 router.get('/activate/:link', userRoutes.activate);
 router.get('/refresh', userRoutes.refresh);

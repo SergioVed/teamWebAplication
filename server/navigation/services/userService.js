@@ -90,6 +90,14 @@ module.exports.activate = async (activationLink) => {
     await user.save();
 }
 
+module.exports.getUser = async (id) => {
+    const user = await UserModel.findById(id)
+    if(!user) {
+        throw ApiError.BadRequest('Користувача не знайдено');
+    }
+    return user
+}
+
 module.exports.getAllUsers = async () => {
     const users = await UserModel.find();
     return users;
