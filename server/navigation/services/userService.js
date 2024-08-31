@@ -24,7 +24,7 @@ module.exports.register = async (nickname, email, password) => {
     const activationLink = uuid.v4();
 
     const user = await UserModel.create({ email, nickname, password: hashPassword, activationLink });
-    // await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
+    await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
 
     const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({...userDto});
@@ -93,4 +93,10 @@ module.exports.activate = async (activationLink) => {
 module.exports.getAllUsers = async () => {
     const users = await UserModel.find();
     return users;
+}
+
+module.exports.addFullUserInfo = async (id) => {
+    const user = await UserModel.findById(id);
+
+    await user.save();
 }

@@ -55,6 +55,8 @@ export const SignIn = () => {
             setErrorMessage('Щось пішло не так. Спробуйте ще раз.');
         }
     }
+
+    
     //color style settings
     const [currentColor, setCurrentColor] = useState<string>(banners[0].color);
     const [currentIndex, setCurrentIndex] = useState<number>(0);

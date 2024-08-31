@@ -82,3 +82,11 @@ module.exports.getUsers = async (req, res, next) => {
         next(err);
     }
 }
+
+module.exports.addUser = async (req, res, next) => {
+    try {
+        //
+    } catch (err) {
+        next(err);
+    }
+}
