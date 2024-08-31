@@ -85,8 +85,12 @@ module.exports.getUsers = async (req, res, next) => {
 
 module.exports.addUser = async (req, res, next) => {
     try {
-        //
-    } catch (err) {
-        next(err);
-    }
+        const { id, updateData } = req.body;
+
+        const user = await userService.addFullUserInfo(id, updateData);
+
+        return res.status(200).json(user);
+    } catch (error) {
+        return res.status(404).json({ message: error.message });
+    };
 }
