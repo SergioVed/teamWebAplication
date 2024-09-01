@@ -21,7 +21,10 @@ export const InformationPage1 = () => {
   function handleInformation(e: React.FormEvent) {
     e.preventDefault();
     const info = {
-        name, surName
+      name: {
+        firstName: name,
+        secondName: surName
+      }
     }
     UpdateCookie(info)
     console.log(Cookies.get("userInfo"))

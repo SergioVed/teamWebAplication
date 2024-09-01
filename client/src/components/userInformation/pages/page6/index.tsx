@@ -22,7 +22,10 @@ export const InformationPage6 = () => {
   function handleInformation(e: React.MouseEvent) {
     e.preventDefault()
     const info = {
-      expirience: selectedOption === "Так, є" ? inputValue : "Ні, немає"
+      experience: {
+        answer: selectedOption,
+        description: inputValue
+      }
     }
     UpdateCookie({expirience: info})
     console.log(Cookies.get("userInfo"))

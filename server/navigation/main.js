@@ -17,7 +17,7 @@ router.post('/log-out', userRoutes.logout);
 router.get('/activate/:link', userRoutes.activate);
 router.get('/refresh', userRoutes.refresh);
 router.get('/users', userRoutes.getUsers);
-router.post('/add-user/:id/:updateData', userRoutes.addUser);
+router.post('/add-user/:id', userRoutes.addUser);
 router.post('/validate-token', tokenRoutes.validateToken);
 
 

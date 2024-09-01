@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 
 export const InformationPage3 = () => {
   const optionsRef = useRef<HTMLDivElement>(null);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<{ name: string; }[]>([]);
   const [technologies, setTechnologies] = useState<string[]>([]);
   const [disabled, setDisabled] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -30,12 +30,12 @@ export const InformationPage3 = () => {
     const cookie = Cookies.get("userInfo");
     if (cookie) {
       const cookieobj = JSON.parse(cookie);
-      const userDirections = cookieobj.development || [];
+      const userDirections = cookieobj.direction || [];
       const filtredDirections: string[] = [];
 
       userDirections.forEach((direction: any) => {
-        if (works[direction]) {
-          filtredDirections.push(...works[direction]);
+        if (works[direction.name]) {
+          filtredDirections.push(...works[direction.name]);
         }
       });
       setTechnologies(filtredDirections);
@@ -45,7 +45,7 @@ export const InformationPage3 = () => {
   function handleInformation(e: React.MouseEvent) {
     e.preventDefault();
     const info = {
-      devDirections: selectedOptions,
+      technologies: selectedOptions,
     };
     UpdateCookie(info);
     console.log(Cookies.get("userInfo"));
@@ -80,7 +80,7 @@ export const InformationPage3 = () => {
                   SelectOptionFunc(workKey, setSelectedOptions);
                 }}
                 key={workKey}
-                className={selectedOptions.includes(workKey) ? "darkned" : ""}
+                className={selectedOptions.some((option) => option.name === workKey) ? "darkned" : ""}
               >
                 {workKey}
               </p>
@@ -91,7 +91,7 @@ export const InformationPage3 = () => {
           {selectedOptions.map((option, key) => (
             <LanguageComponent
               needed={true}
-              item={option}
+              item={option.name}
               key={key}
               deleteFunction={DeleteComponentFunc(
                 key,

@@ -6,6 +6,8 @@ import { NextBtn } from "../../components/nextBtn";
 import { UpdateCookie } from "../../functions/updateCookie";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import { addFullInfo } from "../../../../api/addFullInfo";
+import { json } from "stream/consumers";
 
 export const InformationPage7 = () => {
   const [value, setValue] = useState("");
@@ -19,11 +21,15 @@ export const InformationPage7 = () => {
 
   function handleInformation(e: React.MouseEvent) {
     e.preventDefault()
-    UpdateCookie({aboutUser: value})
-    console.log(Cookies.get("userInfo"))
-    navigate("/sign-up/final-page")
-    
-    Cookies.remove("userInfo")
+    UpdateCookie({description: value})
+    const userInfo = Cookies.get("userInfo")
+
+    if (userInfo) {
+      const parsedUserInfo = JSON.parse(userInfo)
+      addFullInfo(parsedUserInfo)
+      navigate("/sign-up/final-page")
+      Cookies.remove("userInfo")
+    }
   }
 
   return (

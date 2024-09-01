@@ -1,17 +1,17 @@
-export function SelectOptionFunc(workKey: string, setSelectedOptions: React.Dispatch<React.SetStateAction<string[]>>) {
-    setSelectedOptions(prevSelected => {
-        const newSelection = new Set(prevSelected);
+export function SelectOptionFunc(
+  workKey: string,
+  setSelectedOptions: React.Dispatch<React.SetStateAction<{ name: string }[]>>
+) {
+  setSelectedOptions((prevSelected) => {
+    const newSelection = new Set(prevSelected.map((option) => option.name));
 
-        if (newSelection.has(workKey)) {
-            newSelection.delete(workKey);
-        } else {
-            newSelection.add(workKey);
-        }
+    if (newSelection.has(workKey)) {
+      newSelection.delete(workKey);
+    } else {
+      newSelection.add(workKey);
+    }
+    const updatedSelection = Array.from(newSelection).map((name) => ({ name }));
 
-        // if (newSelection.has("Фуллстак розробка")) {
-        //     ["Фронтенд розробка", "Бекенд розробка"].forEach(key => newSelection.add(key));
-        // }
-
-        return Array.from(newSelection);
-    });
+    return Array.from(updatedSelection);
+  });
 }

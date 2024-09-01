@@ -9,32 +9,32 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 export const InformationPage5 = () => {
-    const [graduation, setGraduation] = useState<string[]>([])
+    const [graduation, setGraduation] = useState<{name: string}[]>([{name: ""}])
     const [disabled, setDisabled] = useState<boolean>(false)
     const navigate = useNavigate()
 
     useEffect(( )=> {
-        const isLastEmpty = graduation[graduation.length - 1] === ""
+        const isLastEmpty = graduation[graduation.length - 1].name === ""
         setDisabled(isLastEmpty)
     }, [graduation])
 
     const addInput = () => {
-        if (graduation[graduation.length - 1] !== "") {
-            setGraduation([...graduation, ""])
+        if (graduation[graduation.length - 1].name !== "") {
+            setGraduation([...graduation, {name: ""}])
         }
     }
-
-    function handleInformation (e: React.MouseEvent) {
-        e.preventDefault()
-        UpdateCookie({graduation: graduation})
-        console.log(Cookies.get("userInfo"))
-        navigate("/sign-up/information-page6")
-    }
-
+    console.log(graduation)
     function handleInputChange(index: number, value: string) {
         const newGraduation = [...graduation];
-        newGraduation[index] = value;
+        newGraduation[index].name = value;
         setGraduation(newGraduation);
+    }
+    
+    function handleInformation (e: React.MouseEvent) {
+        e.preventDefault()
+        UpdateCookie({education: graduation})
+        console.log(Cookies.get("userInfo"))
+        navigate("/sign-up/information-page6")
     }
 
     return(
@@ -46,7 +46,7 @@ export const InformationPage5 = () => {
                 <div className="InformationPage5__container">
                     {graduation.map((value, index) => (
                            <Input
-                           value={value}
+                           value={value.name}
                            placeholder={""}
                            classname={"InformationPage5__container__input-focus"}
                            icon={faSquareMinus}

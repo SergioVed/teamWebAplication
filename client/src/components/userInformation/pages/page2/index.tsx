@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 export const InformationPage2 = () => {
   const optionsRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<{ name: string; }[]>([]);
   const [disabled, setDisabled] = useState<boolean>(false);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export const InformationPage2 = () => {
   function handleInformation(e: React.MouseEvent) {
     e.preventDefault();
     const info = {
-      development: selectedOptions,
+      direction: selectedOptions,
     };
     UpdateCookie(info);
     console.log(Cookies.get("userInfo"));
@@ -63,7 +63,7 @@ export const InformationPage2 = () => {
                   SelectOptionFunc(workKey, setSelectedOptions);
                 }}
                 key={workKey}
-                className={selectedOptions.includes(workKey) ? "darkned" : ""}
+                className={selectedOptions.some((option) => option.name === workKey) ? "darkned" : ""}
               >
                 {workKey}
               </p>
@@ -74,7 +74,7 @@ export const InformationPage2 = () => {
           {selectedOptions.map((option, key) => (
             <LanguageComponent
               needed={true}
-              item={option}
+              item={option.name}
               key={key}
               deleteFunction={DeleteComponentFunc(
                 key,

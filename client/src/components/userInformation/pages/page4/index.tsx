@@ -13,7 +13,7 @@ export const InformationPage4 = () => {
 
   function handleInformation(e: React.MouseEvent) {
     e.preventDefault();
-    UpdateCookie({ englishLvl: selectedOption });
+    UpdateCookie({ englishLevel: selectedOption });
     console.log(Cookies.get("userInfo"));
     navigate("/sign-up/information-page5");
   }
