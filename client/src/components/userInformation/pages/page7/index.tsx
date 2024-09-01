@@ -3,19 +3,33 @@ import { Input } from "../../../input";
 import "./index.scss";
 import womanPhoto from "../../../../img/informationPage/weekday-woman-drawing-on-a-tablet 1.webp";
 import { NextBtn } from "../../components/nextBtn";
-import { userInfo } from "../..";
+import { UpdateCookie } from "../../functions/updateCookie";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import { addFullInfo } from "../../../../api/addFullInfo";
+import { json } from "stream/consumers";
 
-export const InformationPage7 = ({ onNext }: { onNext: () => void }) => {
+export const InformationPage7 = () => {
   const [value, setValue] = useState("");
   const [disabled, setDisabled] = useState<boolean>(true);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const isValid = value.length <= 50
     setDisabled(isValid)
   }, [value]);
 
-  function handleInformation() {
-    userInfo.aboutUser = value;
+  function handleInformation(e: React.MouseEvent) {
+    e.preventDefault()
+    UpdateCookie({description: value})
+    const userInfo = Cookies.get("userInfo")
+
+    if (userInfo) {
+      const parsedUserInfo = JSON.parse(userInfo)
+      addFullInfo(parsedUserInfo)
+      navigate("/sign-up/final-page")
+      Cookies.remove("userInfo")
+    }
   }
 
   return (

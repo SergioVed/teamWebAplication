@@ -16,7 +16,7 @@ interface IconProps {
 
 export const Input: React.FC<IconProps> = ({ icon, onChange, onClick, classname, placeholder, value, needed, multiline, maxLength }) => {
     return (
-        <form className="inputWrapper">
+        <div className="inputWrapper">
             {multiline ? (
                 <textarea
                     value={value}
@@ -42,6 +42,6 @@ export const Input: React.FC<IconProps> = ({ icon, onChange, onClick, classname,
                     <FontAwesomeIcon icon={icon} />
                 </button>
             )}
-        </form>
+        </div>
     );
 }

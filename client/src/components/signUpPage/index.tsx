@@ -24,7 +24,7 @@ export const SignUp = () => {
             const { accessToken } = response.data;
             document.cookie = `accessToken=${accessToken}; path=/;`;
             
-            navigate('/user-information');
+            navigate('/sign-up/information-page1');
             return response.data;
 
         } catch (err: any) {

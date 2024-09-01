@@ -23,21 +23,31 @@ const UserSchema = new mongoose.Schema({
             type: String,
         }
     },
-    direction: [String],
-    technologies: [String],
+    direction: [{
+        name: String
+    }],
+    technologies: [{
+        name: String
+    }],
     englishLevel: String,
     education: [{
-        name: String,
-        year: {
-            start: String,
-            end: String
-        }
+        name: {
+            type: String,
+            required: false
+        },
+        // year: {
+        //     start: String,
+        //     end: String
+        // }
     }],
     experience: {
         answer: {
             type: String,
         },
-        description: String
+        description: {
+            type: String,
+            required: false
+        }
     },
     description: String,
     isActivated: {

@@ -8,7 +8,6 @@ import { ProjectBlock } from "../projectBlock";
 import { Link } from "react-router-dom";
 import { Gradient } from "../gradient";
 import { banners } from "../../data/banners";
-import { UserForm } from "../userInformation";
 
 interface IBanner {
     index: number;

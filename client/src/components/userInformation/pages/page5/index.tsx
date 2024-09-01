@@ -4,34 +4,37 @@ import { DeleteComponentFunc } from "../../functions"
 import { faSquareMinus } from "@fortawesome/free-solid-svg-icons";
 import { Input } from "../../../input"
 import { NextBtn } from "../../components/nextBtn";
-import { userInfo } from "../..";
+import { UpdateCookie } from "../../functions/updateCookie";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
-export const InformationPage5 = ({onNext}: {onNext: () => void}) => {
-    const [graduation, setGraduation] = useState<string[]>([])
+export const InformationPage5 = () => {
+    const [graduation, setGraduation] = useState<{name: string}[]>([{name: ""}])
     const [disabled, setDisabled] = useState<boolean>(false)
+    const navigate = useNavigate()
 
     useEffect(( )=> {
-        const isLastEmpty = graduation[graduation.length - 1] === ""
+        const isLastEmpty = graduation[graduation.length - 1].name === ""
         setDisabled(isLastEmpty)
     }, [graduation])
 
     const addInput = () => {
-        if (graduation[graduation.length - 1] !== "") {
-            setGraduation([...graduation, ""])
+        if (graduation[graduation.length - 1].name !== "") {
+            setGraduation([...graduation, {name: ""}])
         }
     }
-
-    function handleInformation (e: React.MouseEvent) {
-        e.preventDefault()
-        userInfo.graduation = graduation
-
-        onNext()
-    }
-
+    console.log(graduation)
     function handleInputChange(index: number, value: string) {
         const newGraduation = [...graduation];
-        newGraduation[index] = value;
+        newGraduation[index].name = value;
         setGraduation(newGraduation);
+    }
+    
+    function handleInformation (e: React.MouseEvent) {
+        e.preventDefault()
+        UpdateCookie({education: graduation})
+        console.log(Cookies.get("userInfo"))
+        navigate("/sign-up/information-page6")
     }
 
     return(
@@ -43,7 +46,7 @@ export const InformationPage5 = ({onNext}: {onNext: () => void}) => {
                 <div className="InformationPage5__container">
                     {graduation.map((value, index) => (
                            <Input
-                           value={value}
+                           value={value.name}
                            placeholder={""}
                            classname={"InformationPage5__container__input-focus"}
                            icon={faSquareMinus}
