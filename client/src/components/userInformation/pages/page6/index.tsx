@@ -4,12 +4,15 @@ import { NextBtn } from "../../components/nextBtn";
 import { RadioBtn } from "../../components/radioBtn";
 import { Input } from "../../../input";
 import { faSquareMinus } from "@fortawesome/free-solid-svg-icons";
-import { userInfo } from "../..";
+import { UpdateCookie } from "../../functions/updateCookie";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
-export const InformationPage6 = ({onNext}: {onNext: () => void}) => {
+export const InformationPage6 = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [inputValue, setInputValue] = useState<string>("");
   const [disabled, setDisabled] = useState<boolean>(true)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const isSelectedAndValid = selectedOption === "Так, є" ? inputValue.length <= 50 : selectedOption.length === 0;
@@ -18,12 +21,17 @@ export const InformationPage6 = ({onNext}: {onNext: () => void}) => {
 
   function handleInformation(e: React.MouseEvent) {
     e.preventDefault()
-
-    userInfo.expirience = inputValue
-    onNext()
+    const info = {
+      experience: {
+        answer: selectedOption,
+        description: inputValue
+      }
+    }
+    UpdateCookie({expirience: info})
+    console.log(Cookies.get("userInfo"))
+    navigate("/sign-up/information-page7")
   }
-
-  // console.log(userInfo)
+  console.log(selectedOption)
 
   return (
       <div className="InformationPage6">
@@ -32,14 +40,14 @@ export const InformationPage6 = ({onNext}: {onNext: () => void}) => {
           <RadioBtn
             index={1}
             selectedLevel={selectedOption}
-            setSelectedLevel={setSelectedOption}
+            onchange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedOption(e.target.value)}
             title="Так, є"
             description=""
           />
           <RadioBtn
             index={2}
-            selectedLevel={selectedOption}
-            setSelectedLevel={setSelectedOption}
+            selectedLevel={selectedOption || ""}
+            onchange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedOption(e.target.value)}
             title="Ні, немає"
             description=""
           />

@@ -2,8 +2,44 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { HomePage, SignIn, SignUp } from './components/index';
-import { UserHomePage } from './components/userHomePage';
-import { UserForm } from './components/userInformation';
+import { InformationPage1, InformationPage2, InformationPage3, InformationPage4, InformationPage5, InformationPage6, InformationPage7 } from './components/userInformation/pages';
+import { FinalPage } from './components/userInformation/pages/finalPage';
+import { Profile } from './components/profile';
+
+const infomationpageRoutes = [
+  {
+    path: '/sign-up/information-page1',
+    element: <InformationPage1 />,
+  },
+  {
+    path: '/sign-up/information-page2',
+    element: <InformationPage2 />,
+  },
+  {
+    path: '/sign-up/information-page3',
+    element: <InformationPage3 />,
+  },
+  {
+    path: '/sign-up/information-page4',
+    element: <InformationPage4 />,
+  },
+  {
+    path: '/sign-up/information-page5',
+    element: <InformationPage5 />,
+  },
+  {
+    path: '/sign-up/information-page6',
+    element: <InformationPage6 />,
+  },
+  {
+    path: '/sign-up/information-page7',
+    element: <InformationPage7 />,
+  },
+  {
+    path: '/sign-up/final-page',
+    element: <FinalPage />,
+  }
+]
 
 const router = createBrowserRouter([
   {
@@ -20,11 +56,14 @@ const router = createBrowserRouter([
   },
   {
     path: '/home-page/:id',
-    element: <UserHomePage />,
-  },  {
-    path: '/user-information',
-    element: <UserForm/>,
+    element: <Profile />,
   },
+  ...infomationpageRoutes.map((way) => (
+    {
+      path: way.path,
+      element: way.element
+    }
+  ))
 ]);
 
 const root = ReactDOM.createRoot(

@@ -1,32 +1,34 @@
-import "./index.scss"
+import "./index.scss";
 
 interface RadioBtnInt {
-    index: number;
-    selectedLevel: string;
-    setSelectedLevel: any;
-    title: string;
-    description: string | undefined
+  index: number;
+  onchange: any;
+  title: string;
+  description: string | undefined;
+  selectedLevel: string;
 }
 
-export const RadioBtn = ({index, selectedLevel, setSelectedLevel, title, description}: RadioBtnInt) => {
+export const RadioBtn = ({
+  index,
+  onchange,
+  title,
+  description,
+  selectedLevel
+}: RadioBtnInt) => {
   return (
     <>
       <label htmlFor={`level-${index}`} className="label-component">
         <input
           type="radio"
-          checked={selectedLevel === title}
           value={title}
+          checked={selectedLevel === title}
           name="englishLevel"
           id={`level-${index}`}
-          onChange={(e) => setSelectedLevel(e.target.value)}
+          onChange={onchange}
           className="input-component"
         />
-        <span className="label-title">
-          {title}
-        </span>
-        <p className="label-description">
-          {description}
-        </p>
+        <span className="label-title">{title}</span>
+        {description && <p className="label-description">{description}</p>}
       </label>
     </>
   );

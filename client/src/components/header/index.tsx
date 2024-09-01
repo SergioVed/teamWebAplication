@@ -48,7 +48,7 @@ export const Header = () => {
             icon={faMagnifyingGlass}
             onClick={click}
             onChange={(e) => setValue(e.target.value)}
-            needed={false}
+            needed={true}
             multiline={false}
           />
 
