@@ -24,7 +24,8 @@ export const SignUp = () => {
             const { accessToken } = response.data;
             document.cookie = `accessToken=${accessToken}; path=/;`;
             
-            navigate('/sign-up/information-page1');
+            // navigate('/user-information');
+            setErrorMessage('Підтвердіть свою пошту щоб продовжити реєстрацію. Після підтвердження перезавантажте сторінку.');
             return response.data;
 
         } catch (err: any) {

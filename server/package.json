@@ -22,6 +22,7 @@
     "mongoose": "^8.5.2",
     "nodemailer": "^6.9.14",
     "react-router-dom": "^6.26.0",
+    "redis": "^4.7.0",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
