@@ -5,8 +5,9 @@ const mailService = require('./mailService');
 const tokenService = require('./tokenService');
 const UserDto = require('../../dtos/userDto');
 const ApiError = require('../../exceptions/apiError');
+const PendingUserModel = require('../../models/PendingUser');
 
-module.exports.register = async (nickname, email, password) => {
+module.exports.register = async (nickname, email, password) => { //здесь просто регистрация в pending
     const emailExists = await UserModel.findOne({ email });
 
     if (emailExists) {
@@ -23,14 +24,40 @@ module.exports.register = async (nickname, email, password) => {
     const hashPassword = await bcrypt.hash(password, salt);
     const activationLink = uuid.v4();
 
-    const user = await UserModel.create({ email, nickname, password: hashPassword, activationLink });
+    const user = await PendingUserModel.create({ email, nickname, password: hashPassword, activationLink });
     await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
 
     const userDto = new UserDto(user);
+    // const tokens = tokenService.generateTokens({ ...userDto });
+    // await tokenService.saveToken(userDto.id, tokens.refreshToken);
+
+    // return { ...tokens, user: userDto }
+
+    return { user: userDto }
+}
+
+module.exports.activate = async (activationLink) => { //тут просто поменять модель на pending
+    const pendingUser = await PendingUserModel.findOne({ activationLink });
+
+    if (!pendingUser) {
+        throw ApiError.BadRequest('Некоректне посилання активації');
+    }
+
+    const user = await UserModel.create({
+        email: pendingUser.email,
+        nickname: pendingUser.nickname,
+        password: pendingUser.password, 
+        isActivated: true 
+    });
+
+    await PendingUserModel.deleteOne({ activationLink });
+
+    const userDto = new UserDto(user);
+
     const tokens = tokenService.generateTokens({ ...userDto });
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
 
-    return { ...tokens, user: userDto }
+    return { ...tokens, user: userDto };
 }
 
 module.exports.login = async (email, password) => {
@@ -77,17 +104,6 @@ module.exports.refresh = async (refreshToken) => {
 
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
     return { ...tokens, user: userDto }
-}
-
-module.exports.activate = async (activationLink) => {
-    const user = await UserModel.findOne({ activationLink });
-
-    if (!user) {
-        throw ApiError.BadRequest('Некоректне посилання активації');
-    }
-
-    user.isActivated = true;
-    await user.save();
 }
 
 module.exports.getAllUsers = async () => {
