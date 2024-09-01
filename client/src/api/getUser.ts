@@ -14,7 +14,7 @@ export const getUser = async () => {
                     id: id
                 }
             })
-            return response
+            return response.data
         } catch (err) {
             console.error('Failed to fetch user:', err);
             throw err;
