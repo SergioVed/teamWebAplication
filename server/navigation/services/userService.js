@@ -111,6 +111,14 @@ module.exports.getAllUsers = async () => {
     return users;
 }
 
+module.exports.getUser = async (id) => {
+    const user = await UserModel.findById(id)
+    if(!user) {
+        throw ApiError.BadRequest('Користувача не знайдено');
+    }
+    return user
+}
+
 module.exports.addFullUserInfo = async (id, userData) => {
     const user = await UserModel.findById(id);
 
