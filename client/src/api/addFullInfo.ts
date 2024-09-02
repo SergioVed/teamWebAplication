@@ -1,11 +1,12 @@
 import axios from "axios";
-import { checkAccessTokenValidation } from "./tokens"
+import { checkAccessTokenValidation } from "./tokens";
+import { apiURL } from "./api";
 
 export const addFullInfo = async (updateData: any) => {
     const userInfo = await checkAccessTokenValidation()
     try {
         const userId = userInfo.userId
-        const response = await axios.post(`http://localhost:5000/api/add-user/${userId}`, {
+        const response = await axios.post(`${apiURL}/api/add-user/${userId}`, {
             id: userId,
             updateData: updateData
         })

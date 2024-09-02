@@ -13,6 +13,7 @@ import {
 import Cookies from "js-cookie";
 import { UpdateCookie } from "../../functions/updateCookie";
 import { useNavigate } from "react-router-dom";
+import { checkUserAuthorization } from "../../../../api/user";
 
 export const InformationPage2 = () => {
   const optionsRef = useRef<HTMLDivElement>(null);
@@ -20,21 +21,26 @@ export const InformationPage2 = () => {
   const [selectedOptions, setSelectedOptions] = useState<{ name: string; }[]>([]);
   const [disabled, setDisabled] = useState<boolean>(false);
 
-  useEffect(() => {
-    const isEmpty = selectedOptions.length === 0;
-    setDisabled(isEmpty);
-  }, [selectedOptions]);
-
   function handleInformation(e: React.MouseEvent) {
     e.preventDefault();
+
     const info = {
       direction: selectedOptions,
     };
+
     UpdateCookie(info);
     console.log(Cookies.get("userInfo"));
     navigate("/sign-up/information-page3");
   }
 
+  useEffect(() => {
+    const isEmpty = selectedOptions.length === 0;
+    setDisabled(isEmpty);
+  }, [selectedOptions]);
+
+  useEffect(() => {
+    checkUserAuthorization(navigate);
+  }, []);
   return (
     <form className="InformationPage2">
       <div className="InformationPage2__title-div">

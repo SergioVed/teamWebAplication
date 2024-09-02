@@ -13,6 +13,7 @@ import {
 import { UpdateCookie } from "../../functions/updateCookie";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import { checkUserAuthorization } from "../../../../api/user";
 
 export const InformationPage3 = () => {
   const optionsRef = useRef<HTMLDivElement>(null);
@@ -21,13 +22,21 @@ export const InformationPage3 = () => {
   const [disabled, setDisabled] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const isEmpty = selectedOptions.length === 0;
-    setDisabled(isEmpty);
-  }, [selectedOptions]);
+  function handleInformation(e: React.MouseEvent) {
+    e.preventDefault();
+
+    const info = {
+      technologies: selectedOptions,
+    };
+
+    UpdateCookie(info);
+    console.log(Cookies.get("userInfo"));
+    navigate("/sign-up/information-page4");
+  }
 
   useEffect(() => {
     const cookie = Cookies.get("userInfo");
+
     if (cookie) {
       const cookieobj = JSON.parse(cookie);
       const userDirections = cookieobj.direction || [];
@@ -38,20 +47,19 @@ export const InformationPage3 = () => {
           filtredDirections.push(...works[direction.name]);
         }
       });
+
       setTechnologies(filtredDirections);
     }
   }, []);
 
-  function handleInformation(e: React.MouseEvent) {
-    e.preventDefault();
-    const info = {
-      technologies: selectedOptions,
-    };
-    UpdateCookie(info);
-    console.log(Cookies.get("userInfo"));
-    navigate("/sign-up/information-page4");
-  }
+  useEffect(() => {
+    const isEmpty = selectedOptions.length === 0;
+    setDisabled(isEmpty);
+  }, [selectedOptions]);
 
+  useEffect(() => {
+    checkUserAuthorization(navigate);
+  }, []);
   return (
     <form className="InformationPage3">
       <div className="InformationPage3__title-div">
