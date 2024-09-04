@@ -7,47 +7,72 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import {
   OptionVisibleFunc,
-  DeleteComponentFunc,
+  DeleteFunc,
   SelectOptionFunc,
 } from "../../functions";
-import Cookies from "js-cookie";
 import { UpdateCookie } from "../../functions/updateCookie";
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import { checkUserAuthorization } from "../../../../api/user";
 
-export const InformationPage2 = () => {
+export const UserSkillsPage = () => {
   const optionsRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
   const [selectedOptions, setSelectedOptions] = useState<{ name: string; }[]>([]);
+  const [technologies, setTechnologies] = useState<string[]>([]);
   const [disabled, setDisabled] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  function handleInformation(e: React.MouseEvent) {
+    e.preventDefault();
+
+    const info = {
+      technologies: selectedOptions,
+    };
+
+    UpdateCookie(info);
+    console.log(Cookies.get("userInfo"));
+    navigate("/sign-up/information-page4");
+  }
+
+  useEffect(() => {
+    const cookie = Cookies.get("userInfo");
+
+    if (cookie) {
+      const cookieobj = JSON.parse(cookie);
+      const userDirections = cookieobj.direction || [];
+      const filtredDirections: string[] = [];
+
+      userDirections.forEach((direction: any) => {
+        if (works[direction.name]) {
+          filtredDirections.push(...works[direction.name]);
+        }
+      });
+
+      setTechnologies(filtredDirections);
+    }
+  }, []);
 
   useEffect(() => {
     const isEmpty = selectedOptions.length === 0;
     setDisabled(isEmpty);
   }, [selectedOptions]);
 
-  function handleInformation(e: React.MouseEvent) {
-    e.preventDefault();
-    const info = {
-      direction: selectedOptions,
-    };
-    UpdateCookie(info);
-    console.log(Cookies.get("userInfo"));
-    navigate("/sign-up/information-page3");
-  }
-
+  useEffect(() => {
+    checkUserAuthorization(navigate);
+  }, []);
   return (
-    <form className="InformationPage2">
-      <div className="InformationPage2__title-div">
-        <p className="InformationPage2__title-div__title">
-          Обери напрям в якому працюєш
+    <form className="InformationPage3">
+      <div className="InformationPage3__title-div">
+        <p className="InformationPage3__title-div__title">
+          Обери технології якими володієш
         </p>
-        <p className="InformationPage2__title-div__sub-title">
+        <p className="InformationPage3__title-div__sub-title">
           (можна обрати декілька)
         </p>
       </div>
-      <div className="InformationPage2__container">
+      <div className="InformationPage3__container">
         <button
-          className="InformationPage2__container__selectBtn"
+          className="InformationPage3__container__selectBtn"
           onClick={(event) => OptionVisibleFunc(optionsRef, event)}
         >
           <FontAwesomeIcon
@@ -57,7 +82,7 @@ export const InformationPage2 = () => {
         </button>
         <div className="options" ref={optionsRef}>
           <div className="options-scrollbar">
-            {Object.keys(works).map((workKey) => (
+            {technologies.map((workKey) => (
               <p
                 onClick={() => {
                   SelectOptionFunc(workKey, setSelectedOptions);
@@ -76,7 +101,7 @@ export const InformationPage2 = () => {
               needed={true}
               item={option.name}
               key={key}
-              deleteFunction={DeleteComponentFunc(
+              deleteFunction={DeleteFunc(
                 key,
                 selectedOptions,
                 setSelectedOptions

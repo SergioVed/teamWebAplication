@@ -21,7 +21,7 @@
 
     >p {
         width: max-content;
-        font-size: calc(var(--index) * .8);
+        font-size: $mainTextFontSize;
         font-weight: 600;
     }
 }
@@ -35,7 +35,7 @@
 }
 
 .signUp__title {
-    font-size: calc(var(--index) * 3.5);
+    font-size: calc(var(--index) * 3.3);
     font-weight: 800;
     margin-top: calc(var(--index) * -1.5);
 }
@@ -59,7 +59,7 @@
             background-color: rgba(255, 255, 255, 0.05);
             border-radius: calc(var(--index) * 2);
             padding: calc(var(--index) * .8) calc(var(--index) * 2.5) calc(var(--index) * .8) calc(var(--index) * 1.4);
-            font-size: calc(var(--index) * .8);
+            font-size: $mainTextFontSize;
             font-weight: 600;
             width: calc(var(--index) * 21);
             outline: none;
@@ -73,7 +73,7 @@
 
 .check{
     margin-left: calc(var(--index) * -2);
-    font-size: calc(var(--index) *.8);
+    font-size: $mainTextFontSize;
 }
 
 .form__navigation {
@@ -98,7 +98,7 @@
 }
 
 .signUp__button {
-    font-size: calc(var(--index) * .8);
+    font-size: $mainTextFontSize;
     font-weight: 600;
     cursor: pointer;
     padding: calc(var(--index) * .6) calc(var(--index) * 1.2);
@@ -126,7 +126,7 @@
         width: max-content;
         cursor: pointer;
         transition: .4s;
-        font-size: calc(var(--index) * .8);
+        font-size: $mainTextFontSize;
         color: $defaultBlack;
         font-weight: 600;
         padding: calc(var(--index) * .6) calc(var(--index) * 1.1);
@@ -163,4 +163,11 @@
     opacity: .9;
     width: calc(var(--index) * 21);
     margin-bottom: calc(var(--index) * -.9);
+}
+
+.see__password{
+    margin-left: calc(var(--index) * -2.2);
+    font-size: $mainTextFontSize;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.55);
 }

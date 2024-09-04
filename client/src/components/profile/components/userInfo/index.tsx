@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
-import { getUser } from "../../../../api/getUser";
+import { getUser } from "../../../../api/user";
 
 export const UserInfo = () => {
 

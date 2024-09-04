@@ -14,10 +14,10 @@ export const Footer = () => {
 
             <div className="footer__container">
                 <div className="footer__container__content">
-                    {foterData.map((array) => (
-                        <div className="footer__container__content__linksArray">
-                            {array.map((relate) => (
-                                <Link to={relate.url} className="footer__container__content__linksArray__link">{relate.title}</Link>
+                    {foterData.map((array, index: number) => (
+                        <div className="footer__container__content__linksArray" key={index}>
+                            {array.map((relate, index: number) => (
+                                <Link to={relate.url} className="footer__container__content__linksArray__link"  key={index}>{relate.title}</Link>
                             ))}
                         </div>
                     ))}

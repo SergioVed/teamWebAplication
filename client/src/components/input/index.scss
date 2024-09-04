@@ -13,10 +13,11 @@
         border: 2.4px solid $defaultWhite;
         background: transparent;
         color: $defaultWhite;
-        font-size: calc(var(--index) * .7);
-        font-weight: 500;
-        padding: calc(var(--index) * .25) calc(var(--index) * 1) calc(var(--index) * .3);
-        border-radius: calc(var(--index) * 1);
+        font-size: calc(var(--index) * .8);
+        font-weight: 600;
+        padding: calc(var(--index) * .5) calc(var(--index) * 1.3);
+        border-radius: calc(var(--index) * 4);
+        outline: none;
 
         &::placeholder{
             font-weight: 600;
@@ -24,11 +25,11 @@
             opacity: .8;
         }
     }
-    &__input:focus{
-        outline: none;
-        // border-color: #FF696C;
-        transition: 0.5s;
-    }
+    // &__input:focus{
+    //     outline: none;
+    //     // border-color: #FF696C;
+    //     transition: 0.5s;
+    // }
     &__button{
         background: none;
         border: none;

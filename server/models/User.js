@@ -35,10 +35,10 @@ const UserSchema = new mongoose.Schema({
             type: String,
             required: false
         },
-        // year: {
-        //     start: String,
-        //     end: String
-        // }
+        year: {
+            start: String,
+            end: String
+        }
     }],
     experience: {
         answer: {

@@ -7,19 +7,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import {
   OptionVisibleFunc,
-  DeleteComponentFunc,
+  DeleteFunc,
   SelectOptionFunc,
 } from "../../functions";
-import { UpdateCookie } from "../../functions/updateCookie";
 import Cookies from "js-cookie";
+import { UpdateCookie } from "../../functions/updateCookie";
 import { useNavigate } from "react-router-dom";
+import { checkUserAuthorization } from "../../../../api/user";
 
-export const InformationPage3 = () => {
+export const UserFieldsPage = () => {
   const optionsRef = useRef<HTMLDivElement>(null);
-  const [selectedOptions, setSelectedOptions] = useState<{ name: string; }[]>([]);
-  const [technologies, setTechnologies] = useState<string[]>([]);
-  const [disabled, setDisabled] = useState<boolean>(false);
   const navigate = useNavigate();
+  const [selectedOptions, setSelectedOptions] = useState<{ name: string; }[]>([]);
+  const [disabled, setDisabled] = useState<boolean>(false);
+
+  function handleInformation(e: React.MouseEvent) {
+    e.preventDefault();
+
+    const info = {
+      direction: selectedOptions,
+    };
+
+    UpdateCookie(info);
+    console.log(Cookies.get("userInfo"));
+    navigate("/sign-up/information-page3");
+  }
 
   useEffect(() => {
     const isEmpty = selectedOptions.length === 0;
@@ -27,44 +39,21 @@ export const InformationPage3 = () => {
   }, [selectedOptions]);
 
   useEffect(() => {
-    const cookie = Cookies.get("userInfo");
-    if (cookie) {
-      const cookieobj = JSON.parse(cookie);
-      const userDirections = cookieobj.direction || [];
-      const filtredDirections: string[] = [];
-
-      userDirections.forEach((direction: any) => {
-        if (works[direction.name]) {
-          filtredDirections.push(...works[direction.name]);
-        }
-      });
-      setTechnologies(filtredDirections);
-    }
+    checkUserAuthorization(navigate);
   }, []);
-
-  function handleInformation(e: React.MouseEvent) {
-    e.preventDefault();
-    const info = {
-      technologies: selectedOptions,
-    };
-    UpdateCookie(info);
-    console.log(Cookies.get("userInfo"));
-    navigate("/sign-up/information-page4");
-  }
-
   return (
-    <form className="InformationPage3">
-      <div className="InformationPage3__title-div">
-        <p className="InformationPage3__title-div__title">
-          Обери технології якими володієш
+    <form className="InformationPage2">
+      <div className="InformationPage2__title-div">
+        <p className="InformationPage2__title-div__title">
+          Обери напрям в якому працюєш
         </p>
-        <p className="InformationPage3__title-div__sub-title">
+        <p className="InformationPage2__title-div__sub-title">
           (можна обрати декілька)
         </p>
       </div>
-      <div className="InformationPage3__container">
+      <div className="InformationPage2__container">
         <button
-          className="InformationPage3__container__selectBtn"
+          className="InformationPage2__container__selectBtn"
           onClick={(event) => OptionVisibleFunc(optionsRef, event)}
         >
           <FontAwesomeIcon
@@ -74,7 +63,7 @@ export const InformationPage3 = () => {
         </button>
         <div className="options" ref={optionsRef}>
           <div className="options-scrollbar">
-            {technologies.map((workKey) => (
+            {Object.keys(works).map((workKey) => (
               <p
                 onClick={() => {
                   SelectOptionFunc(workKey, setSelectedOptions);
@@ -93,7 +82,7 @@ export const InformationPage3 = () => {
               needed={true}
               item={option.name}
               key={key}
-              deleteFunction={DeleteComponentFunc(
+              deleteFunction={DeleteFunc(
                 key,
                 selectedOptions,
                 setSelectedOptions

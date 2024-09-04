@@ -45,8 +45,8 @@ export const TopWorkers = () => {
             </div>
             <div className="workers__container">
                 <button className="workers__container__btn" onClick={handleNext}><FontAwesomeIcon icon={faChevronLeft} /></button>
-                {array[currentIndex].map((e: Worker) => (
-                    <UserCard name={e.name} img={e.img} work={e.work}/>
+                {array[currentIndex].map((e: Worker, index: number) => (
+                    <UserCard name={e.name} img={e.img} work={e.work} key={index}/>
                 ))}
                 <button className="workers__container__btn" onClick={handlePrevious}><FontAwesomeIcon icon={faChevronRight} /></button>
             </div>

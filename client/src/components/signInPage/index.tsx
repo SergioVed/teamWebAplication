@@ -5,7 +5,7 @@ import { Gradient } from "../gradient";
 import googleLogo from '../../img/logos/google-logo.png';
 import githubLogo from '../../img/logos/github-logo.png';
 import './style.scss';
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { apiURL } from "../../api/api";
 import axios from "axios";
@@ -13,6 +13,7 @@ import axios from "axios";
 export const SignIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const navigate = useNavigate();
 
@@ -56,6 +57,9 @@ export const SignIn = () => {
         }
     }
 
+    const togglePasswordVisibility = () => {
+        setShowPassword(prevState => !prevState);
+    };
     
     //color style settings
     const [currentColor, setCurrentColor] = useState<string>(banners[0].color);
@@ -131,7 +135,7 @@ export const SignIn = () => {
 
                         <label htmlFor="password">
                             <input
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 id="password"
                                 placeholder="пароль"
                                 value={password}
@@ -144,9 +148,9 @@ export const SignIn = () => {
                                 }}
                             />
                             <FontAwesomeIcon
-                                icon={faCheck}
-                                className="check"
-                                style={{ visibility: password.length >= 8 ? 'visible' : 'hidden' }}
+                                icon={showPassword ? faEye : faEyeSlash}
+                                onClick={togglePasswordVisibility}
+                                className="see__password"
                             />
                         </label>
 

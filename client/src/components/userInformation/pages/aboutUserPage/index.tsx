@@ -8,20 +8,16 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { addFullInfo } from "../../../../api/addFullInfo";
 import { json } from "stream/consumers";
+import { checkUserAuthorization } from "../../../../api/user";
 
-export const InformationPage7 = () => {
+export const AboutUserPage = () => {
   const [value, setValue] = useState("");
   const [disabled, setDisabled] = useState<boolean>(true);
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const isValid = value.length <= 50
-    setDisabled(isValid)
-  }, [value]);
-
   function handleInformation(e: React.MouseEvent) {
     e.preventDefault()
-    UpdateCookie({description: value})
+    UpdateCookie({ description: value })
     const userInfo = Cookies.get("userInfo")
 
     if (userInfo) {
@@ -32,6 +28,14 @@ export const InformationPage7 = () => {
     }
   }
 
+  useEffect(() => {
+    const isValid = value.length <= 50
+    setDisabled(isValid)
+  }, [value]);
+
+  useEffect(() => {
+    checkUserAuthorization(navigate);
+  }, []);
   return (
     <div className="InformationPage7">
       <div className="InformationPage7__wrapper-container">
