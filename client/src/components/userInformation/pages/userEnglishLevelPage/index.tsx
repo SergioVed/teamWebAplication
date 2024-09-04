@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { checkUserAuthorization } from "../../../../api/user";
 
-export const InformationPage4 = () => {
+export const UserEnglishLevelPage = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const navigate = useNavigate();
 

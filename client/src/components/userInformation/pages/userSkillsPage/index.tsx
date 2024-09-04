@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import {
   OptionVisibleFunc,
-  DeleteComponentFunc,
+  DeleteFunc,
   SelectOptionFunc,
 } from "../../functions";
 import { UpdateCookie } from "../../functions/updateCookie";
@@ -15,7 +15,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { checkUserAuthorization } from "../../../../api/user";
 
-export const InformationPage3 = () => {
+export const UserSkillsPage = () => {
   const optionsRef = useRef<HTMLDivElement>(null);
   const [selectedOptions, setSelectedOptions] = useState<{ name: string; }[]>([]);
   const [technologies, setTechnologies] = useState<string[]>([]);
@@ -101,7 +101,7 @@ export const InformationPage3 = () => {
               needed={true}
               item={option.name}
               key={key}
-              deleteFunction={DeleteComponentFunc(
+              deleteFunction={DeleteFunc(
                 key,
                 selectedOptions,
                 setSelectedOptions

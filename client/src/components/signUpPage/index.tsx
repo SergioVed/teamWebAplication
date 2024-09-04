@@ -5,7 +5,7 @@ import githubLogo from '../../img/logos/github-logo.png';
 import { Gradient } from "../gradient";
 import { useState, useEffect } from "react";
 import { banners } from "../../data/banners";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { apiURL } from "../../api/api";
@@ -14,6 +14,7 @@ export const SignUp = () => {
     const [nickname, setNickname] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const navigate = useNavigate();
 
@@ -23,7 +24,7 @@ export const SignUp = () => {
 
             const { accessToken } = response.data;
             document.cookie = `accessToken=${accessToken}; path=/;`;
-            
+
             // navigate('/user-information');
             setErrorMessage('Підтвердіть свою пошту щоб продовжити реєстрацію. Після підтвердження перезавантажте сторінку.');
             return response.data;
@@ -61,6 +62,10 @@ export const SignUp = () => {
             setErrorMessage('Щось пішло не так. Спробуйте ще раз.');
         }
     }
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(prevState => !prevState);
+    };
 
     //color style settings
     const [currentColor, setCurrentColor] = useState<string>(banners[0].color);
@@ -158,7 +163,7 @@ export const SignUp = () => {
 
                         <label htmlFor="password">
                             <input
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 id="password"
                                 placeholder="пароль"
                                 value={password}
@@ -171,9 +176,9 @@ export const SignUp = () => {
                                 }}
                             />
                             <FontAwesomeIcon
-                                icon={faCheck}
-                                className="check"
-                                style={{ visibility: password.length >= 8 ? 'visible' : 'hidden' }}
+                                icon={showPassword ? faEye : faEyeSlash}
+                                onClick={togglePasswordVisibility}
+                                className="see__password"
                             />
                         </label>
 

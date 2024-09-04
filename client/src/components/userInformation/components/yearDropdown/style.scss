@@ -1,0 +1,55 @@
+@import "../../../../styleSettings/defines.scss";
+
+.education__year {
+    margin: calc(var(--index) * 1.2) 0;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--index) * 1);
+}
+
+.education__year label {
+    font-size: calc(var(--index) * .9);
+    font-weight: 600;
+    color: $defaultWhite; 
+    margin-right: calc(var(--index) * .6);
+}
+
+.education__year-select {
+    background-color: $defaultBlack; 
+    color: $defaultWhite; 
+    border: none; 
+    border-radius: calc(var(--index) * .2); 
+    padding: calc(var(--index) * .4) calc(var(--index) * 1.2) calc(var(--index) * .3); 
+    font-size: calc(var(--index) * .9);
+    font-weight: 600;
+    appearance: none; 
+    cursor: pointer;
+}
+
+.education__year-select:focus {
+    outline: none; 
+}
+
+// .education__year-select::after {
+//     content: '▽'; 
+//     position: absolute;
+//     right: 10px;
+//     pointer-events: none;
+//     color: $defaultWhite;
+// }
+
+.education__year-select option {
+    background-color: $defaultBlack; 
+    color: #ffffff; 
+    cursor: pointer;
+}
+
+.education__year-select:hover,
+.education__year-select:focus {
+    background-color: #ffffff13;
+}
+
+.education__year-select option:hover {
+    background-color: #4a4a4a;
+    cursor: pointer;
+}

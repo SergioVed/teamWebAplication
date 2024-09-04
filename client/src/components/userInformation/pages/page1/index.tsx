@@ -37,7 +37,6 @@ export const InformationPage1 = () => {
   useEffect(() => {
     checkUserAuthorization(navigate);
   }, []);
-
   return (
     <form className="InformationPage1">
       <div className="InformationPage1__wrapper">

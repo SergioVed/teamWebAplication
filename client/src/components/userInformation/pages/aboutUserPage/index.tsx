@@ -10,7 +10,7 @@ import { addFullInfo } from "../../../../api/addFullInfo";
 import { json } from "stream/consumers";
 import { checkUserAuthorization } from "../../../../api/user";
 
-export const InformationPage7 = () => {
+export const AboutUserPage = () => {
   const [value, setValue] = useState("");
   const [disabled, setDisabled] = useState<boolean>(true);
   const navigate = useNavigate()

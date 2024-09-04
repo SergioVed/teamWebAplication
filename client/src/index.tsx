@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { HomePage, SignIn, SignUp } from './components/index';
-import { InformationPage1, InformationPage2, InformationPage3, InformationPage4, InformationPage5, InformationPage6, InformationPage7 } from './components/userInformation/pages';
+import { InformationPage1, UserFieldsPage, UserSkillsPage, UserEnglishLevelPage, UserEducationPage, UserExperiencePage, AboutUserPage } from './components/userInformation/pages';
 import { FinalPage } from './components/userInformation/pages/finalPage';
 import { Profile } from './components/profile';
 
@@ -12,28 +12,28 @@ const infomationpageRoutes = [
     element: <InformationPage1 />,
   },
   {
-    path: '/sign-up/information-page2',
-    element: <InformationPage2 />,
+    path: '/sign-up/fields',
+    element: <UserFieldsPage />,
   },
   {
-    path: '/sign-up/information-page3',
-    element: <InformationPage3 />,
+    path: '/sign-up/skills',
+    element: <UserSkillsPage />,
   },
   {
-    path: '/sign-up/information-page4',
-    element: <InformationPage4 />,
+    path: '/sign-up/english-level',
+    element: <UserEnglishLevelPage />,
   },
   {
-    path: '/sign-up/information-page5',
-    element: <InformationPage5 />,
+    path: '/sign-up/education',
+    element: <UserEducationPage />,
   },
   {
-    path: '/sign-up/information-page6',
-    element: <InformationPage6 />,
+    path: '/sign-up/experience',
+    element: <UserExperiencePage />,
   },
   {
-    path: '/sign-up/information-page7',
-    element: <InformationPage7 />,
+    path: '/sign-up/about',
+    element: <AboutUserPage />,
   },
   {
     path: '/sign-up/final-page',

@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { checkUserAuthorization } from "../../../../api/user";
 
-export const InformationPage6 = () => {
+export const UserExperiencePage = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [inputValue, setInputValue] = useState<string>("");
   const [disabled, setDisabled] = useState<boolean>(true);
