@@ -4,3 +4,15 @@
 @use '../components/input/index.scss';
 @use '../components/randomWorkers/index.scss';
 @use '../components/projectBlock/style.scss';
+
+// pages files
+@use '../components/userInformation/pages/page1/index.scss';
+@use '../components/userInformation/pages/aboutUserPage/index.scss';
+@use '../components/userInformation/pages/finalPage/index.scss';
+@use '../components/userInformation/pages/userEducationPage/index.scss';
+@use '../components/userInformation/pages/userEnglishLevelPage/';
+@use '../components/userInformation/pages/userExperiencePage/index.scss';
+@use '../components/userInformation/pages/userFieldsPage/index.scss';
+@use '../components/userInformation/pages/userSkillsPage/index.scss';
+@use '../components/userInformation/components/languageComponent/index.scss';
+@use '../components/userInformation/components/nextBtn/index.scss';

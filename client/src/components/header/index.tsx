@@ -1,6 +1,5 @@
 import "./index.scss";
 import { Element, elements } from "../../data/header";
-import { Input } from "../input";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -30,6 +29,9 @@ export const Header = () => {
       console.error("Token validation failed", err);
     }
   };
+  const onclick = () => {
+    
+  }
   return (
     <div className="header">
       <div className="header__container">
@@ -41,16 +43,18 @@ export const Header = () => {
           ))}
         </div>
         <div className="header__inputContainer">
-          <Input
+          <input type="text" 
             value={value}
             placeholder="пошук напрямів"
-            classname={"header__inputContainer__input-focus"}
-            icon={faMagnifyingGlass}
-            onClick={click}
+            className={"header__inputContainer__input"}
             onChange={(e) => setValue(e.target.value)}
-            needed={true}
-            multiline={false}
           />
+
+          <button className="header__inputContainer__button"
+            onClick={onclick}
+          >
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
 
           <button
             onClick={openHomePage}

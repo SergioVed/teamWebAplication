@@ -2,12 +2,12 @@ import "./index.scss";
 import React, { useEffect, useRef, useState } from "react";
 import { NextBtn } from "../../components/nextBtn";
 import { RadioBtn } from "../../components/radioBtn";
-import { Input } from "../../../input";
 import { faSquareMinus } from "@fortawesome/free-solid-svg-icons";
 import { UpdateCookie } from "../../functions/updateCookie";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { checkUserAuthorization } from "../../../../api/user";
+import { TeaxtArea } from "../../components/textarea";
 
 export const UserExperiencePage = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
@@ -27,7 +27,7 @@ export const UserExperiencePage = () => {
 
     UpdateCookie({ expirience: info });
     console.log(Cookies.get("userInfo"))
-    navigate("/sign-up/information-page7");
+    navigate("/sign-up/about");
   }
 
   console.log(selectedOption)
@@ -37,9 +37,9 @@ export const UserExperiencePage = () => {
     setDisabled(isSelectedAndValid);
   }, [selectedOption, inputValue]);
 
-  useEffect(() => {
-    checkUserAuthorization(navigate);
-  }, []);
+  // useEffect(() => {
+  //   checkUserAuthorization(navigate);
+  // }, []);
   return (
     <div className="InformationPage6">
       <p className="InformationPage6__title">Чи є в тебе досвід роботи?</p>
@@ -59,14 +59,11 @@ export const UserExperiencePage = () => {
           description=""
         />
         {selectedOption === "Так, є" && (
-          <Input
-            icon={faSquareMinus} // Замените на ваш FontAwesome icon
-            onChange={(e) => setInputValue(e.target.value)}
-            classname="InformationPage6__container__textarea"
+          <TeaxtArea
+            onChange={(e: any) => setInputValue(e.target.value)}
+            className="InformationPage6__container__textarea"
             placeholder="Опиши свій досвід"
             value={inputValue}
-            needed={false}
-            multiline={true}
             maxLength={370}
           />
         )}

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Input } from "../../../input";
 import "./index.scss";
 import womanPhoto from "../../../../img/informationPage/weekday-woman-drawing-on-a-tablet 1.webp";
 import { NextBtn } from "../../components/nextBtn";
@@ -7,8 +6,8 @@ import { UpdateCookie } from "../../functions/updateCookie";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { addFullInfo } from "../../../../api/addFullInfo";
-import { json } from "stream/consumers";
 import { checkUserAuthorization } from "../../../../api/user";
+import { TeaxtArea } from "../../components/textarea";
 
 export const AboutUserPage = () => {
   const [value, setValue] = useState("");
@@ -33,9 +32,9 @@ export const AboutUserPage = () => {
     setDisabled(isValid)
   }, [value]);
 
-  useEffect(() => {
-    checkUserAuthorization(navigate);
-  }, []);
+  // useEffect(() => {
+  //   checkUserAuthorization(navigate);
+  // }, []);
   return (
     <div className="InformationPage7">
       <div className="InformationPage7__wrapper-container">
@@ -49,14 +48,12 @@ export const AboutUserPage = () => {
               себе)
             </p>
           </div>
-          <Input
+          <TeaxtArea
             maxLength={850}
-            classname="InformationPage7__container__textarea"
+            className="InformationPage7__container__textarea"
             placeholder=""
             value={value}
-            multiline={true}
-            needed={false}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e: any) => setValue(e.target.value)}
           />
         </div>
         <div className="InformationPage7__container__img">

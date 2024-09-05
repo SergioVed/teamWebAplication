@@ -2,7 +2,6 @@ import "./index.scss";
 import { useEffect, useRef, useState } from "react";
 import page1Img from "../../../../img/informationPage/InformationPage1.webp";
 import { NextBtn } from "../../components/nextBtn";
-import { Input } from "../../../input";
 import Cookies from "js-cookie";
 import { UpdateCookie } from "../../functions/updateCookie";
 import { useNavigate } from "react-router-dom";
@@ -20,13 +19,13 @@ export const InformationPage1 = () => {
     const info = {
       name: {
         firstName: name,
-        secondName: surName
-      }
-    }
+        secondName: surName,
+      },
+    };
 
     UpdateCookie(info);
     console.log(Cookies.get("userInfo"));
-    navigate("/sign-up/information-page2");
+    navigate("/sign-up/fields");
   }
 
   useEffect(() => {
@@ -34,9 +33,9 @@ export const InformationPage1 = () => {
     setDisabled(isValid);
   }, [name, surName]);
 
-  useEffect(() => {
-    checkUserAuthorization(navigate);
-  }, []);
+  // useEffect(() => {
+  //   checkUserAuthorization(navigate);
+  // }, []);
   return (
     <form className="InformationPage1">
       <div className="InformationPage1__wrapper">
@@ -49,23 +48,19 @@ export const InformationPage1 = () => {
           </div>
           <div className="InformationPage1__container__inputs">
             <label htmlFor="name">Твоє ім’я</label>
-            <Input
+            <input
+              type="text"
               onChange={(e) => setName(e.target.value)}
-              classname=""
               placeholder=""
-              needed={false}
-              multiline={false}
               value={name}
             />
           </div>
           <div className="InformationPage1__container__inputs">
             <label htmlFor="sur-name">Твоє прізвище</label>
-            <Input
+            <input
+              type="text"
               onChange={(e) => setSurName(e.target.value)}
-              classname=""
               placeholder=""
-              needed={false}
-              multiline={false}
               value={surName}
             />
           </div>

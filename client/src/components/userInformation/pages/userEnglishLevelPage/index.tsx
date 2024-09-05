@@ -19,12 +19,12 @@ export const UserEnglishLevelPage = () => {
 
     console.log(Cookies.get("userInfo"));
 
-    navigate("/sign-up/information-page5");
+    navigate("/sign-up/education");
   }
 
-  useEffect(() => {
-    checkUserAuthorization(navigate);
-  }, []);
+  // useEffect(() => {
+  //   checkUserAuthorization(navigate);
+  // }, []);
   return (
     <form className="InformationPage4">
       <p className="InformationPage4__title">

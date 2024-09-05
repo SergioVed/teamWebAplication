@@ -1,12 +1,11 @@
-:root {
-    --index: calc(1vw + 1vh)
-}
+@import '../../../../styleSettings/defines.scss';
+
 .InformationPage3{
     margin: 0 auto;
     padding-top: calc(var(--index) * 4);
     height: max-content;
     width: 85vw;
-    color: #fff;
+    color: $defaultWhite;
     display: flex;
     flex-direction: column;
     gap: calc(var(--index) * 2);
@@ -18,13 +17,10 @@
         height: calc(var(--index)* 7);
         width: 50vw;
         &__title{
-            color: #D999FF;
-            font-size: calc(var(--index) * 2);
-            font-weight: 700;
+            @include titleText;
         }
         &__sub-title{
-            font-size: calc(var(--index) * 1.1);
-            font-weight: 700;
+            @include titleDescription;
         }
     }
     &__container{
@@ -37,7 +33,7 @@
             width: 35vw;
             border-radius: 54px;
             outline: none;
-            color: #fff;
+            color: $defaultWhite;
             font-size: calc(var(--index) *1);
             transition: 0.5s;
             margin-bottom: calc(var(--index) * 8);    
@@ -85,7 +81,7 @@
     }
 }
 .options-scrollbar::-webkit-scrollbar-thumb {
-    background: #fff;
+    background: $defaultWhite;
     border-radius: 14px;
 }   
 .options-scrollbar::-webkit-scrollbar-thumb:hover {

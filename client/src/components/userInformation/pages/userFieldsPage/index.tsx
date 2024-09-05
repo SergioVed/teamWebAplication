@@ -30,7 +30,7 @@ export const UserFieldsPage = () => {
 
     UpdateCookie(info);
     console.log(Cookies.get("userInfo"));
-    navigate("/sign-up/information-page3");
+    navigate("/sign-up/skills");
   }
 
   useEffect(() => {
@@ -38,9 +38,9 @@ export const UserFieldsPage = () => {
     setDisabled(isEmpty);
   }, [selectedOptions]);
 
-  useEffect(() => {
-    checkUserAuthorization(navigate);
-  }, []);
+  // useEffect(() => {
+  //   checkUserAuthorization(navigate);
+  // }, []);
   return (
     <form className="InformationPage2">
       <div className="InformationPage2__title-div">
@@ -79,7 +79,6 @@ export const UserFieldsPage = () => {
         <div className="selected-options">
           {selectedOptions.map((option, key) => (
             <LanguageComponent
-              needed={true}
               item={option.name}
               key={key}
               deleteFunction={DeleteFunc(
