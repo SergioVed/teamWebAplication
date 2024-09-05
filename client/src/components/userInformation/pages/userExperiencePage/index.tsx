@@ -25,7 +25,7 @@ export const UserExperiencePage = () => {
       }
     }
 
-    UpdateCookie({ expirience: info });
+    UpdateCookie(info);
     console.log(Cookies.get("userInfo"))
     navigate("/sign-up/about");
   }
