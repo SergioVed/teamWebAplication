@@ -1,0 +1,116 @@
+@import '../../styleSettings/defines.scss';
+
+.profilePage{
+    width: 85vw;
+    margin: 0 auto;
+    color: $defaultWhite;
+    padding-top: calc(var(--index) * 5);;
+}
+.userInfo{
+    display: flex;
+    justify-content: space-between;
+    &__profilePicture{
+        font-size: calc(var(--index) * 6);
+        color: $defaultGray;
+    }
+    &__text{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 70vw;
+        &__name{
+            font-size: calc(var(--index) * 1.2);
+            font-weight: 600;
+        }
+        &__nickname{
+            font-size: $mainTextFontSize;
+            font-weight: 600;
+            margin-bottom: calc(var(--index) * 1.6);
+        }
+        &__description{
+            font-size: $mainTextFontSize;
+            font-weight: 400;
+            word-wrap: normal;
+            word-break: break-word;
+            max-width: 100%
+        }
+    }
+    &__edit{
+        font-size: $mainTextFontSize;
+        color: $defaulPurple;
+    }
+}
+.userTechnologies{
+    padding-right: calc(var(--index) * 1);;
+    border-right: 1px solid $defaultWhite;
+    width: 35vw;
+    margin-top: calc(var(--index) * 3);
+    &__direction{
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &__title{
+            font-size: calc(var(--index) * 1.2);
+            font-weight: 600;
+        }
+        &__container{
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: calc(var(--index) * 0.7);
+            gap: calc(var(--index) * 0.3);
+        }
+    }
+    &__techs{
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: calc(var(--index) * 1.5);
+        &__title{
+            font-size: calc(var(--index) * 1.2);
+            font-weight: 600;
+        }
+        &__container{
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: calc(var(--index) * 0.7);
+            gap: calc(var(--index) * 0.3);
+        }
+    }
+    &__education{
+        margin-top: calc(var(--index) * 1.5);
+        &__title{
+            font-size: calc(var(--index) * 1.2);
+            font-weight: 600;
+        }
+        &__container{
+            display: flex;
+            flex-direction: column;
+            margin-top: calc(var(--index) * 0.7);
+            gap: calc(var(--index) * 0.3);
+            &__item{
+                font-size: calc(var(--index) * .6);
+                font-weight: 600;
+            }
+        }
+    }
+    &__expirience{
+        margin-top: calc(var(--index) * 1.5);
+        &__title{
+            font-size: calc(var(--index) * 1.2);
+            font-weight: 600;
+        }
+        &__description{
+            margin-top: calc(var(--index) * 0.7);
+            font-size: calc(var(--index) * 0.6);
+            font-weight: 600;
+        }
+    }
+
+    &__englishLevel{
+        margin-top: calc(var(--index) * 1.5);
+        font-size: calc(var(--index) * 1.2);
+        font-weight: 600;
+    }
+}

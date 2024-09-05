@@ -1,0 +1,8 @@
+.itemComponent{
+    background-color: rgba(217, 217, 217, 0.05);
+    border: none;
+    border-radius: calc(var(--index) * 0.7);
+    font-size: calc(var(--index) * .6);
+    font-weight: 600;
+    padding: calc(var(--index) * 0.3) calc(var(--index) * 0.7);
+}

@@ -34,6 +34,12 @@ export const UserEducationPage = () => {
     setEducation(newGraduation);
   }
 
+  function handleYearChange (index: number, type: "start" | "end", year: string) {
+    const newGraduation = [...education];
+    newGraduation[index].year[type] = year;
+    setEducation(newGraduation)
+  }
+
   function handleInformation(e: React.MouseEvent) {
     e.preventDefault();
 
@@ -51,6 +57,7 @@ export const UserEducationPage = () => {
   // useEffect(() => {
   //     checkUserAuthorization(navigate);
   // }, []);
+  console.log(startYear, endYear)
   return (
     <div className="InformationPage5">
       <div className="InformationPage5__title-container">
@@ -85,12 +92,12 @@ export const UserEducationPage = () => {
             <div className="education__year">
               <div>
                 <label>з </label>
-                <YearDropdown startYear={startYear} endYear={currentYear} />
+                <YearDropdown startYear={startYear} endYear={currentYear} selectedYear={value.year.start} onChange={(e) => handleYearChange(index, "start", e)}/>
               </div>
 
               <div>
                 <label>по </label>
-                <YearDropdown startYear={startYear} endYear={currentYear} />
+                <YearDropdown startYear={startYear} endYear={currentYear} selectedYear={value.year.end} onChange={(e) => handleYearChange(index, "end", e)}/>
               </div>
             </div>
           </div>
