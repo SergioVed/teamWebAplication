@@ -8,6 +8,12 @@ export const works: any = {
     "IOS розробка": [
         "Objective-C", "Swift"
     ],    
+    "Гейм дев": [
+        "Objective-C", "Swift"
+    ],    
+    "Веб дизайн": [
+        "Objective-C", "Swift"
+    ],  
 }
 
 export const EnglishLvl = [
