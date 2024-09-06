@@ -25,10 +25,10 @@ $mainTextFontSize: calc(var(--index) * .8);
 @mixin titleText {
     color: $defaulPurple;
     font-size: calc(var(--index) * 2);
-    font-weight: 700;
+    font-weight: 800;
 }   
 @mixin titleDescription {
-    font-size: calc(var(--index) * 1);
-    font-weight: 700;
+    font-size: calc(var(--index) * .9);
+    font-weight: 600;
     color: $defaultWhite;
 }

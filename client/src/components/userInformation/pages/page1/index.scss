@@ -1,10 +1,12 @@
 @import '../../../../styleSettings/defines.scss';
 
 .InformationPage1{
+    z-index: 99;
+    position: relative;
     margin: 0 auto;
     padding-top: calc(var(--index) * 5);
     height: max-content;
-    width: 85vw;
+    width: 80vw;
     color: $defaultWhite;
     display: flex;
     flex-direction: column;
@@ -12,19 +14,28 @@
     &__wrapper{
         display: flex;
         justify-content: space-between;
+        align-items: center;
+
         img{
-            width: calc(var(--index) * 19);
+            width: calc(var(--index) * 20);
+            padding: calc(var(--index) * .6) 0 0 0;
         }
     }
     &__container{
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        gap: calc(var(--index) * 1.4);
+        margin-top: calc(var(--index) * -.9);
         &__title{
+            color: #D999FF;
+            font-size: calc(var(--index) * 2);
+            font-weight: 700;
+            margin-bottom: calc(var(--index) * .4);
             @include titleText;
         }
         &__p{
             @include titleDescription;
+            margin-bottom: calc(var(--index) * .8);
         }
         &__inputs{
             display: flex;
@@ -35,20 +46,19 @@
             }
         }
         label{
-            font-size: calc(var(--index) * 1);
+            font-size: $mainTextFontSize;
             font-weight: 600;
         }
         input{
             border: 3px solid rgba(255, 255, 255, 55%);
             background-color: rgba(255, 255, 255, 5%);
-            height: calc(var(--index) *2.1);
             width: calc(var(--index) *21);
-            border-radius: 54px;
+            border-radius: calc(var(--index) * 5);
             outline: none;
             color: $defaultWhite;
             font-size: $mainTextFontSize;
             font-weight: 600;
-            padding-left: calc(var(--index) * 0.7);
+            padding: calc(var(--index) * .6) calc(var(--index) * 1.5);
             transition: 0.5s;
         }
         input:focus{

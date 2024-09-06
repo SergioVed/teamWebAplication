@@ -1,8 +1,7 @@
 @import '../../../../styleSettings/defines.scss';
 
 .button{
-    height: calc(var(--index) * 1.7);
-    width: calc(var(--index) * 3.5);
+    padding: calc(var(--index) * .5) calc(var(--index) * 1.5);
     font-size: $mainTextFontSize;
     font-weight: 600;
     background-color: $defaulPurple;

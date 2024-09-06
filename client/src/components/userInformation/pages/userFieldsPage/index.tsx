@@ -14,6 +14,9 @@ import Cookies from "js-cookie";
 import { UpdateCookie } from "../../functions/updateCookie";
 import { useNavigate } from "react-router-dom";
 import { checkUserAuthorization } from "../../../../api/user";
+import { banners } from "../../../../data/banners";
+import { getBrightness, setColor } from "../../../../api/colors";
+import { Gradient } from "../../../gradient";
 
 export const UserFieldsPage = () => {
   const optionsRef = useRef<HTMLDivElement>(null);
@@ -41,63 +44,87 @@ export const UserFieldsPage = () => {
   // useEffect(() => {
   //   checkUserAuthorization(navigate);
   // }, []);
+
+
+  //color style settings
+  const [currentColor, setCurrentColor] = useState<string>(banners[0].color);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  useEffect(() => {
+    const setElementColor = setColor(setCurrentIndex, setCurrentColor);
+
+    return () => setElementColor();
+  }, []);
+
+  const textColor = getBrightness(currentColor) > 160 ? 'black' : 'white';
   return (
-    <form className="InformationPage2">
-      <div className="InformationPage2__title-div">
-        <p className="InformationPage2__title-div__title">
-          Обери напрям в якому працюєш
-        </p>
-        <p className="InformationPage2__title-div__sub-title">
-          (можна обрати декілька)
-        </p>
-      </div>
-      <div className="InformationPage2__container">
-        <button
-          className="InformationPage2__container__selectBtn"
-          onClick={(event) => OptionVisibleFunc(optionsRef, event)}
-        >
-          <FontAwesomeIcon
-            icon={faChevronDown}
-            className="InformationPage2__container__selectBtn__img"
-          />
-        </button>
-        <div className="options" ref={optionsRef}>
-          <div className="options-scrollbar">
-            {Object.keys(works).map((workKey) => (
-              <p
-                onClick={() => {
-                  SelectOptionFunc(workKey, setSelectedOptions);
-                }}
-                key={workKey}
-                className={selectedOptions.some((option) => option.name === workKey) ? "darkned" : ""}
-              >
-                {workKey}
-              </p>
+    <>
+      <Gradient currentColor={currentColor} />
+
+      <form className="InformationPage2">
+        <div className="InformationPage2__title-div">
+          <p className="InformationPage2__title-div__title" style={{ color: currentColor }}>
+            Обери напрям в якому працюєш
+          </p>
+
+          <p className="InformationPage2__title-div__sub-title">
+            (можна обрати декілька)
+          </p>
+        </div>
+        <div className="InformationPage2__container">
+          <button
+            className="InformationPage2__container__selectBtn"
+            onClick={(event) => OptionVisibleFunc(optionsRef, event)}
+          >
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              className="InformationPage2__container__selectBtn__img"
+            />
+          </button>
+
+          <div className="options" ref={optionsRef}>
+            <div className="options-scrollbar">
+              {Object.keys(works).map((workKey) => (
+                <p
+                  onClick={() => {
+                    SelectOptionFunc(workKey, setSelectedOptions);
+                  }}
+
+                  key={workKey}
+                  className={selectedOptions.some((option) => option.name === workKey) ? "darkned" : ""}
+                >
+                  {workKey}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div className="selected-options">
+            {selectedOptions.map((option, key) => (
+              <LanguageComponent
+                item={option.name}
+                key={key}
+                deleteFunction={DeleteFunc(
+                  key,
+                  selectedOptions,
+                  setSelectedOptions
+                )}
+              />
             ))}
           </div>
         </div>
-        <div className="selected-options">
-          {selectedOptions.map((option, key) => (
-            <LanguageComponent
-              item={option.name}
-              key={key}
-              deleteFunction={DeleteFunc(
-                key,
-                selectedOptions,
-                setSelectedOptions
-              )}
-            />
-          ))}
+
+        <div className="InformationPage2__button-wrapper">
+          <NextBtn
+            classname={"InformationPage2__button-wrapper__button"}
+            value="далі"
+            disabled={disabled}
+            currentColor={currentColor}
+            textColor={textColor}
+            onClick={handleInformation}
+          />
         </div>
-      </div>
-      <div className="InformationPage2__button-wrapper">
-        <NextBtn
-          classname={"InformationPage2__button-wrapper__button"}
-          value="далі"
-          disabled={disabled}
-          onClick={handleInformation}
-        />
-      </div>
-    </form>
+      </form>
+    </>
   );
 };
