@@ -1,12 +1,15 @@
 import "./index.scss";
 import { useEffect, useRef, useState } from "react";
-import page1Img from "../../../../img/informationPage/InformationPage1.webp";
+import page1Img from "../../../../img/informationPage/page1-img.webp";
 import { NextBtn } from "../../components/nextBtn";
 import { Input } from "../../../input";
 import Cookies from "js-cookie";
 import { UpdateCookie } from "../../functions/updateCookie";
 import { useNavigate } from "react-router-dom";
 import { checkUserAuthorization } from "../../../../api/user";
+import { banners } from "../../../../data/banners";
+import { getBrightness, setColor } from "../../../../api/colors";
+import { Gradient } from "../../../gradient";
 
 export const InformationPage1 = () => {
   const [name, setName] = useState("");
@@ -26,7 +29,7 @@ export const InformationPage1 = () => {
 
     UpdateCookie(info);
     console.log(Cookies.get("userInfo"));
-    navigate("/sign-up/information-page2");
+    navigate("/sign-up/fields");
   }
 
   useEffect(() => {
@@ -34,50 +37,73 @@ export const InformationPage1 = () => {
     setDisabled(isValid);
   }, [name, surName]);
 
+  // useEffect(() => {
+  //   checkUserAuthorization(navigate);
+  // }, []);
+
+  //color style settings
+  const [currentColor, setCurrentColor] = useState<string>(banners[0].color);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
   useEffect(() => {
-    checkUserAuthorization(navigate);
+    const setElementColor = setColor(setCurrentIndex, setCurrentColor);
+
+    return () => setElementColor();
   }, []);
+
+  const textColor = getBrightness(currentColor) > 160 ? 'black' : 'white';
   return (
-    <form className="InformationPage1">
-      <div className="InformationPage1__wrapper">
-        <div className="InformationPage1__container">
-          <div>
-            <p className="InformationPage1__container__title">Привіт!</p>
-            <p className="InformationPage1__container__p">
-              Перед початком роботи треба заповнити дані про себе
-            </p>
+    <>
+      <Gradient currentColor={currentColor} />
+
+      <form className="InformationPage1">
+        <div className="InformationPage1__wrapper">
+          <div className="InformationPage1__container">
+            <div>
+              <p className="InformationPage1__container__title" style={{color: currentColor}}>Привіт!</p>
+              
+              <p className="InformationPage1__container__p">
+                Перед початком роботи треба заповнити дані про себе
+              </p>
+            </div>
+
+            <div className="InformationPage1__container__inputs">
+              <label htmlFor="name">Твоє ім’я</label>
+              <Input
+                onChange={(e) => setName(e.target.value)}
+                classname=""
+                placeholder=""
+                needed={false}
+                multiline={false}
+                value={name}
+              />
+            </div>
+
+            <div className="InformationPage1__container__inputs">
+              <label htmlFor="sur-name">Твоє прізвище</label>
+              <Input
+                onChange={(e) => setSurName(e.target.value)}
+                classname=""
+                placeholder=""
+                needed={false}
+                multiline={false}
+                value={surName}
+              />
+            </div>
           </div>
-          <div className="InformationPage1__container__inputs">
-            <label htmlFor="name">Твоє ім’я</label>
-            <Input
-              onChange={(e) => setName(e.target.value)}
-              classname=""
-              placeholder=""
-              needed={false}
-              multiline={false}
-              value={name}
-            />
-          </div>
-          <div className="InformationPage1__container__inputs">
-            <label htmlFor="sur-name">Твоє прізвище</label>
-            <Input
-              onChange={(e) => setSurName(e.target.value)}
-              classname=""
-              placeholder=""
-              needed={false}
-              multiline={false}
-              value={surName}
-            />
-          </div>
+
+          <img src={page1Img} alt="image" style={{backgroundColor: currentColor}}/>
         </div>
-        <img src={page1Img} alt="" />
-      </div>
-      <NextBtn
-        classname={""}
-        value="далі"
-        disabled={disabled}
-        onClick={handleInformation}
-      />
-    </form>
+
+        <NextBtn
+          classname={""}
+          value="далі"
+          disabled={disabled}
+          currentColor={currentColor}
+          textColor={textColor}
+          onClick={handleInformation}
+        />
+      </form>
+    </>
   );
 };

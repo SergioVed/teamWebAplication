@@ -9,6 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { addFullInfo } from "../../../../api/addFullInfo";
 import { json } from "stream/consumers";
 import { checkUserAuthorization } from "../../../../api/user";
+import { banners } from "../../../../data/banners";
+import { getBrightness, setColor } from "../../../../api/colors";
+import { Gradient } from "../../../gradient";
 
 export const AboutUserPage = () => {
   const [value, setValue] = useState("");
@@ -33,42 +36,65 @@ export const AboutUserPage = () => {
     setDisabled(isValid)
   }, [value]);
 
+  // useEffect(() => {
+  //   checkUserAuthorization(navigate);
+  // }, []);
+
+
+  //color style settings
+  const [currentColor, setCurrentColor] = useState<string>(banners[0].color);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
   useEffect(() => {
-    checkUserAuthorization(navigate);
+    const setElementColor = setColor(setCurrentIndex, setCurrentColor);
+
+    return () => setElementColor();
   }, []);
+
+  const textColor = getBrightness(currentColor) > 160 ? 'black' : 'white';
   return (
-    <div className="InformationPage7">
-      <div className="InformationPage7__wrapper-container">
-        <div className="InformationPage7__container">
-          <div className="InformationPage7__container__title-div">
-            <p className="InformationPage7__container__title-div__title">
-              Розкажи про себе
-            </p>
-            <p className="InformationPage7__container__title-div__sub-title">
-              (коротко розкажи хто ти, навіщо ти тут і які проєкти шукаєш для
-              себе)
-            </p>
+    <>
+      <Gradient currentColor={currentColor} />
+
+      <div className="InformationPage7">
+        <div className="InformationPage7__wrapper-container">
+          <div className="InformationPage7__container">
+            <div className="InformationPage7__container__title-div">
+              <p className="InformationPage7__container__title-div__title" style={{color: currentColor}}>
+                Розкажи про себе
+              </p>
+
+              <p className="InformationPage7__container__title-div__sub-title">
+                (коротко розкажи хто ти, навіщо ти тут і які проєкти шукаєш для
+                себе)
+              </p>
+            </div>
+
+            <Input
+              maxLength={850}
+              classname="InformationPage7__container__textarea"
+              placeholder=""
+              value={value}
+              multiline={true}
+              needed={false}
+              onChange={(e) => setValue(e.target.value)}
+            />
           </div>
-          <Input
-            maxLength={850}
-            classname="InformationPage7__container__textarea"
-            placeholder=""
-            value={value}
-            multiline={true}
-            needed={false}
-            onChange={(e) => setValue(e.target.value)}
-          />
+
+          <div className="InformationPage7__container__img">
+            <img src={womanPhoto} alt="" />
+          </div>
         </div>
-        <div className="InformationPage7__container__img">
-          <img src={womanPhoto} alt="" />
-        </div>
+
+        <NextBtn
+          value="завершити"
+          classname="InformationPage7__button"
+          disabled={disabled}
+          currentColor={currentColor}
+          textColor={textColor}
+          onClick={handleInformation}
+        />
       </div>
-      <NextBtn
-        value="завершити"
-        classname="InformationPage7__button"
-        disabled={disabled}
-        onClick={handleInformation}
-      />
-    </div>
+    </>
   );
 };

@@ -7,6 +7,9 @@ import { UpdateCookie } from "../../functions/updateCookie";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { checkUserAuthorization } from "../../../../api/user";
+import { banners } from "../../../../data/banners";
+import { getBrightness, setColor } from "../../../../api/colors";
+import { Gradient } from "../../../gradient";
 
 export const UserEnglishLevelPage = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
@@ -19,36 +22,58 @@ export const UserEnglishLevelPage = () => {
 
     console.log(Cookies.get("userInfo"));
 
-    navigate("/sign-up/information-page5");
+    navigate("/sign-up/education");
   }
 
+  // useEffect(() => {
+  //   checkUserAuthorization(navigate);
+  // }, []);
+
+
+  //color style settings
+  const [currentColor, setCurrentColor] = useState<string>(banners[0].color);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
   useEffect(() => {
-    checkUserAuthorization(navigate);
+    const setElementColor = setColor(setCurrentIndex, setCurrentColor);
+
+    return () => setElementColor();
   }, []);
+
+  const textColor = getBrightness(currentColor) > 160 ? 'black' : 'white';
   return (
-    <form className="InformationPage4">
-      <p className="InformationPage4__title">
-        Обери свій рівень англійської мови
-      </p>
-      <div className="InformationPage4__container">
-        {EnglishLvl.map((e, index) => (
-          <div className="InformationPage4__container__element" key={index}>
-            <RadioBtn
-              index={index}
-              selectedLevel={selectedOption}
-              onchange={(e: any) => setSelectedOption(e.target.value)}
-              title={e.title}
-              description={e.description}
-            />
-          </div>
-        ))}
-      </div>
-      <NextBtn
-        classname={"btn-wrapper"}
-        value="далі"
-        disabled={false}
-        onClick={(e) => handleInformation(e)}
-      />
-    </form>
+    <>
+      <Gradient currentColor={currentColor} />
+
+      <form className="InformationPage4">
+        <p className="InformationPage4__title" style={{color: currentColor}}>
+          Обери свій рівень англійської мови
+        </p>
+        
+        <div className="InformationPage4__container">
+          {EnglishLvl.map((e, index) => (
+            <div className="InformationPage4__container__element" key={index}>
+              <RadioBtn
+                index={index}
+                selectedLevel={selectedOption}
+                onchange={(e: any) => setSelectedOption(e.target.value)}
+                title={e.title}
+                description={e.description}
+                currentColor={currentColor}
+              />
+            </div>
+          ))}
+        </div>
+
+        <NextBtn
+          classname={"btn-wrapper"}
+          value="далі"
+          disabled={false}
+          currentColor={currentColor}
+          textColor={textColor}
+          onClick={(e) => handleInformation(e)}
+        />
+      </form>
+    </>
   );
 };

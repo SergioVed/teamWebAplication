@@ -2,6 +2,8 @@
     --index: calc(1vw + 1vh)
 }
 .InformationPage1{
+    z-index: 99;
+    position: relative;
     margin: 0 auto;
     padding-top: calc(var(--index) * 5);
     height: max-content;
@@ -13,18 +15,24 @@
     &__wrapper{
         display: flex;
         justify-content: space-between;
+        align-items: center;
+
         img{
-            width: calc(var(--index) * 19);
+            width: calc(var(--index) * 20);
+            // margin-top: calc(var(--index) * .7);
+            padding: calc(var(--index) * .8) 0 0 0;
         }
     }
     &__container{
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        gap: calc(var(--index) * 2.3);
+        margin-top: calc(var(--index) * -.8);
         &__title{
             color: #D999FF;
             font-size: calc(var(--index) * 2);
             font-weight: 700;
+            margin-bottom: calc(var(--index) * .4);
         }
         &__p{
             font-size: calc(var(--index) * 1.1);

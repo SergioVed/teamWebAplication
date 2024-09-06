@@ -2,6 +2,8 @@
     --index: calc(1vw + 1vh)
 }
 .InformationPage4{
+    z-index: 99;
+    position: relative;
     margin: 0 auto;
     padding-top: calc(var(--index) * 5);
     height: max-content;

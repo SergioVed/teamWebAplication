@@ -5,6 +5,8 @@
 }
 
 .InformationPage5{
+    z-index: 99;
+    position: relative;
     margin: 0 auto;
     padding-top: calc(var(--index) * 5);
     height: max-content;

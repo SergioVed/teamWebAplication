@@ -11,6 +11,9 @@ import { checkUserAuthorization } from "../../../../api/user";
 import { IEducation } from "../../../../types";
 import { YearDropdown } from "../../components/yearDropdown";
 import { DeleteFuncEducation } from "../../functions/deleteFuncEducation";
+import { Gradient } from "../../../gradient";
+import { banners } from "../../../../data/banners";
+import { getBrightness, setColor } from "../../../../api/colors";
 
 export const UserEducationPage = () => {
     const [education, setEducation] = useState<IEducation[]>([]);
@@ -39,7 +42,7 @@ export const UserEducationPage = () => {
 
         UpdateCookie({ education: education })
         console.log(Cookies.get("userInfo"))
-        navigate("/sign-up/information-page6")
+        navigate("/sign-up/experience")
     }
 
     useEffect(() => {
@@ -50,49 +53,87 @@ export const UserEducationPage = () => {
     // useEffect(() => {
     //     checkUserAuthorization(navigate);
     // }, []);
+
+
+    //color style settings
+    const [currentColor, setCurrentColor] = useState<string>(banners[0].color);
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+    useEffect(() => {
+        const setElementColor = setColor(setCurrentIndex, setCurrentColor);
+
+        return () => setElementColor();
+    }, []);
+
+    const textColor = getBrightness(currentColor) > 160 ? 'black' : 'white';
     return (
-        <div className="InformationPage5">
-            <div className="InformationPage5__title-container">
-                <p className="InformationPage5__title-container__title">Вкажи свою освіту або курси, які проходив</p>
-                <p className="InformationPage5__title-container__description">(вказуй тільки освіту/курси, які стосуються IT напрямків, які ти обрав до)</p>
-            </div>
-            <div className="InformationPage5__container">
-                {education.map((value, index) => (
-                    <div>
-                        <Input
-                            value={value.name}
-                            placeholder={""}
-                            classname={"InformationPage5__container__input-focus"}
-                            icon={faSquareMinus}
-                            key={index}
-                            onClick={DeleteFuncEducation(index, education, setEducation)}
-                            onChange={(e) => handleInputChange(index, e.target.value)}
-                            needed={true}
-                            multiline={false}
-                        />
+        <>
+            <Gradient currentColor={currentColor} />
+            
+            <div className="InformationPage5">
+                <div className="InformationPage5__title-container">
+                    <p className="InformationPage5__title-container__title" style={{ color: currentColor }}>
+                        Вкажи свою освіту або курси, які проходив
+                    </p>
 
-                        <div className="education__year">
-                            <div>
-                                <label>з </label>
-                                <YearDropdown
-                                    startYear={startYear}
-                                    endYear={currentYear}
-                                />
-                            </div>
+                    <p className="InformationPage5__title-container__description">
+                        (вказуй тільки освіту/курси, які стосуються IT напрямків, які ти обрав до)
+                    </p>
+                </div>
 
-                            <div>
-                                <label>по </label>
-                                <YearDropdown
-                                    startYear={startYear}
-                                    endYear={currentYear}
-                                />
+                <div className="InformationPage5__container">
+                    {education.map((value, index) => (
+                        <div>
+                            <Input
+                                value={value.name}
+                                placeholder={""}
+                                classname={"InformationPage5__container__input-focus"}
+                                icon={faSquareMinus}
+                                key={index}
+                                onClick={DeleteFuncEducation(index, education, setEducation)}
+                                onChange={(e) => handleInputChange(index, e.target.value)}
+                                needed={true}
+                                multiline={false}
+                            />
+
+                            <div className="education__year">
+                                <div>
+                                    <label>з </label>
+                                    <YearDropdown
+                                        startYear={startYear}
+                                        endYear={currentYear}
+                                    />
+                                </div>
+
+                                <div>
+                                    <label>по </label>
+                                    <YearDropdown
+                                        startYear={startYear}
+                                        endYear={currentYear}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
+
+                <NextBtn
+                    disabled={disabled}
+                    currentColor={currentColor}
+                    textColor={textColor}
+                    value="+"
+                    classname="InformationPage5__addGraduation-btn"
+                    onClick={addInput}
+                />
+
+                <NextBtn
+                    disabled={disabled}
+                    currentColor={currentColor}
+                    textColor={textColor}
+                    value="далі"
+                    onClick={(e) => handleInformation(e)}
+                />
             </div>
-            <NextBtn disabled={disabled} value="+" classname="InformationPage5__addGraduation-btn" onClick={addInput} />
-            <NextBtn disabled={disabled} value="далі" onClick={(e) => handleInformation(e)} />
-        </div>
+        </>
     )
 }
