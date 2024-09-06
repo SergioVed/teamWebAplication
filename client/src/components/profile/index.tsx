@@ -42,7 +42,7 @@ export const Profile = () => {
                 
                 {user ? <div className="userTechnologies">
                     <div className="userTechnologies__direction">
-                        <p className="userTechnologies__direction__title">Напрямок</p>
+                        <p className="userTechnologies-title">Напрямок</p>
                         <div className="userTechnologies__direction__container">
                             {user.direction.map((item: any) => (
                                 <ItemComponent name={item.name}/>
@@ -51,7 +51,7 @@ export const Profile = () => {
 
                     </div>
                     <div className="userTechnologies__techs">
-                        <p className="userTechnologies__techs__title">Технології</p>
+                        <p className="userTechnologies-title">Технології</p>
                         <div className="userTechnologies__techs__container">
                             {user.technologies.map((item: any) => (
                                 <ItemComponent name={item.name}/>
@@ -59,7 +59,7 @@ export const Profile = () => {
                         </div>
                     </div>
                     <div className="userTechnologies__education">
-                        <p className="userTechnologies__education__title">Освіта/курси</p>
+                        <p className="userTechnologies-title">Освіта/курси</p>
                         <div className="userTechnologies__education__container">
                             {user.education.map((item: any) => (
                                <p className="userTechnologies__education__container__item">{item.name} ({item.year.start} - {item.year.end})</p> 
@@ -67,7 +67,7 @@ export const Profile = () => {
                         </div>
                     </div>
                     <div className="userTechnologies__expirience">
-                        <p className="userTechnologies__expirience__title">Досвід</p>
+                        <p className="userTechnologies-title">Досвід</p>
                         <p className="userTechnologies__expirience__description">
                             {user.experience.answer === "Так, є" ? user.experience.description : user.experience.answer}
                         </p>
