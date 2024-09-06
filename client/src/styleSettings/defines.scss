@@ -18,5 +18,17 @@ body {
 $defaultWhite: #fffffffc;
 $defaultGray: #D9D9D9;
 $defaultBlack: #111111;
+$defaulPurple: #D999FF;
 
-$mainTextFontSize: calc(var(--index) * .8);
+$mainTextFontSize: calc(var(--index) * .8); 
+
+@mixin titleText {
+    color: $defaulPurple;
+    font-size: calc(var(--index) * 2);
+    font-weight: 700;
+}   
+@mixin titleDescription {
+    font-size: calc(var(--index) * 1);
+    font-weight: 700;
+    color: $defaultWhite;
+}

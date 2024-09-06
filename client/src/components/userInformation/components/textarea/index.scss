@@ -1,0 +1,11 @@
+.textarea{
+    resize: none;
+    border: 2.4px solid #fff;
+    background: transparent;
+    color: #fff;
+    font-size: calc(var(--index) * .8);
+    font-weight: 600;
+    padding: calc(var(--index) * .3) calc(var(--index) * .7);
+    border-radius: calc(var(--index) * 1);
+    outline: none;
+}

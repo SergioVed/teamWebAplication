@@ -44,6 +44,32 @@
         align-items: center;
         display: flex;
         gap: calc(var(--index)* 1);
+        &__input{
+            width: calc(var(--index) * 15);
+            height: calc(var(--index) * 1.8);
+            border: 2.4px solid #fff;
+            background: transparent;
+            color: #fff;
+            font-size: calc(var(--index) * .8);
+            font-weight: 600;
+            padding-left: calc(var(--index) * 0.7);
+            border-radius: calc(var(--index) * 4);
+            outline: none;
+        }
+        &__input:focus{
+            border-color: #D999FF;
+        }
+        &__button{
+            background: none;
+            border: none;
+            color: #fff;
+            transition: 0.3s;
+            font-size: calc(var(--index) * 1.4);
+        }
+        &__button:hover{
+            transform: translateY(calc(var(--index) * -0.2));
+            transition: 0.3s;
+        }
         &__profileImg{
             font-size: calc(var(--index) * 1.4);
             background: none;

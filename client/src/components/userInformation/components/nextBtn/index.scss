@@ -1,9 +1,11 @@
+@import '../../../../styleSettings/defines.scss';
+
 .button{
-    height: calc(var(--index) * 2);
-    width: calc(var(--index) * 5);
-    font-size: calc(var(--index) * 1.2);
+    height: calc(var(--index) * 1.7);
+    width: calc(var(--index) * 3.5);
+    font-size: $mainTextFontSize;
     font-weight: 600;
-    background-color: #D999FF;
+    background-color: $defaulPurple;
     margin: 0 auto;
     border: none;
     border-radius: 5px;
