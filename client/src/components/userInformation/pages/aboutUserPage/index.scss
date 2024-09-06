@@ -1,6 +1,4 @@
-:root {
-    --index: calc(1vw + 1vh)
-}
+@import '../../../../styleSettings/defines.scss';
 
 .InformationPage7 {
     z-index: 99;
@@ -40,23 +38,17 @@
             flex-direction: column;
             color: #fff;
             &__title {
-                color: #D999FF;
-                font-size: calc(var(--index) * 2);
-                font-weight: 700;
+                @include titleText
             }
 
             &__sub-title {
-                font-size: calc(var(--index) * 1.1);
-                font-weight: 700;
+                @include titleDescription
             }
         }
 
         &__textarea {
-            height: calc(var(--index) * 9);
+            height: calc(var(--index) * 11.5);
             width: calc(var(--index) * 37);
-            padding-top: calc(var(--index) * 0.5);
-            padding-left: calc(var(--index) * 0.7);
-            resize: none;
         }
     }
     &__button{

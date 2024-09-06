@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Input } from "../../../input";
 import "./index.scss";
 import womanPhoto from "../../../../img/informationPage/weekday-woman-drawing-on-a-tablet 1.webp";
 import { NextBtn } from "../../components/nextBtn";
@@ -7,11 +6,11 @@ import { UpdateCookie } from "../../functions/updateCookie";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { addFullInfo } from "../../../../api/addFullInfo";
-import { json } from "stream/consumers";
 import { checkUserAuthorization } from "../../../../api/user";
 import { banners } from "../../../../data/banners";
 import { getBrightness, setColor } from "../../../../api/colors";
 import { Gradient } from "../../../gradient";
+import { TeaxtArea } from "../../components/textarea";
 
 export const AboutUserPage = () => {
   const [value, setValue] = useState("");
@@ -70,7 +69,7 @@ export const AboutUserPage = () => {
               </p>
             </div>
 
-            <Input
+            {/* <Input
               maxLength={850}
               classname="InformationPage7__container__textarea"
               placeholder=""
@@ -78,12 +77,22 @@ export const AboutUserPage = () => {
               multiline={true}
               needed={false}
               onChange={(e) => setValue(e.target.value)}
-            />
+            /> */}
           </div>
 
           <div className="InformationPage7__container__img">
             <img src={womanPhoto} alt="" />
           </div>
+          <TeaxtArea
+            maxLength={850}
+            className="InformationPage7__container__textarea"
+            placeholder=""
+            value={value}
+            onChange={(e: any) => setValue(e.target.value)}
+          />
+        </div>
+        <div className="InformationPage7__container__img">
+          <img src={womanPhoto} alt="" />
         </div>
 
         <NextBtn

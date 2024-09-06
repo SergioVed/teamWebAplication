@@ -25,7 +25,7 @@ module.exports.register = async (nickname, email, password) => { //здесь п
     const activationLink = uuid.v4();
 
     const user = await PendingUserModel.create({ email, nickname, password: hashPassword, activationLink });
-    await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
+    await mailService.sendActivationMail(email, `${process.env.API_URL}api/activate/${activationLink}`);
 
     const userDto = new UserDto(user);
     // const tokens = tokenService.generateTokens({ ...userDto });

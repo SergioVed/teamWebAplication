@@ -2,7 +2,6 @@ import "./index.scss";
 import React, { useEffect, useRef, useState } from "react";
 import { NextBtn } from "../../components/nextBtn";
 import { RadioBtn } from "../../components/radioBtn";
-import { Input } from "../../../input";
 import { faSquareMinus } from "@fortawesome/free-solid-svg-icons";
 import { UpdateCookie } from "../../functions/updateCookie";
 import Cookies from "js-cookie";
@@ -11,6 +10,7 @@ import { checkUserAuthorization } from "../../../../api/user";
 import { banners } from "../../../../data/banners";
 import { getBrightness, setColor } from "../../../../api/colors";
 import { Gradient } from "../../../gradient";
+import { TeaxtArea } from "../../components/textarea";
 
 export const UserExperiencePage = () => {
   const [selectedOption, setSelectedOption] = useState<string>("");
@@ -28,7 +28,7 @@ export const UserExperiencePage = () => {
       }
     }
 
-    UpdateCookie({ expirience: info });
+    UpdateCookie(info);
     console.log(Cookies.get("userInfo"))
     navigate("/sign-up/about");
   }
@@ -60,7 +60,7 @@ export const UserExperiencePage = () => {
       <Gradient currentColor={currentColor} />
 
       <div className="InformationPage6">
-        <p className="InformationPage6__title" style={{color: currentColor}}>Чи є в тебе досвід роботи?</p>
+        <p className="InformationPage6__title" style={{ color: currentColor }}>Чи є в тебе досвід роботи?</p>
 
         <div className="InformationPage6__container">
           <RadioBtn
@@ -80,21 +80,18 @@ export const UserExperiencePage = () => {
             description=""
             currentColor={currentColor}
           />
-
+          
           {selectedOption === "Так, є" && (
-            <Input
-              icon={faSquareMinus} 
-              onChange={(e) => setInputValue(e.target.value)}
-              classname="InformationPage6__container__textarea"
+            <TeaxtArea
+              onChange={(e: any) => setInputValue(e.target.value)}
+              className="InformationPage6__container__textarea"
               placeholder="Опиши свій досвід"
               value={inputValue}
-              needed={false}
-              multiline={true}
               maxLength={370}
             />
           )}
         </div>
-        
+
         <NextBtn
           classname=""
           value="далі"

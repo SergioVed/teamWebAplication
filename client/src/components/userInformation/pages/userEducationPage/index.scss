@@ -1,8 +1,4 @@
-
-
-:root{
-    --index: calc(1vw + 1vh)
-}
+@import '../../../../styleSettings/defines.scss';
 
 .InformationPage5{
     z-index: 99;
@@ -19,25 +15,42 @@
         flex-direction: column;
         gap: calc(var(--index) * 0.7);
         &__title{
-            color: #D999FF;
-            font-size: calc(var(--index) * 2);
-            font-weight: 700;
+            @include titleText;
         }
         &__description{
-            font-size: calc(var(--index) * 1.1);
-            font-weight: 700;
-            color: #fff;
+            @include titleDescription;
         }
     }
     &__container{
         display: flex;
         flex-direction: column;
         gap: calc(var(--index) * 0.9);
-        &__input-focus{
+        &__input{
             width: calc(var(--index) * 25);
+            border: 2.4px solid $defaultWhite;
+            background: transparent;
+            color: $defaultWhite;
+            font-size: $mainTextFontSize;
+            font-weight: 600;
+            padding: calc(var(--index) * .5) calc(var(--index) * 1.3);
+            border-radius: calc(var(--index) * 4);
+            outline: none;
         }
-        &__input-focus:focus{
-            border-color: #D999FF;
+        &__input:focus{
+            border-color: $defaulPurple;
+        }
+        &__button{
+            background: none;
+            border: none;
+            font-size: calc(var(--index) * 1.2);
+            color: $defaultWhite;
+            transition: 0.3s;
+            cursor: pointer;
+            margin-left: calc(var(--index) * 0.5);
+        }
+        &__button:hover{
+            transform: translateY(calc(var(--index) * -0.2));
+            transition: 0.3s;
         }
     }
     &__addGraduation-btn{

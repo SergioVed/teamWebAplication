@@ -82,7 +82,7 @@ export const UserSkillsPage = () => {
 
       <form className="InformationPage3">
         <div className="InformationPage3__title-div">
-          <p className="InformationPage3__title-div__title" style={{color: currentColor}}>
+          <p className="InformationPage3__title-div__title" style={{ color: currentColor }}>
             Обери технології якими володієш
           </p>
 
@@ -119,7 +119,6 @@ export const UserSkillsPage = () => {
           <div className="selected-options">
             {selectedOptions.map((option, key) => (
               <LanguageComponent
-                needed={true}
                 item={option.name}
                 key={key}
                 deleteFunction={DeleteFunc(
@@ -131,7 +130,7 @@ export const UserSkillsPage = () => {
             ))}
           </div>
         </div>
-        
+
         <div className="InformationPage2__button-wrapper">
           <NextBtn
             classname={"InformationPage2__button-wrapper__button"}

@@ -1,9 +1,11 @@
 interface IYearDropdownProps{
     startYear: number,
     endYear: number,
+    selectedYear: string;
+    onChange: (year: string) => void;
 }
 
-export const YearDropdown = ({ startYear, endYear }: IYearDropdownProps) => {
+export const YearDropdown = ({ startYear, endYear, onChange, selectedYear }: IYearDropdownProps) => {
     const years: number[] = [];
     
     for (let year = startYear; year <= endYear; year++) {
@@ -11,7 +13,7 @@ export const YearDropdown = ({ startYear, endYear }: IYearDropdownProps) => {
     }
 
     return (
-        <select className="education__year-select" >
+        <select className="education__year-select" value={selectedYear} onChange={(e) => onChange(e.target.value)}>
             {years.map((year) => (
                 <option key={year} value={year}>
                     {year}

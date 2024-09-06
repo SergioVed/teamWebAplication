@@ -1,3 +1,5 @@
+@import '../../../../styleSettings/defines.scss';
+
 :root {
     --index: calc(1vw + 1vh)
 }
@@ -6,16 +8,16 @@
     gap:  calc(var(--index) * 0.5);
     align-items: center;
     padding: calc(var(--index) * 0.2) calc(var(--index) * 0.9) calc(var(--index) * 0.2) calc(var(--index) * 0.9);
-    height: calc(var(--index) * 2);
+    height: calc(var(--index) * 1.8);
     background-color: rgba(217, 217, 217, 5%);
     color: #fff;
     border: none;
     border-radius: 27px;
     p{
-        font-size: calc(var(--index) * 1);
+        font-size: $mainTextFontSize;
         font-weight: 600;
     }
     &__img{
-        font-size: calc(var(--index) * 1);
+        font-size: $mainTextFontSize;
     }
 }

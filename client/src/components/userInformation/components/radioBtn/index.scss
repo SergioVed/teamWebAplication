@@ -9,14 +9,14 @@
 }
 .label-title{
     position: relative;
-    font-size: calc(var(--index) *1);
+    font-size: calc(var(--index) * 0.8);
     font-weight: 600;
     color: #fff;  
     line-height: calc(var(--index) * 1);
 }
 .label-description{
     color: rgba(255, 255, 255, 0.55);
-    font-size: calc(var(--index) * 0.7);
+    font-size: calc(var(--index) * 0.8);
 }
 .label-title:before,
 .label-title:after {

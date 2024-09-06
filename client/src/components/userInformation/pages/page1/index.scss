@@ -1,6 +1,5 @@
-:root {
-    --index: calc(1vw + 1vh)
-}
+@import '../../../../styleSettings/defines.scss';
+
 .InformationPage1{
     z-index: 99;
     position: relative;
@@ -8,7 +7,7 @@
     padding-top: calc(var(--index) * 5);
     height: max-content;
     width: 85vw;
-    color: #fff;
+    color: $defaultWhite;
     display: flex;
     flex-direction: column;
     gap: calc(var(--index) * 2.5);
@@ -33,17 +32,17 @@
             font-size: calc(var(--index) * 2);
             font-weight: 700;
             margin-bottom: calc(var(--index) * .4);
+            @include titleText;
         }
         &__p{
-            font-size: calc(var(--index) * 1.1);
-            font-weight: 700;
+            @include titleDescription;
         }
         &__inputs{
             display: flex;
             flex-direction: column;
             gap: calc(var(--index) * 0.7);
             &__input-focus:focus{
-                border-color: #D999FF;
+                border-color: $defaulPurple;
             }
         }
         label{
@@ -57,25 +56,15 @@
             width: calc(var(--index) *21);
             border-radius: 54px;
             outline: none;
-            color: #fff;
-            font-size: calc(var(--index) *1);
-            padding-left: calc(var(--index) *0.9);
+            color: $defaultWhite;
+            font-size: $mainTextFontSize;
+            font-weight: 600;
+            padding-left: calc(var(--index) * 0.7);
             transition: 0.5s;
         }
         input:focus{
             border: 3px solid rgba(217, 153, 255, 50%);
             transition: 0.5s;
         }
-    }
-    button{
-        height: calc(var(--index) * 2);
-        width: calc(var(--index) * 5);
-        font-size: calc(var(--index) * 0.9);
-        font-weight: 600;
-        background-color: #D999FF;
-        margin: 0 auto;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
     }
 }
