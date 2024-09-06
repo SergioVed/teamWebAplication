@@ -5,11 +5,10 @@
 }
 .LanguageComponent{
     display: flex;
-    gap:  calc(var(--index) * 0.5);
+    gap:  calc(var(--index) * 0.6);
     align-items: center;
-    padding: calc(var(--index) * 0.2) calc(var(--index) * 0.9) calc(var(--index) * 0.2) calc(var(--index) * 0.9);
-    height: calc(var(--index) * 1.8);
-    background-color: rgba(217, 217, 217, 5%);
+    padding: calc(var(--index) * 0.7) calc(var(--index) * 1.4);
+    background-color: rgba(217, 217, 217, 0.074);
     color: #fff;
     border: none;
     border-radius: 27px;
@@ -19,5 +18,7 @@
     }
     &__img{
         font-size: $mainTextFontSize;
+        cursor: pointer;
+        margin-bottom: calc(var(--index) * -.08);
     }
 }

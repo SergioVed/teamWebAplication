@@ -12,7 +12,7 @@ interface RadioBtnInt {
 
 const LabelTitle = styled.span<{ currentColor: string }>`
   position: relative;
-  font-size: calc(var(--index) *1);
+  font-size: calc(var(--index) * .9);
   font-weight: 600;
   color: #fff;  
   line-height: calc(var(--index) * 1);

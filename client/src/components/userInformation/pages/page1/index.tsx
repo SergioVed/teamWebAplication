@@ -12,6 +12,8 @@ import { Gradient } from "../../../gradient";
 
 export const InformationPage1 = () => {
   const [name, setName] = useState("");
+  const [nameIsFocused, setNameIsFocused] = useState<boolean>(false);
+  const [surnameIsFocused, setSurnameIsFocused] = useState<boolean>(false);
   const [surName, setSurName] = useState("");
   const [disabled, setDisabled] = useState<boolean>(true);
   const navigate = useNavigate();
@@ -59,7 +61,7 @@ export const InformationPage1 = () => {
         <div className="InformationPage1__wrapper">
           <div className="InformationPage1__container">
             <div>
-              <p className="InformationPage1__container__title" style={{color: currentColor}}>Привіт!</p>
+              <p className="InformationPage1__container__title" style={{ color: currentColor }}>Привіт!</p>
               <p className="InformationPage1__container__p">
                 Перед початком роботи треба заповнити дані про себе
               </p>
@@ -72,6 +74,12 @@ export const InformationPage1 = () => {
                 onChange={(e) => setName(e.target.value)}
                 placeholder=""
                 value={name}
+                onFocus={() => setNameIsFocused(true)}
+                onBlur={() => setNameIsFocused(false)}
+                style={{
+                  borderColor: nameIsFocused ? currentColor : name ? currentColor : 'rgba(255, 255, 255, 0.55)',
+                  transition: "border-color 0.3s ease",
+                }}
               />
             </div>
 
@@ -82,6 +90,12 @@ export const InformationPage1 = () => {
                 onChange={(e) => setSurName(e.target.value)}
                 placeholder=""
                 value={surName}
+                onFocus={() => setSurnameIsFocused(true)}
+                onBlur={() => setSurnameIsFocused(false)}
+                style={{
+                  borderColor: surnameIsFocused ? currentColor : surName ? currentColor : 'rgba(255, 255, 255, 0.55)',
+                  transition: "border-color 0.3s ease",
+                }}
               />
             </div>
           </div>

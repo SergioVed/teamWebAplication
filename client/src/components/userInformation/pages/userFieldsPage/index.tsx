@@ -89,6 +89,7 @@ export const UserFieldsPage = () => {
                   onClick={() => {
                     SelectOptionFunc(workKey, setSelectedOptions);
                   }}
+
                   key={workKey}
                   className={selectedOptions.some((option) => option.name === workKey) ? "darkned" : ""}
                 >

@@ -17,7 +17,9 @@ import { getBrightness, setColor } from "../../../../api/colors";
 
 export const UserEducationPage = () => {
   const [education, setEducation] = useState<IEducation[]>([]);
+  const [educationIsFocused, setEducationIsFocused] = useState<boolean>(false);
   const [disabled, setDisabled] = useState<boolean>(false);
+
   const currentYear = new Date().getFullYear();
   const [startYear, setStartYear] = useState<number>(1999);
   const [endYear, setEndYear] = useState<number>(currentYear);
@@ -73,7 +75,7 @@ export const UserEducationPage = () => {
 
       <div className="InformationPage5">
         <div className="InformationPage5__title-container">
-          <p className="InformationPage5__title-container__title">
+          <p className="InformationPage5__title-container__title" style={{color: currentColor}}>
             Вкажи свою освіту або курси, які проходив
           </p>
           <p className="InformationPage5__title-container__description">
@@ -91,6 +93,12 @@ export const UserEducationPage = () => {
                 placeholder=""
                 className={"InformationPage5__container__input"}
                 onChange={(e) => handleInputChange(index, e.target.value)}
+                onFocus={() => setEducationIsFocused(true)}
+                onBlur={() => setEducationIsFocused(false)}
+                style={{
+                  borderColor: educationIsFocused ? currentColor : education ? currentColor : 'rgba(255, 255, 255, 0.55)',
+                  transition: "border-color 0.3s ease",
+                }}
               />
 
               <button

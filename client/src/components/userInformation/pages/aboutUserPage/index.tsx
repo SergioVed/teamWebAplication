@@ -59,7 +59,7 @@ export const AboutUserPage = () => {
         <div className="InformationPage7__wrapper-container">
           <div className="InformationPage7__container">
             <div className="InformationPage7__container__title-div">
-              <p className="InformationPage7__container__title-div__title" style={{color: currentColor}}>
+              <p className="InformationPage7__container__title-div__title" style={{ color: currentColor }}>
                 Розкажи про себе
               </p>
 
@@ -69,30 +69,18 @@ export const AboutUserPage = () => {
               </p>
             </div>
 
-            {/* <Input
+            <TeaxtArea
               maxLength={850}
-              classname="InformationPage7__container__textarea"
+              className="InformationPage7__container__textarea"
               placeholder=""
               value={value}
-              multiline={true}
-              needed={false}
-              onChange={(e) => setValue(e.target.value)}
-            /> */}
+              onChange={(e: any) => setValue(e.target.value)}
+            />
           </div>
 
           <div className="InformationPage7__container__img">
             <img src={womanPhoto} alt="" />
           </div>
-          <TeaxtArea
-            maxLength={850}
-            className="InformationPage7__container__textarea"
-            placeholder=""
-            value={value}
-            onChange={(e: any) => setValue(e.target.value)}
-          />
-        </div>
-        <div className="InformationPage7__container__img">
-          <img src={womanPhoto} alt="" />
         </div>
 
         <NextBtn

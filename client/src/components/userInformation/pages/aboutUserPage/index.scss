@@ -52,7 +52,7 @@
         }
     }
     &__button{
-        width: calc(var(--index) * 9);
+        padding: calc(var(--index) * .5) calc(var(--index) * 1.5);
         margin: 0 auto;
     }
 }
