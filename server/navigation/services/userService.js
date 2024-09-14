@@ -46,8 +46,8 @@ module.exports.activate = async (activationLink) => { //тут просто по
     const user = await UserModel.create({
         email: pendingUser.email,
         nickname: pendingUser.nickname,
-        password: pendingUser.password, 
-        isActivated: true 
+        password: pendingUser.password,
+        isActivated: true
     });
 
     await PendingUserModel.deleteOne({ activationLink });
@@ -113,7 +113,7 @@ module.exports.getAllUsers = async () => {
 
 module.exports.getUser = async (id) => {
     const user = await UserModel.findById(id)
-    if(!user) {
+    if (!user) {
         throw ApiError.BadRequest('Користувача не знайдено');
     }
     return user
@@ -131,4 +131,11 @@ module.exports.addFullUserInfo = async (id, userData) => {
     await user.save();
 
     return user;
+}
+
+module.exports.getUserGoogleData = async (accessToken) => {
+    const response = await fetch(`https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`);
+
+    const data = await response.json();
+    console.log('data', data);
 }

@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { apiURL } from "../../api/api";
 import { getBrightness, hexToRgba, setColor } from "../../api/colors";
+import { authWithGoogle } from "../../api/user";
 
 export const SignUp = () => {
     const [nickname, setNickname] = useState<string>('');
@@ -21,7 +22,7 @@ export const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const register = async (data: any) => {
         try {
@@ -71,6 +72,10 @@ export const SignUp = () => {
     const togglePasswordVisibility = () => {
         setShowPassword(prevState => !prevState);
     };
+
+    const navigateToGoogle = (url: any) => {
+        window.location.href = url;
+    }
 
     //color style settings
     const [currentColor, setCurrentColor] = useState<string>(banners[0].color);
@@ -188,6 +193,7 @@ export const SignUp = () => {
                 <div className="signUp__other__methods">
                     <button
                         className="signUp__google"
+                        onClick={() => authWithGoogle(navigateToGoogle)}
                         onMouseEnter={(e) => e.currentTarget.style.boxShadow = `0px 0px 6px 3px ${shadowColor}`}
                         onMouseLeave={(e) => e.currentTarget.style.boxShadow = "none"}
                     >
