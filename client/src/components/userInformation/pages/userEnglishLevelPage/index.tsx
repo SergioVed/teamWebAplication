@@ -25,6 +25,18 @@ export const UserEnglishLevelPage = () => {
     navigate("/sign-up/education");
   }
 
+  useEffect(() => {
+    const userInfo = Cookies.get("userInfo");
+  
+    if (userInfo) {
+      const parsedInfo = JSON.parse(userInfo);
+  
+      if (parsedInfo.englishLevel) {
+        setSelectedOption(parsedInfo.englishLevel || "");
+      }
+    }
+  }, []);
+
   // useEffect(() => {
   //   checkUserAuthorization(navigate);
   // }, []);

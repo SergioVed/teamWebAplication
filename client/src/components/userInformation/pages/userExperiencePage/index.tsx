@@ -33,12 +33,23 @@ export const UserExperiencePage = () => {
     navigate("/sign-up/about");
   }
 
-  console.log(selectedOption)
-
   useEffect(() => {
     const isSelectedAndValid = selectedOption === "Так, є" ? inputValue.length <= 50 : selectedOption.length === 0;
     setDisabled(isSelectedAndValid);
   }, [selectedOption, inputValue]);
+
+  useEffect(() => {
+    const userInfo = Cookies.get("userInfo");
+  
+    if (userInfo) {
+      const parsedInfo = JSON.parse(userInfo);
+  
+      if (parsedInfo.experience) {
+        setSelectedOption(parsedInfo.experience.answer || "");
+        setInputValue(parsedInfo.experience.description || "");
+      }
+    }
+  }, []);
 
   // useEffect(() => {
   //   checkUserAuthorization(navigate);
@@ -85,7 +96,7 @@ export const UserExperiencePage = () => {
             <TeaxtArea
               onChange={(e: any) => setInputValue(e.target.value)}
               className="InformationPage6__container__textarea"
-              placeholder="Опиши свій досвід"
+              placeholder="Опиши свій досвід (мінімум 50 символів)"
               value={inputValue}
               maxLength={370}
             />

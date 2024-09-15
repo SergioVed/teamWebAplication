@@ -41,6 +41,18 @@ export const UserFieldsPage = () => {
     setDisabled(isEmpty);
   }, [selectedOptions]);
 
+  useEffect(() => {
+    const userInfo = Cookies.get("userInfo");
+  
+    if (userInfo) {
+      const parsedInfo = JSON.parse(userInfo);
+  
+      if (parsedInfo.direction) {
+        setSelectedOptions(parsedInfo.direction || []);
+      }
+    }
+  }, []);
+
   // useEffect(() => {
   //   checkUserAuthorization(navigate);
   // }, []);

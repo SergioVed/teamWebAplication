@@ -6,11 +6,11 @@
     margin: 0 auto;
     padding-top: calc(var(--index) * 4);
     height: max-content;
-    width: 85vw;
+    width: 80vw;
     color: $defaultWhite;
     display: flex;
     flex-direction: column;
-    gap: calc(var(--index) * 2);
+    gap: calc(var(--index) * 1);
     &__title-div{
         gap: calc(var(--index) * 0.7);
         display: flex;
