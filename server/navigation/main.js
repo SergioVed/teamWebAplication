@@ -4,6 +4,9 @@ const { body } = require('express-validator');
 
 const userRoutes = require('./routes/userRoutes');
 const tokenRoutes = require('./routes/tokenRoutes');
+const projectRoutes = require('./routes/projectRoutes');
+const { checkAuth } = require('../middlewares/checkAuth');
+const fileMidleWare = require('../middlewares/file');
 
 router.post('/sign-up',
     body('nickname').isLength({ min: 2, max: 32}).withMessage('Нікнейм має бути від 2 до 32 символів'),
@@ -20,5 +23,8 @@ router.get('/users', userRoutes.getUsers);
 router.post('/add-user/:id', userRoutes.addUser);
 router.post('/validate-token', tokenRoutes.validateToken);
 
+router.post('/add', checkAuth, fileMidleWare.single('image'), projectRoutes.create)
+router.delete('/delete/:projectId', checkAuth, projectRoutes.delete)
+router.put('/update/:projectId', checkAuth, projectRoutes.update)
 
 module.exports = router;

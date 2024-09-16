@@ -5,6 +5,7 @@ import { HomePage, SignIn, SignUp } from './components/index';
 import { InformationPage1, UserFieldsPage, UserSkillsPage, UserEnglishLevelPage, UserEducationPage, UserExperiencePage, AboutUserPage } from './components/userInformation/pages';
 import { FinalPage } from './components/userInformation/pages/finalPage';
 import { Profile } from './components/profile';
+import { AddProjectPage } from './components/profile/pages/addProjectPage';
 
 const infomationpageRoutes = [
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
   {
     path: '/home-page/:id',
     element: <Profile />,
+  },
+  {
+    path: '/home-page/:id/add-project',
+    element: <AddProjectPage />
   },
   ...infomationpageRoutes.map((way) => (
     {

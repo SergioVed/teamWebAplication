@@ -1,0 +1,181 @@
+@import '../../../../styleSettings/defines.scss';
+
+.addProjectPage {
+    width: 85vw;
+    margin: 0 auto;
+    padding-top: calc(var(--index) * 5);
+    color: $defaultWhite;
+}
+
+.addProjectPage-userInfo {
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--index) * 0.2);
+    color: $defaultWhite;
+
+    &__title {
+        font-size: calc(var(--index) * 1.2);
+        font-weight: 600;
+    }
+
+    &__sub-title {
+        font-size: $mainTextFontSize;
+        font-weight: 600;
+        color: $defaultGray;
+    }
+}
+
+.addProjectPage-mainInfo {
+    margin-top: calc(var(--index) * 2);
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    grid-template-rows: calc(var(--index) * 4) calc(var(--index) * 7) calc(var(--index) * 9);
+
+    &__name {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        grid-column: 1/3;
+    }
+
+    &__role {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: calc(var(--index) * 4);
+        align-self: center;
+        grid-column: 1/2;
+
+        &__input {
+            margin-right: calc(var(--index) * 1);
+        }
+    }
+
+    &__description {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        grid-column: 1/2;
+
+        &__input {
+            margin-right: calc(var(--index) * 1);
+            border-radius: calc(var(--index) * 1) !important;
+            resize: none;
+            height: calc(var(--index) * 7);
+            padding: calc(var(--index) * .5) calc(var(--index) * 0.8) !important;
+        }
+    }
+    &__content{
+        margin-top: calc(var(--index)* 2);
+        margin-left: calc(var(--index)* 1);
+        font-size: calc(var(--index)* 1.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: calc(var(--index)* 8);
+        border: dashed;
+        border-color: rgba(255, 255, 255, 55%);
+        border-radius: calc(var(--index)* 1);
+        gap: calc(var(--index)* 0.3);
+        &__buttons{
+            display: flex;
+            gap: calc(var(--index)* 0.5);
+            &__button{
+                transition: 0.3s;
+                padding: calc(var(--index)* 0.4) calc(var(--index)* 0.4);
+                width: calc(var(--index)* 1.3);
+                height: calc(var(--index)* 1.3);
+            }
+            &__button:hover{
+                cursor: pointer;
+                transition: 0.3s;
+                background-color: rgba($color: #8a8a8a, $alpha: 0.5);
+                border-radius: 100%;
+            }
+        }
+    }
+    &__confirm{
+        margin-top: calc(var(--index) * 2);
+        padding: calc(var(--index) * .5) calc(var(--index) * 1.5);
+        font-size: $mainTextFontSize;
+        font-weight: 600;
+        background-color: $defaulPurple;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        float: right;
+    }
+    &__link{
+        padding: 0 calc(var(--index)* 1);
+        margin-top: calc(var(--index)* 3);
+        margin-left: calc(var(--index)* 1);
+        height: calc(var(--index) * 2.7);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 2px solid $defaulPurple;
+        border-radius: calc(var(--index)* 0.5);
+        &__text{
+            color: $defaulPurple;
+            text-decoration: underline;
+            font-size: $mainTextFontSize;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        &__close-btn{
+            transition: 0.3s;
+            padding: calc(var(--index)* 0.2) calc(var(--index)* 0.2);
+            width: calc(var(--index)* 1);
+            height: calc(var(--index)* 1);
+        }
+        &__close-btn:hover{
+            cursor: pointer;
+            transition: 0.3s;
+            background-color: rgba($color: #8a8a8a, $alpha: 0.5);
+            border-radius: 100%;
+        }
+    }
+    &__image{
+        position: relative;
+        &__close-btn{
+            padding: calc(var(--index)* 0.2) calc(var(--index)* 0.2);
+            width: calc(var(--index)* 1.3);
+            height: calc(var(--index)* 1.3);
+            position: absolute;
+            top: calc(var(--index)* 2.3);
+            right: calc(var(--index)* 0.3);
+        }
+        &__close-btn:hover{
+            cursor: pointer;
+            transition: 0.3s;
+            background-color: rgba($color: #8a8a8a, $alpha: 0.5);
+            border-radius: 100%;
+        }
+    }
+}
+
+.label {
+    font-size: $mainTextFontSize;
+    font-weight: 600;
+}
+
+.input {
+    border: 3px solid rgba(255, 255, 255, 55%);
+    background-color: rgba(255, 255, 255, 5%);
+    border-radius: calc(var(--index) * 5);
+    outline: none;
+    color: $defaultWhite;
+    font-size: $mainTextFontSize;
+    font-weight: 600;
+    padding: calc(var(--index) * .5) calc(var(--index) * 0.8);
+}
+.popup-visible{
+    display: flex !important;
+}
+.img{
+    margin-top: calc(var(--index)* 2);
+    width: -webkit-fill-available;
+    margin-left: calc(var(--index)* 1);
+}

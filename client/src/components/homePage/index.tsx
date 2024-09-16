@@ -5,9 +5,11 @@ import { Header } from "../header";
 import { TopWorkers } from "../randomWorkers/randomWorkersComponent";
 import { Footer } from "../footer";
 import { ProjectBlock } from "../projectBlock";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Gradient } from "../gradient";
 import { banners } from "../../data/banners";
+import { getUser } from "../../api/user";
+import { PopupHomePage } from "./popup";
 
 interface IBanner {
     index: number;
@@ -18,6 +20,11 @@ interface IBanner {
 export const HomePage = () => {
     const [currentBanner, setCurrentBanner] = useState<number>(0);
     const [currentColor, setCurrentColor] = useState<string>("");
+    const [popup, setPopup] = useState("")
+
+    function closePopup () {
+        setPopup("")
+    }
 
     function changeColor() {
         banners.forEach((element: IBanner) => {
@@ -30,6 +37,24 @@ export const HomePage = () => {
     useEffect(() => {
         changeColor();
     }, [currentBanner]);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const userData = await getUser()
+                const userFields = [userData.englishLevel]
+
+                if (userFields.every((e) => {
+                    return e === ""
+                })) {
+                    setPopup("popupDisabled")
+                }
+            } catch (err) {
+                console.error("Ошибка при получении данных пользователя:", err);
+            }
+        }
+        fetchUser()
+    }, [])
 
     return (
         <div className="homepage">
@@ -55,6 +80,7 @@ export const HomePage = () => {
                     <Link to={'/'} className="projects__btn" style={{ backgroundColor: currentColor }}>переглянути більше</Link>
                 </div>
             </div>
+            <PopupHomePage popupDisabled={popup} closePopup={closePopup}/>
             <Footer />
         </div>
     )
