@@ -47,7 +47,7 @@
         &__input{
             width: calc(var(--index) * 15);
             border: calc(var(--index) * .12) solid #fff;
-            background: transparent;
+            background-color: rgba(255, 255, 255, 0.05);
             color: #fff;
             font-size: calc(var(--index) * .7);
             font-weight: 600;
@@ -83,20 +83,6 @@
             margin-left: calc(var(--index) * 1);
         }
         &__profileImg:hover{
-            transform: translateY(calc(var(--index) * -0.2));
-            transition: 0.3s;
-        }
-
-        &__settings{
-            font-size: calc(var(--index) * 1.4);
-            background: none;
-            outline: none;
-            border: none;
-            color: $defaultWhite;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        &__settings:hover{
             transform: translateY(calc(var(--index) * -0.2));
             transition: 0.3s;
         }

@@ -6,5 +6,5 @@ export const elements: Element[] = [
     {value: "TeamWeb"},
     {value: "проєкти"},
     {value: "анкети"},
-    {value: "твоя команда"}
+    {value: "чати"}
 ]

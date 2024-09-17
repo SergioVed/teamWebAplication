@@ -2,17 +2,13 @@ import "./index.scss";
 import { Element, elements } from "../../data/header";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGear, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { checkAccessTokenValidation } from "../../api/tokens";
 import { useState } from "react";
 
 export const Header = () => {
   const [value, setValue] = useState<string>("");
-
-  function click() {
-    console.log(value);
-  }
 
   const navigate = useNavigate();
 
@@ -64,13 +60,6 @@ export const Header = () => {
             className="header__inputContainer__profileImg"
           >
             <FontAwesomeIcon icon={faCircleUser} />
-          </button>
-
-          <button
-            onClick={openHomePage}
-            className="header__inputContainer__settings"
-          >
-            <FontAwesomeIcon icon={faGear} />
           </button>
         </div>
       </div>
