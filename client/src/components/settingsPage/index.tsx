@@ -7,7 +7,6 @@ import { banners } from '../../data/banners';
 import { getBrightness, setColor } from '../../api/colors';
 import { Gradient } from '../gradient';
 import { Option } from './components/Option';
-import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import { Footer } from '../footer';
 import { PersonalDataPage } from './components/PersonalDataPage';
 import { AccSettingsPage } from './components/AccSettingsPage';
