@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./index.scss";
-import womanPhoto from "../../../../img/informationPage/weekday-woman-drawing-on-a-tablet 1.webp";
+import womanPhoto from "../../../../img/informationPage/woman-img.webp";
 import { NextBtn } from "../../components/nextBtn";
 import { UpdateCookie } from "../../functions/updateCookie";
 import Cookies from "js-cookie";
@@ -34,6 +34,18 @@ export const AboutUserPage = () => {
     const isValid = value.length <= 50
     setDisabled(isValid)
   }, [value]);
+
+  useEffect(() => {
+    const userInfo = Cookies.get("userInfo");
+
+    if (userInfo) {
+      const parsedInfo = JSON.parse(userInfo);
+
+      if (parsedInfo.description) {
+        setValue(parsedInfo.description || "");
+      }
+    }
+  }, []);
 
   // useEffect(() => {
   //   checkUserAuthorization(navigate);
@@ -78,7 +90,7 @@ export const AboutUserPage = () => {
             />
           </div>
 
-          <div className="InformationPage7__container__img">
+          <div className="InformationPage7__container__img" style={{backgroundColor: currentColor}}>
             <img src={womanPhoto} alt="" />
           </div>
         </div>

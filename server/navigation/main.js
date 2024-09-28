@@ -19,6 +19,8 @@ router.get('/refresh', userRoutes.refresh);
 router.get('/users', userRoutes.getUsers);
 router.post('/add-user/:id', userRoutes.addUser);
 router.post('/validate-token', tokenRoutes.validateToken);
+router.post('/auth-with-google', userRoutes.authWithGoogle);
+router.get('/oauth', userRoutes.getUserGoogleData);
 
 
 module.exports = router;

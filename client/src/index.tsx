@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HomePage, SignIn, SignUp } from './components/index';
+import { HomePage, SignIn, SignUp, SettingsPage } from './components/index';
 import { InformationPage1, UserFieldsPage, UserSkillsPage, UserEnglishLevelPage, UserEducationPage, UserExperiencePage, AboutUserPage } from './components/userInformation/pages';
 import { FinalPage } from './components/userInformation/pages/finalPage';
 import { Profile } from './components/profile';
@@ -57,6 +57,10 @@ const router = createBrowserRouter([
   {
     path: '/home-page/:id',
     element: <Profile />,
+  },
+  {
+    path: '/settings',
+    element: <SettingsPage />,
   },
   ...infomationpageRoutes.map((way) => (
     {

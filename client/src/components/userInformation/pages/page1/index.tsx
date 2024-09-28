@@ -38,9 +38,23 @@ export const InformationPage1 = () => {
     setDisabled(isValid);
   }, [name, surName]);
 
+  useEffect(() => {
+    const userInfo = Cookies.get("userInfo");
+
+    if (userInfo) {
+      const parsedInfo = JSON.parse(userInfo);
+
+      if (parsedInfo.name) {
+        setName(parsedInfo.name.firstName || "");
+        setSurName(parsedInfo.name.secondName || "");
+      }
+    }
+  }, []);
+
   // useEffect(() => {
   //   checkUserAuthorization(navigate);
   // }, []);
+
 
   //color style settings
   const [currentColor, setCurrentColor] = useState<string>(banners[0].color);

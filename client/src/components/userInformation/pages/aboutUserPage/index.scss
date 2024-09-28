@@ -5,31 +5,34 @@
     position: relative;
     margin: 0 auto;
     padding-top: calc(var(--index) * 5);
-    width: 85vw;
+    width: 80vw;
     display: flex;
     flex-direction: column;
     gap: calc(var(--index) * 2.5);
     &__wrapper-container{
         display: flex;
         justify-content: space-around;
-        gap: calc(var(--index) * 1);
+        gap: calc(var(--index) * 5);
         align-items: flex-end;
     }
     &__container {
         display: flex;
         gap: calc(var(--index) * 1);
         flex-direction: column;
-        width: 60vw;
         &__img{
             background-color: #D999FF;
-            height: calc(var(--index) * 11);
-            width: calc(var(--index) * 9);
+            width: calc(var(--index) * 12);
+            padding-top: calc(var(--index) * 1.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: calc(var(--index) * .3);
             img{
-                width: auto;
-                height: calc(var(--index) * 9);
-                top: calc(var(--index) * 2);
-                right: calc(var(--index) * 1);
-                position: relative;
+                width: calc(var(--index) * 14.9);
+                margin-left: calc(var(--index) * -1.5);
+                // height: calc(var(--index) * 9);
+                // top: calc(var(--index) * 2);
+                // right: calc(var(--index) * 1);
             }
         }
         &__title-div {
@@ -48,11 +51,12 @@
 
         &__textarea {
             height: calc(var(--index) * 11.5);
-            width: calc(var(--index) * 37);
+            width: 100%;
         }
     }
     &__button{
         padding: calc(var(--index) * .5) calc(var(--index) * 1.5);
         margin: 0 auto;
+        margin-left: calc(var(--index) * 25.8);
     }
 }
