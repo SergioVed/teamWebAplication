@@ -4,6 +4,9 @@ const { body } = require('express-validator');
 
 const userRoutes = require('./routes/userRoutes');
 const tokenRoutes = require('./routes/tokenRoutes');
+const projectRoutes = require('./routes/projectRoutes');
+const { checkAuth } = require('../middlewares/checkAuth');
+const fileMidleWare = require('../middlewares/file');
 
 router.post('/sign-up',
     body('nickname').isLength({ min: 2, max: 32}).withMessage('Нікнейм має бути від 2 до 32 символів'),
@@ -22,5 +25,11 @@ router.post('/validate-token', tokenRoutes.validateToken);
 router.post('/auth-with-google', userRoutes.authWithGoogle);
 router.get('/oauth', userRoutes.getUserGoogleData);
 
+router.post('/add', checkAuth, fileMidleWare, 
+    body('title').isLength({ min: 2, max: 32}).withMessage('Назва проекту має бути від 2 до 32 символів'),
+    body('description').isLength({ min: 20, max: 300}).withMessage('Опис проекту має бути від 20 до 300'),
+    body('role').isLength({ min: 3 }).withMessage('Роль має бути від 3 символів'),
+projectRoutes.create)
+router.get('/getAll', checkAuth, projectRoutes.getAll)
 
 module.exports = router;
