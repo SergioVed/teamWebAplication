@@ -8,7 +8,7 @@ export const checkAccessTokenValidation = async () => {
     if (token) {
         try {
             const response = await axios.post(`${apiURL}/api/validate-token`, { "accessToken": token });
-
+            
             return response.data
         } catch (error) {
             console.error('Token validation failed', error);
@@ -18,4 +18,4 @@ export const checkAccessTokenValidation = async () => {
         console.error('Token validation failed');
         return null;
     }
-};
+}

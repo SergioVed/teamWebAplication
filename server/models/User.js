@@ -55,10 +55,6 @@ const UserSchema = new mongoose.Schema({
         default: false
     },
     activationLink: String,
-    projects: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'Project'
-    }]
 })
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("user", UserSchema);

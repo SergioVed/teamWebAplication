@@ -14,8 +14,27 @@ export const AddProjectPage = () => {
   const [role, setRole] = useState("");
   const [popupVisible, setPopupVisible] = useState("");
   const [link, setLink] = useState("");
-  const [images, setImages] = useState<File[]>([])
-  const [imgUrl, setImgUrl] = useState<string[]>([])
+  const [images, setImages] = useState<File[]>([]);
+  const [imgUrl, setImgUrl] = useState<string[]>([]);
+  const [errors, setErrors] = useState<{ field: string, message: string }[]>([]);
+
+  const handleSubmit = async () => {
+    const result = await addProject(title, description, role, link, images);
+  
+    if (result.success === false && result.errors) {
+      setErrors(result.errors);
+    } else {
+      setErrors([]);
+    }
+  };
+  
+  function deleteImage(key: number) {
+    const newImages = images.filter((_, index) => index !== key);
+    const newArray = imgUrl.filter((_, index) => index !== key);
+    setImages(newImages);
+    setImgUrl(newArray);
+  }
+
   function addLink() {
     setPopupVisible("popup-visible");
   }
@@ -25,21 +44,17 @@ export const AddProjectPage = () => {
   function deleteLink() {
     setLink("");
   }
-  function deleteImage(key: number) {
-    const newArray = [...imgUrl]
-    newArray.splice(key, 1)
-    setImgUrl(newArray)
-  }
 
   useEffect(() => {
-    if (images) {
-      const urls = images.map((e) => URL.createObjectURL(e))
-      setImgUrl(urls)
-      return () => {imgUrl.forEach(e => {
-        URL.revokeObjectURL(e)
-      });}
+    if (images.length > 0) {
+      const urls = images.map((image) => URL.createObjectURL(image));
+      setImgUrl(urls);
+
+      return () => {
+        urls.forEach((url) => URL.revokeObjectURL(url));
+      };
     }
-  }, [images])
+  }, [images]);
 
   return (
     <>
@@ -92,7 +107,7 @@ export const AddProjectPage = () => {
               }}
             />
           </div>
-          <div style={{ gridRow: `2/4`, gridColumn: `2/3`}}>
+          <div style={{ gridRow: `2/4`, gridColumn: `2/3` }}>
             {link !== "" ? (
               <div className="addProjectPage-mainInfo__link">
                 <a className="addProjectPage-mainInfo__link__text">{link}</a>
@@ -105,21 +120,22 @@ export const AddProjectPage = () => {
             ) : (
               <></>
             )}
-            {imgUrl !== null ? 
-            <>
-              {imgUrl.map((e, key) => (
-                <div className="addProjectPage-mainInfo__image">
-                  <img className="img" src={`${e}`}/>
-                  <FontAwesomeIcon
+            {imgUrl !== null ? (
+              <>
+                {imgUrl.map((url, key) => (
+                  <div className="addProjectPage-mainInfo__image">
+                    <img className="img" src={`${url}`} />
+                    <FontAwesomeIcon
                       icon={faXmark}
                       className="addProjectPage-mainInfo__image__close-btn"
                       onClick={() => deleteImage(key)}
                     />
-                </div>
-              ))}
-            </> : 
+                  </div>
+                ))}
+              </>
+            ) : (
               <></>
-            }
+            )}
             <div className="addProjectPage-mainInfo__content">
               <div className="addProjectPage-mainInfo__content__buttons">
                 <input
@@ -127,12 +143,15 @@ export const AddProjectPage = () => {
                   multiple={true}
                   style={{ display: "none" }}
                   id="file-input"
-                  onChange={(e) => {   
+                  onChange={(e) => {
                     const files = e.target.files;
                     if (files && files.length > 0) {
-                    setImages((prevImages) => [...prevImages, ...Array.from(files)]);
+                      setImages((prevImages) => [
+                        ...prevImages,
+                        ...Array.from(files),
+                      ]);
+                    }
                   }}
-                }
                 />
                 <FontAwesomeIcon
                   icon={faImage}
@@ -160,9 +179,10 @@ export const AddProjectPage = () => {
             <button
               className="addProjectPage-mainInfo__confirm"
               onClick={() => {
-                addProject(title, description, role, link);
+                handleSubmit()
               }}
             >
+              {/* addProject(title, description, role, link, images); */}
               зберегти
             </button>
           </div>

@@ -42,7 +42,7 @@ export const HomePage = () => {
         const fetchUser = async () => {
             try {
                 const userData = await getUser()
-                const userFields = [userData.englishLevel]
+                const userFields = [userData.email, userData.firstName || userData.secondName, userData.experience.answer, userData.englishLevel]
 
                 if (userFields.every((e) => {
                     return e === ""

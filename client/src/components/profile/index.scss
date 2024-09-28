@@ -108,7 +108,7 @@
 }
 .userProjects{
     margin-top: calc(var(--index)* 3);
-    padding-left: calc(var(--index)* 1);
+    padding-left: calc(var(--index)* 2);
     grid-row: 2;
     grid-column: 2;
     &__subTitle{
@@ -125,5 +125,25 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
+    }
+    &__elements{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 95%;
+        margin-top: calc(var(--index) * 1);
+        margin-bottom: calc(var(--index) * 1);
+        &__project{
+            width: min-content;
+            img{
+                height: auto;
+                width: calc(var(--index) * 14);
+                border: 1px solid rgba(255, 255, 255, 0.55);;
+            }
+            p{
+                font-size: $mainTextFontSize;
+                font-weight: 600;
+            }
+        }
     }
 }

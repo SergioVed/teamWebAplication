@@ -112,7 +112,7 @@ module.exports.getAllUsers = async () => {
 }
 
 module.exports.getUser = async (id) => {
-    const user = await UserModel.findById(id).populate('projects').exec()
+    const user = await UserModel.findById(id)
     if(!user) {
         throw ApiError.BadRequest('Користувача не знайдено');
     }

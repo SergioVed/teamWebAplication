@@ -1,19 +1,22 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import { checkUserAuthorization, getUser } from "../../api/user";
+import { getAllProjects } from "../../api/project";
 import "./index.scss"
 import { useEffect, useState } from "react";
 import { faCircleUser, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Header } from "../header";
 import { ItemComponent } from "./components/languageComponent/itemComponent";
+import { apiURL } from "../../api/api";
 
 export const Profile = () => {
-    const [user, setUser] = useState<any>   ()
+    const [user, setUser] = useState<any>()
+    const [projects, setProjects] = useState<any>([])
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     checkUserAuthorization(navigate);
-    // }, [])
+    useEffect(() => {
+        checkUserAuthorization(navigate);
+    }, [])
     useEffect(() => {
         const fetchUser = async () => {
             try {
@@ -23,9 +26,18 @@ export const Profile = () => {
                 console.error("Ошибка при получении данных пользователя:", err);
             }
         }
+        const fetchProjects = async () => {
+            try {
+                const projectsData = await getAllProjects()
+                setProjects(projectsData)
+            } catch (err) {
+                console.error("Ошибка при получении данных пользователя:", err);
+            }
+        }
         fetchUser()
+        fetchProjects()
     }, [])
-    console.log(user)
+    console.log(user, projects)
     return(
         <>
             <Header/>
@@ -77,7 +89,19 @@ export const Profile = () => {
                     </div>
                     <div className="userProjects">
                         <p className="userProfile-title">Портфоліо</p>
+                        {projects.length === 0 
+                            ? 
                         <p className="userProjects__subTitle">Додай свої проєкти у портфоліо, покажи на що здатен</p>
+                            : 
+                        <div className="userProjects__elements">
+                            {projects.map((e: any, i: number) => (
+                                <div key={i} className="userProjects__elements__project">
+                                    <img src={`${apiURL}/${e.images[0]}`} alt="" />
+                                    <p>{e.title}</p>
+                                </div>
+                            ))}    
+                        </div>}
+                        
                         <button className="userProjects__addBtn" onClick={() => navigate('/home-page/:id/add-project')}>
                             + 
                         </button>
