@@ -60,6 +60,18 @@ export const UserSkillsPage = () => {
     setDisabled(isEmpty);
   }, [selectedOptions]);
 
+  useEffect(() => {
+    const userInfo = Cookies.get("userInfo");
+  
+    if (userInfo) {
+      const parsedInfo = JSON.parse(userInfo);
+  
+      if (parsedInfo.technologies) {
+        setSelectedOptions(parsedInfo.technologies || []);
+      }
+    }
+  }, []);
+
   // useEffect(() => {
   //   checkUserAuthorization(navigate);
   // }, []);

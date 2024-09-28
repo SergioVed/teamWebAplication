@@ -46,30 +46,32 @@
         gap: calc(var(--index)* 1);
         &__input{
             width: calc(var(--index) * 15);
-            height: calc(var(--index) * 1.8);
-            border: 2.4px solid #fff;
-            background: transparent;
+            border: calc(var(--index) * .12) solid #fff;
+            background-color: rgba(255, 255, 255, 0.05);
             color: #fff;
-            font-size: calc(var(--index) * .8);
+            font-size: calc(var(--index) * .7);
             font-weight: 600;
-            padding-left: calc(var(--index) * 0.7);
+            padding: calc(var(--index) * .45) calc(var(--index) * 1.1);
             border-radius: calc(var(--index) * 4);
             outline: none;
-        }
-        &__input:focus{
-            border-color: #D999FF;
+
+            &::placeholder{
+                font-size: calc(var(--index) * .7);
+            }
         }
         &__button{
             background: none;
             border: none;
             color: #fff;
             transition: 0.3s;
-            font-size: calc(var(--index) * 1.4);
+            font-size: calc(var(--index) * .9);
+            margin-left: calc(var(--index) * -2.1);
+            cursor: pointer;
         }
-        &__button:hover{
-            transform: translateY(calc(var(--index) * -0.2));
-            transition: 0.3s;
-        }
+        // &__button:hover{
+        //     transform: translateY(calc(var(--index) * -0.2));
+        //     transition: 0.3s;
+        // }
         &__profileImg{
             font-size: calc(var(--index) * 1.4);
             background: none;
@@ -78,6 +80,7 @@
             color: $defaultWhite;
             transition: 0.3s;
             cursor: pointer;
+            margin-left: calc(var(--index) * 1);
         }
         &__profileImg:hover{
             transform: translateY(calc(var(--index) * -0.2));

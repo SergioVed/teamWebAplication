@@ -10,10 +10,6 @@ import { useState } from "react";
 export const Header = () => {
   const [value, setValue] = useState<string>("");
 
-  function click() {
-    console.log(value);
-  }
-
   const navigate = useNavigate();
 
   const openHomePage = async () => {
@@ -30,7 +26,7 @@ export const Header = () => {
     }
   };
   const onclick = () => {
-    
+
   }
   return (
     <div className="header">
@@ -43,18 +39,21 @@ export const Header = () => {
           ))}
         </div>
         <div className="header__inputContainer">
-          <input type="text" 
-            value={value}
-            placeholder="пошук напрямів"
-            className={"header__inputContainer__input"}
-            onChange={(e) => setValue(e.target.value)}
-          />
+          <label htmlFor="search">
+            <input type="text"
+              name="search"
+              value={value}
+              placeholder="пошук напрямів"
+              className={"header__inputContainer__input"}
+              onChange={(e) => setValue(e.target.value)}
+            />
 
-          <button className="header__inputContainer__button"
-            onClick={onclick}
-          >
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
+            <button className="header__inputContainer__button"
+              onClick={onclick}
+            >
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </button>
+          </label>
 
           <button
             onClick={openHomePage}

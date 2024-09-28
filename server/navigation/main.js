@@ -22,6 +22,8 @@ router.get('/refresh', userRoutes.refresh);
 router.get('/users', userRoutes.getUsers);
 router.post('/add-user/:id', userRoutes.addUser);
 router.post('/validate-token', tokenRoutes.validateToken);
+router.post('/auth-with-google', userRoutes.authWithGoogle);
+router.get('/oauth', userRoutes.getUserGoogleData);
 
 router.post('/add', checkAuth, fileMidleWare, 
     body('title').isLength({ min: 2, max: 32}).withMessage('Назва проекту має бути від 2 до 32 символів'),

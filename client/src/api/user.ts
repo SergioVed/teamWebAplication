@@ -37,3 +37,15 @@ export const checkUserAuthorization = async (navigate: NavigateFunction) => {
         console.error("Token validation failed", err);
     }
 };
+
+export const authWithGoogle = async (navigate: (url: any) => void)  => {
+    try {
+        const response = await axios.post(`${apiURL}/api/auth-with-google`);
+        const data = response.data;
+
+        navigate(data.url);
+
+    } catch (err) {
+        console.error("Error request", err);
+    }
+}

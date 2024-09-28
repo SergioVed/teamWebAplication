@@ -31,8 +31,6 @@ export const UserEducationPage = () => {
     }
   };
 
-  console.log(education);
-
   function handleInputChange(index: number, value: string) {
     const newGraduation = [...education];
     newGraduation[index].name = value;
@@ -52,6 +50,18 @@ export const UserEducationPage = () => {
     console.log(Cookies.get("userInfo"));
     navigate("/sign-up/experience");
   }
+
+  useEffect(() => {
+    const userInfo = Cookies.get("userInfo");
+  
+    if (userInfo) {
+      const parsedInfo = JSON.parse(userInfo);
+  
+      if (parsedInfo.education) {
+        setEducation(parsedInfo.education || []);
+      }
+    }
+  }, []);
 
   // useEffect(() => {
   //     checkUserAuthorization(navigate);
