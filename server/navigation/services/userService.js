@@ -133,6 +133,12 @@ module.exports.addFullUserInfo = async (id, userData) => {
     return user;
 }
 
+module.exports.editUser = async (id, updateData) => {
+    const user = await UserModel.findByIdAndUpdate(id, updateData, {new: true, runValidators: true})
+    
+    return user
+}
+
 module.exports.getUserGoogleData = async (accessToken) => {
     const response = await fetch(`https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`);
 

@@ -35,3 +35,14 @@ module.exports.getAll = async (req, res) => {
         return res.status(500).json({message: `Server error ${err}`})
     }
 }
+module.exports.edit = async (req, res, next) => {
+    try {
+        const id = req.params
+        const updateData = req.body;
+        const project = await projectService.edit(id, updateData)
+
+        res.status(200).json(project);
+    } catch (err) {
+        return res.status(500).json({message: `Server error ${err}`})
+    }
+}

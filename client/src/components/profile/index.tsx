@@ -50,7 +50,7 @@ export const Profile = () => {
                             <p className="userInfo__text__nickname">@{user.nickname}</p>
                             <p className="userInfo__text__description">{user.description}</p>
                         </div>
-                        <FontAwesomeIcon className="userInfo__edit" icon={faPenToSquare} />
+                        <FontAwesomeIcon className="userInfo__edit" onClick={() => navigate('/')} icon={faPenToSquare} />
                     </div>
                     
                     <div className="userTechnologies">

@@ -1,19 +1,54 @@
 export const works: any = {
     "Фронтенд розробка": [
-        "HTML", "CSS", "SCSS", "JS", "React", "Angular"
+        "HTML", 
+        "CSS", 
+        "SCSS", 
+        "JavaScript", 
+        "React", 
+        "Angular", 
+        "Vue.js", 
+        "TypeScript", 
+        "Bootstrap", 
+        "Tailwind CSS"
     ],
     "Бекенд розробка": [
-        "Java", "node.js", "python"
+        "Java", 
+        "Node.js", 
+        "Python", 
+        "Ruby on Rails", 
+        "PHP", 
+        "Go", 
+        "Django", 
+        "Flask", 
+        "Spring"
     ],  
     "IOS розробка": [
-        "Objective-C", "Swift"
+        "Objective-C", 
+        "Swift", 
+        "UIKit", 
+        "SwiftUI", 
+        "Core Data", 
+        "Xcode", 
+        "CocoaPods"
     ],    
     "Гейм дев": [
-        "Objective-C", "Swift"
+        "C#", 
+        "C++", 
+        "Unity", 
+        "Unreal Engine", 
+        "GameMaker", 
+        "Godot", 
+        "Phaser"
     ],    
     "Веб дизайн": [
-        "Objective-C", "Swift"
-    ],  
+        "Adobe Photoshop", 
+        "Adobe Illustrator", 
+        "Figma", 
+        "Sketch", 
+        "InVision", 
+        "Webflow", 
+        "Adobe XD"
+    ]
 }
 
 export const EnglishLvl = [

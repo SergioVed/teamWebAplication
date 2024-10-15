@@ -1,10 +1,11 @@
 import axios from "axios";
 import { apiURL } from "./api";
+import Cookies from "js-cookie";
 
 export const addProject = async (title: string, description: string, role: string, link: string, images: File[]) => {
   try {
-    const fullToken = document.cookie;
-    const token = fullToken.split('=')[1];
+    const token = Cookies.get('accessToken'); 
+    const fullToken = token?.split('=')[1];
     
     const formData = new FormData();
     formData.append('title', title);
@@ -19,7 +20,7 @@ export const addProject = async (title: string, description: string, role: strin
     const response = await axios.post(`${apiURL}/api/add`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${fullToken}`,
       },
     });
     

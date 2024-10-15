@@ -6,6 +6,7 @@ import { InformationPage1, UserFieldsPage, UserSkillsPage, UserEnglishLevelPage,
 import { FinalPage } from './components/userInformation/pages/finalPage';
 import { Profile } from './components/profile';
 import { AddProjectPage } from './components/profile/pages/addProjectPage';
+import { EditProfilePage } from './components/editProfile';
 
 const infomationpageRoutes = [
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
   {
     path: '/home-page/:id',
     element: <Profile />,
+  },
+  {
+    path: 'home-page-edit/:id',
+    element: <EditProfilePage/>
   },
   {
     path: '/home-page/:id/add-project',
