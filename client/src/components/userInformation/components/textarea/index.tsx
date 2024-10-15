@@ -5,10 +5,11 @@ interface TeaxtAreaInt {
     value: string,
     maxLength: number,
     className: string,
-    placeholder: string
+    placeholder: string,
+    defaultValue?: string
 }
 
-export const TeaxtArea = ({onChange, value, maxLength, className, placeholder} : TeaxtAreaInt) => {
+export const TeaxtArea = ({onChange, value, maxLength, className, placeholder, defaultValue} : TeaxtAreaInt) => {
 
     return(
         <textarea
@@ -17,6 +18,7 @@ export const TeaxtArea = ({onChange, value, maxLength, className, placeholder} :
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        defaultValue={defaultValue}
         />
     )
 }

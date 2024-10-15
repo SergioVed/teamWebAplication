@@ -110,6 +110,18 @@ module.exports.addUser = async (req, res, next) => {
     };
 }
 
+module.exports.editUser = async (req, res, next) => {
+    try {
+        const {id, updateData} = req.body
+
+        const user = await userService.editUser(id, updateData)
+
+        return res.status(200).json(user)
+    } catch (err) {
+        return res.status(404).json({ message: err.message });
+    }
+}
+
 module.exports.authWithGoogle = async (req, res, next) => {
     try {
         res.header('Access-Control-Allow-Origin', 'http://localhost:3000');

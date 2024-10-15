@@ -18,8 +18,7 @@
     background-color: $defaultBlack; 
     color: $defaultWhite; 
     border: none; 
-    border-radius: calc(var(--index) * .2); 
-    padding: calc(var(--index) * .4) calc(var(--index) * 1.2) calc(var(--index) * .3); 
+    border-radius: calc(var(--index) * .2);
     font-size: calc(var(--index) * .9);
     font-weight: 600;
     appearance: none; 
